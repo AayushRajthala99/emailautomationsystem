@@ -28,13 +28,13 @@ function loginFormValidation() {
     //Validation for Email...
     if (emailValue === "") {
         emailErrorFlag = true;
-        setErrorFor(email, "* EMAIL REQUIRED!");
+        setErrorFor(email, "* Email Required!");
     } else if (!isEmail(emailValue)) {
         emailErrorFlag = true;
-        setErrorFor(email, "* INVALID FORMAT!");
+        setErrorFor(email, "* Invalid Format!");
     } else if (valueLength(emailValue) < inputLength.low || valueLength(emailValue) > inputLength.high) {
         emailErrorFlag = true;
-        setErrorFor(password, '* INVALID VALUE LENGTH!');
+        setErrorFor(password, '* Invalid Value Length!');
     } else {
         emailErrorFlag = false;
         setSuccessFor(email);
@@ -43,10 +43,10 @@ function loginFormValidation() {
     //Validation for Password...
     if (passwordValue === "") {
         passwordErrorFlag = true;
-        setErrorFor(password, "* PASSWORD REQUIRED!");
+        setErrorFor(password, "* Password Required!");
     } else if (valueLength(passwordValue) < inputLength.low || valueLength(passwordValue) > inputLength.high) {
         passwordErrorFlag = true;
-        setErrorFor(password, '* INVALID VALUE LENGTH!');
+        setErrorFor(password, '* Invalid Value Length!');
     } else {
         passwordErrorFlag = false;
         setSuccessFor(password);
