@@ -17,13 +17,16 @@ registrationForm.addEventListener('submit', event => {
 
 function registrationFormValidation() {
 
-    let nameErrorFlag, emailErrorFlag, dobErrorFlag, mobileErrorFlag, passwordErrorFlag;
+    let nameErrorFlag, emailErrorFlag, addressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag, passwordErrorFlag;
 
     //Registration Form Value Acquisition...
     let fullName = registrationForm.querySelector("#fullname");
     let email = registrationForm.querySelector("#email");
     let dob = registrationForm.querySelector("#dob");
     let mobile = registrationForm.querySelector("#mobile");
+    let address = registrationForm.querySelector("#address");
+    let citizenship = registrationForm.querySelector("#citizenship");
+    let gender = document.getElementsByName("gender");
     let password = registrationForm.querySelector("#password");
     let confirmpassword = registrationForm.querySelector("#confirmpassword");
 
@@ -31,6 +34,9 @@ function registrationFormValidation() {
     let emailValue = email.value.trim();
     let dobValue = dob.value.trim();
     let mobileValue = mobile.value.trim();
+    let addressValue = address.value.trim();
+    let citizenshipValue = citizenship.value.trim();
+    citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
     let passwordValue = password.value.trim();
     let confirmpasswordValue = confirmpassword.value.trim();
 
@@ -50,8 +56,9 @@ function registrationFormValidation() {
     if (dobValue === '') {
         dobErrorFlag = true;
         setErrorFor(dob, '* DOB Required!');
-    } else if (validDate(dobValue)) {
-
+    } else if (!isOver18(dobValue)) {
+        dobErrorFlag = true;
+        setErrorFor(dob, '* Age Restricted!');
     } else {
         dobErrorFlag = false;
         setSuccessFor(dob);
@@ -70,6 +77,55 @@ function registrationFormValidation() {
     } else {
         emailErrorFlag = false;
         setSuccessFor(email);
+    }
+
+    //Validation for Mobile...
+    if (mobileValue === '') {
+        mobileErrorFlag = true;
+        setErrorFor(mobile, '* Mobile Required!');
+    } else if (!isMobile(mobileValue)) {
+        mobileErrorFlag = true;
+        setErrorFor(mobile, '* Invalid Format!');
+    } else if (valueLength(mobileValue) < 6 || valueLength(mobileValue) > 10) {
+        mobileErrorFlag = true;
+        setErrorFor(mobile, '* Invalid Value Length!');
+    } else {
+        mobileErrorFlag = false;
+        setSuccessFor(mobile);
+    }
+
+    //Validation for Address...
+    if (addressValue === '') {
+        addressErrorFlag = true;
+        setErrorFor(address, '* Address Required!');
+    } else if (valueLength(addressValue) < inputLength.min || valueLength(addressValue) > inputLength.max) {
+        addressErrorFlag = true;
+        setErrorFor(address, '* Invalid Value Length!');
+    } else {
+        addressErrorFlag = false;
+        setSuccessFor(address);
+    }
+
+    //Validation for Citizenship...
+    if (citizenshipValue === '') {
+        citizenshipErrorFlag = true;
+        setErrorFor(citizenship, '* Citizenship Required!');
+    } else if (!isCitizenship(citizenshipValue)) {
+        citizenshipErrorFlag = true;
+        setErrorFor(citizenship, '* Invalid Format!');
+    } else {
+        citizenshipErrorFlag = false;
+        setSuccessFor(citizenship);
+    }
+
+    //Validation for Gender...
+    if (!(gender[0].checked || gender[1].checked || gender[2].checked)) {
+        genderErrorFlag = true;
+        setErrorByName('gender', '* Gender Required!');
+        return false;
+    } else {
+        genderErrorFlag = false;
+        setSuccessByName('gender');
     }
 
     //Validation for Password...
@@ -108,8 +164,20 @@ function registrationFormValidation() {
         errordiv.innerText = message;
     }
 
+    function setErrorByName(name, message) {
+        const formControl = registrationForm.querySelector("#labelcontainer" + name);
+        const errordiv = formControl.querySelector('.form-error');
+        errordiv.innerText = message;
+    }
+
     function setSuccessFor(input) {
         const formControl = registrationForm.querySelector("#labelcontainer" + input.id);
+        const errordiv = formControl.querySelector('.form-error');
+        errordiv.innerText = "";
+    }
+
+    function setSuccessByName(name) {
+        const formControl = registrationForm.querySelector("#labelcontainer" + name);
         const errordiv = formControl.querySelector('.form-error');
         errordiv.innerText = "";
     }
@@ -118,24 +186,18 @@ function registrationFormValidation() {
         return /[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?/.test(email);
     }
 
-    function validDate(value) {
-        let today = new Date();
+    function isMobile(number) {
+        return /(?:\(?\+977\)?)?[9][6-9]\d{8}|01[-]?[0-9]{7}/.test(number);
+    }
 
-        value = value.toString();
-        value = value.replace(/[^\w ]/g, '');
-        valueYear = parseFloat(value.substring(0, 4));
-        valueMonth = parseFloat(value.substring(4, 6));
-        valueDate = parseFloat(value.substring(6, 8));
+    function isCitizenship(number) {
+        return /^[0-9]{8,11}$/.test(number);
+    }
 
-        enteredDate = valueYear + valueMonth % 12 + (valueDate % 30) % 12;
-        realYear = parseFloat(today.getFullYear());
-        realMonth = parseFloat(today.getMonth());
-        realDate = parseFloat(today.getDate());
-
-        if (valueYear < realYear && (realYear - valueYear) >= 18) {
-            return true;
-        }
-        return false;
+    function isOver18(dateOfBirth) {
+        let date18YrsAgo = new Date();
+        date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18);
+        return dateOfBirth <= date18YrsAgo;
     }
 
     function passwordCheck(password1, password2) {
