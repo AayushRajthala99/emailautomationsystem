@@ -1,0 +1,8 @@
+/node_modules
+/.idea
+/.env
+/src/.env
+/src/logs/*
+/logs
+\src\logs\*
+\logs

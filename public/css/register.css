@@ -1,0 +1,13 @@
+.registration-form-input {
+    position: relative;
+    height: 70px;
+}
+
+.label-split {
+    display: flex;
+    justify-content: space-between;
+}
+
+.split-input {
+    width: 242px;
+}

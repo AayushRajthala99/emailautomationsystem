@@ -1,0 +1,38 @@
+{
+  "name": "emailautomationsystem",
+  "version": "1.0.0",
+  "description": "Email Automation System",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AayushRajthala99/emailautomationsystem.git"
+  },
+  "keywords": [
+    "Node.js",
+    "HTML/CSS",
+    "MySQL"
+  ],
+  "author": "ENIGMA",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.2",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.3.4",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "nodemon": "^2.0.19"
+  }
+}

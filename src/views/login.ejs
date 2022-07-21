@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login | EAS</title>
+</head>
+
+<body oncontextmenu="return false">
+    <div class="form-container">
+        <div class="art-container">
+            <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal">
+            </div>
+            <div class="art-content">
+                <p>Email</p>
+                <p class="text-primary">Automation</p>
+                <p class="text-danger">System</p>
+            </div>
+        </div>
+        <div class="form-title">
+            <h4>Applicant Login</h4>
+        </div>
+        <form id="loginform" action="/" method="post">
+            <div class="login-form-input">
+                <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
+                <div class="label-container" id="labelcontaineremail">
+                    <div class="form-error"></div>
+                </div>
+            </div>
+            <div class="login-form-input">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <div class="label-container" id="labelcontainerpassword">
+                    <div class="form-error"></div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="submit-button">Login</button>
+            </div>
+        </form>
+        <div class="form-option">
+            Don't have an account? <a href="/register">Sign up</a>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+
+</html>

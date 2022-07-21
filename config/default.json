@@ -1,0 +1,12 @@
+{
+  "mysql": {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "emailautomationsystem",
+    "port": 3306
+  },
+  "app": {
+    "port": 3000
+  }
+}

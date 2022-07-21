@@ -1,0 +1,67 @@
+.text-primary {
+    color: #2460BC;
+}
+
+.text-danger {
+    color: #D01E29;
+}
+
+h4 {
+    font-size: 1.3125rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 540px;
+    padding: 20px;
+    font-size: .813rem;
+    justify-content: space-between;
+}
+
+.form-title {
+    margin-bottom: 14px;
+    font-family: 'PoppinsSemiBold', sans-serif;
+    font-size: 21px;
+}
+
+.login-form-input {
+    position: relative;
+    height: 70px;
+    width: 100%;
+}
+
+.radio-selection {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.radio-value {
+    width: 48px;
+    height: 40px;
+    text-align: center;
+}
+
+.radio-value input {
+    height: 10px;
+}
+
+.art-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.art-container img {
+    width: 108px;
+    height: 90px;
+    margin-right: 15px;
+}
+
+.form-option {
+    font-family: 'PoppinsRegular', sans-serif;
+    display: flex !important;
+    font-size: .813rem;
+    margin-top: 1rem !important;
+}
