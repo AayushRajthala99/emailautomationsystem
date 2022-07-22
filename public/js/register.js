@@ -37,6 +37,7 @@ function registrationFormValidation() {
     let addressValue = address.value.trim();
     let citizenshipValue = citizenship.value.trim();
     citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
+    citizenship.value = citizenshipValue;
     let passwordValue = password.value.trim();
     let confirmpasswordValue = confirmpassword.value.trim();
 
@@ -212,7 +213,7 @@ function registrationFormValidation() {
         return value.toString().length;
     }
 
-    if (nameErrorFlag == false && emailErrorFlag == false && passwordErrorFlag == false) {
+    if (nameErrorFlag == false && emailErrorFlag == false && addressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && mobileErrorFlag == false && passwordErrorFlag == false) {
         return true;
     } else {
         return false;
