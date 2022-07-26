@@ -1,4 +1,3 @@
-const db = require("../../config/mysql");
 const {
   logger
 } = require("../utils/logger");
