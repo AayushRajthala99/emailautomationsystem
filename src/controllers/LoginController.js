@@ -25,9 +25,10 @@ async function view(req, res) {
     } = req.body;
 
     const loginInfo = await getLoginInfo(email);
+
     if (
       loginInfo.status &&
-      email == loginInfo.result[0].email &&
+      email.toLowerCase() == loginInfo.result[0].email &&
       password == loginInfo.result[0].password
     ) {
       res.redirect("/dashboard");

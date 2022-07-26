@@ -9,8 +9,9 @@ const {
 const getLoginInfo = async (email) => {
   try {
     const result = await promisifiedQuery(
-      `SELECT * FROM login where email='${email}' AND deleted_at is NULL;`
+      `SELECT *,LOWER(email) as email FROM login where email='${email}' AND deleted_at is NULL;`
     );
+
     return {
       status: true,
       result: result,
