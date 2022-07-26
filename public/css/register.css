@@ -2,6 +2,12 @@
     margin-bottom: 40px;
 }
 
+.art-content {
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 .logo img {
     height: 100px;
 }

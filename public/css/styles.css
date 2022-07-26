@@ -144,6 +144,8 @@ textarea:focus {
 }
 
 .form-title {
+  margin-bottom: 14px;
+  font-family: 'PoppinsSemiBold', sans-serif;
   font-size: 1.3125rem;
 }
 
