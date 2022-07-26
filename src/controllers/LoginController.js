@@ -3,6 +3,10 @@ const {
 } = require("../utils/logger");
 
 const {
+  getUserInfo
+} = require("../utils/utils");
+
+const {
   getLoginInfo
 } = require("../models/Login.model");
 
@@ -30,9 +34,12 @@ async function view(req, res) {
       email == loginInfo.result[0].email &&
       password == loginInfo.result[0].password
     ) {
-      res.redirect("/dashboard");
-    } else {
-      throw (loginInfo.error);
+      const userInfo = await getUserInfo(email);
+      if (userInfo.status) {
+        res.render('dashboard', {
+          userInfo: userInfo.result[0]
+        });
+      }
     }
   } catch (error) {
     res.render("error", {

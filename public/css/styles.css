@@ -29,9 +29,7 @@
 
 a {
   text-decoration: none;
-  border-color: #2460B9 !important;
-  margin-left: 5px;
-  border-bottom: 1px solid #2360B9 !important;
+  color: #000000;
 }
 
 li {
