@@ -120,8 +120,13 @@ textarea:focus {
   font-weight: 600;
 }
 
+.art-container {
+  display: flex;
+}
+
 .art-content {
   display: flex;
+  align-self: center;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -130,7 +135,24 @@ textarea:focus {
   border: 2px solid #454665;
 }
 
+.text-primary {
+  color: #2460BC;
+}
+
+.text-danger {
+  color: #D01E29;
+}
+
+.form-title {
+  font-size: 1.3125rem;
+}
+
 .form-error {
   color: #D01E29;
   font-size: 14px;
+}
+
+.logo img {
+  height: 80px;
+  margin-right: 15px;
 }

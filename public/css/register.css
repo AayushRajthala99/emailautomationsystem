@@ -1,3 +1,11 @@
+.art-container {
+    margin-bottom: 40px;
+}
+
+.logo img {
+    height: 100px;
+}
+
 .registration-form-input {
     position: relative;
     height: 70px;

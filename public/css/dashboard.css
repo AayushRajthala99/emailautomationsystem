@@ -1,0 +1,15 @@
+header {
+    position: absolute;
+    top: 0;
+    padding: 10px;
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.art-container {
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+}
