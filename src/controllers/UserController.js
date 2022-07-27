@@ -8,7 +8,13 @@ const {
 
 async function index(req, res) {
     try {
-        res.render('user/index');
+        let email = req.session.user;
+        const userInfo = await getUserInfo(email);
+        if (userInfo.status) {
+            res.render('user/index', {
+                userInfo: userInfo.result[0]
+            });
+        }
     } catch (error) {
         res.render("error", {
             error: "This User Doesn't Exist",
