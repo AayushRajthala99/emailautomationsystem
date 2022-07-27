@@ -26,10 +26,18 @@
         </header>
         <nav>
             <a class="nav-item" href="/dashboard">Home</a>
+            <% if(userInfo){ %>
+            <p class="userInfo"><%= userInfo.name %> [ <%= userInfo.id %> ]</p>
+            <% } %>
         </nav>
     </div>
     <div class="dashboard-container">
         <div class="view-title">Applicant Portal</div>
+
+        <% if(userInfo.filledprofile == null){ %>
+        <div class="note text-danger">[ Please Fill Your Personal Details First!!! ]</div>
+        <% } %>
+
         <div class="dashboard-content">
             <a href="dashboard/user">
                 <div class="dashboard-item">
@@ -39,6 +47,7 @@
                     <div class="dashboard-item-title">Personal Details</div>
                 </div>
             </a>
+            <% if(userInfo.hasfilled != null){ %>
             <a href="dashboard/application/create">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
@@ -47,6 +56,8 @@
                     <div class="dashboard-item-title">Apply for Driving License</div>
                 </div>
             </a>
+            <% } %>
+            <% if(userInfo.haslicense != null){ %>
             <a href="dashboard/application">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
@@ -55,6 +66,7 @@
                     <div class="dashboard-item-title">View Driving License</div>
                 </div>
             </a>
+            <% } %>
             <a href="/">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">

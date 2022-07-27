@@ -157,6 +157,19 @@ footer {
   font-size: 1.3125rem;
 }
 
+.view-title {
+  display: flex;
+  font-size: 20px;
+}
+
+.note {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 20px;
+  height: 30px;
+}
+
 .form-error {
   color: #D01E29;
   font-size: 14px;
