@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 03:38 PM
+-- Generation Time: Jul 27, 2022 at 03:47 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,7 +39,7 @@ CREATE TABLE `user` (
   `mothername` varchar(255) DEFAULT NULL,
   `spousename` varchar(255) DEFAULT NULL,
   `haslicense` tinyint(1) DEFAULT NULL COMMENT '1= "Yes", 0 = "No"',
-  `licensecategory` int(1) DEFAULT NULL COMMENT '0 - (A) Motorcycle, Scooter, Moped\r\n1 - (B) Car, Jeep, Delivery Van\r\n2 - (C) Tempo, Auto Rickshaw\r\n3- (C1) E-Rickshaw\r\n4 - (D) Power Tilter\r\n5 - (E) Tractor\r\n6 - (K) Scooter, Moped',
+  `licensecategory` varchar(10) DEFAULT NULL COMMENT '0 - (A) Motorcycle, Scooter, Moped\r\n1 - (B) Car, Jeep, Delivery Van\r\n2 - (C) Tempo, Auto Rickshaw\r\n3- (C1) E-Rickshaw\r\n4 - (D) Power Tilter\r\n5 - (E) Tractor\r\n6 - (K) Scooter, Moped',
   `licensenumber` varchar(13) DEFAULT NULL,
   `licenseissueddate` date DEFAULT NULL,
   `licenseexpirydate` date DEFAULT NULL,
