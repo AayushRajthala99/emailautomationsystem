@@ -71,6 +71,8 @@ function logout(req, res) {
   if (res.locals.signedOut) {
     res.render("../views/login", {
       loginErr: "Login First",
+      result,
+      errorMessage
     });
   } else {
     req.session.destroy();
