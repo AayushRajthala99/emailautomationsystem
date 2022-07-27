@@ -9,7 +9,10 @@ const {
 
 async function index(req, res, next) {
   try {
+    res.set('Cache-control', 'no-store');
+    res.locals.signedOut = true;
     res.render('register/index');
+    req.session.destroy();
   } catch (error) {
     logger.error(`REGISTRATION PAGE ERROR: ${error}`);
     res.render('error', {
@@ -28,7 +31,10 @@ async function store(req, res, next) {
 
     const result = await userRegistration(fullname, email, confirmpassword);
     if (result.status) {
-      res.redirect('/');
+      req.session.user = email;
+      res.render('dashboard', {
+        userInfo: userInfo.result[0]
+      });
     } else {
       throw (result.error);
     }

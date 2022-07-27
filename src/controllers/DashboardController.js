@@ -2,6 +2,10 @@ const {
   logger
 } = require("../utils/logger");
 
+const {
+  getUserInfo
+} = require("../utils/utils");
+
 async function index(req, res, next) {
   try {
     if (res.locals.signedOut) {
