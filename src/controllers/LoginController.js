@@ -10,11 +10,23 @@ const {
   getLoginInfo
 } = require("../models/Login.model");
 
+const result = {
+  email: null,
+  password: null,
+}
+
+const errorMessage = {
+  email: null,
+  password: null,
+};
+
 async function index(req, res) {
   try {
     if (res.locals.signedOut) {
       res.render("login", {
         loginErr: req.session.loginErr ? req.session.loginErr : null,
+        result,
+        errorMessage
       });
       req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
     }

@@ -6,12 +6,32 @@ const {
   userRegistration,
 } = require('../models/Register.model');
 
+const {
+  getUserInfo
+} = require("../utils/utils");
+
+const result = {
+  fullname: null,
+  email: null,
+  password: null,
+  confirmpassword: null,
+}
+
+const errorMessage = {
+  fullname: null,
+  email: null,
+  password: null,
+  confirmpassword: null,
+};
 
 async function index(req, res, next) {
   try {
     res.set('Cache-control', 'no-store');
     res.locals.signedOut = true;
-    res.render('register/index');
+    res.render('register/index', {
+      result,
+      errorMessage
+    });
     req.session.destroy();
   } catch (error) {
     logger.error(`REGISTRATION PAGE ERROR: ${error}`);
@@ -32,9 +52,7 @@ async function store(req, res, next) {
     const result = await userRegistration(fullname, email, confirmpassword);
     if (result.status) {
       req.session.user = email;
-      res.render('dashboard', {
-        userInfo: userInfo.result[0]
-      });
+      res.redirect('/dashboard');
     } else {
       throw (result.error);
     }

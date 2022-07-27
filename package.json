@@ -29,7 +29,8 @@
     "nodemailer": "^6.7.2",
     "validatorjs": "^3.22.1",
     "winston": "^3.3.4",
-    "winston-daily-rotate-file": "^4.7.1"
+    "winston-daily-rotate-file": "^4.7.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^8.5.0",

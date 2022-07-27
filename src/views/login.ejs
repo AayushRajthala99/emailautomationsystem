@@ -22,15 +22,25 @@
         <div class="form-title">Applicant Login</div>
         <form id="loginform" action="/" method="post">
             <div class="login-form-input">
-                <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
+                <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on"
+                    value="<%= result.email %>">
                 <div class="label-container" id="labelcontaineremail">
-                    <div class="form-error"></div>
+                    <div class="form-error">
+                        <% if(errorMessage.email) { %>
+                        <%= errorMessage.email %>
+                        <% } %>
+                    </div>
                 </div>
             </div>
             <div class="login-form-input">
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password"
+                    value="<%= result.password %>">
                 <div class="label-container" id="labelcontainerpassword">
-                    <div class="form-error"></div>
+                    <div class="form-error">
+                        <% if(errorMessage.password) { %>
+                        <%= errorMessage.password %>
+                        <% } %>
+                    </div>
                 </div>
             </div>
             <div>

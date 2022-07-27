@@ -6,7 +6,12 @@ const {
     store,
 } = require("../controllers/RegisterController");
 
+const {
+    linkSchemaRegister,
+    validateRegister,
+} = require('../middleware/register');
+
 router.get("/", index);
-router.post("/", store);
+router.post("/", validateRegister(linkSchemaRegister), store);
 
 module.exports = router;
