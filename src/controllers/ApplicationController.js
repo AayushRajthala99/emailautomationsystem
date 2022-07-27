@@ -12,7 +12,13 @@ const {
 
 async function index(req, res) {
     try {
-        res.render('application/index');
+        let email = req.session.user;
+        const userInfo = await getUserInfo(email);
+        if (userInfo.status) {
+            res.render('application/index', {
+                userInfo: userInfo.result[0]
+            });
+        }
     } catch (error) {
         res.render("error", {
             error: "Application Doesn't Exist",
@@ -22,7 +28,11 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        res.render('application/create');
+        let email = req.session.user;
+        const userInfo = await getUserInfo(email);
+        res.render('application/create', {
+            userInfo: userInfo.result[0]
+        });
     } catch (error) {
         logger.error(`APPLICATION VIEW ERROR: ${error}`);
         res.render("error", {

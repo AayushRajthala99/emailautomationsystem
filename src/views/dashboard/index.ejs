@@ -11,26 +11,7 @@
 </head>
 
 <body oncontextmenu="return false">
-    <div class="header-container">
-        <header>
-            <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal"></div>
-            <div class="art-container">
-                <div class="art-content">
-                    <p class="text-danger">Online Driving License System</p>
-                </div>
-                <div class="art-content">
-                    <p class="text-primary">Email Automation</p>
-                </div>
-            </div>
-            <div class="logo"><img src="/img/Nepal.png" alt="Flag of Nepal"></div>
-        </header>
-        <nav>
-            <a class="nav-item" href="/dashboard">Home</a>
-            <% if(userInfo){ %>
-            <p class="userInfo"><%= userInfo.name %> [ <%= userInfo.id %> ]</p>
-            <% } %>
-        </nav>
-    </div>
+    <%- include('../header.ejs') %>
     <div class="dashboard-container">
         <div class="view-title">Applicant Portal</div>
 
@@ -47,7 +28,7 @@
                     <div class="dashboard-item-title">Personal Details</div>
                 </div>
             </a>
-            <% if(userInfo.hasfilled != null){ %>
+            <% if(userInfo.hasfilled){ %>
             <a href="dashboard/application/create">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
@@ -57,7 +38,7 @@
                 </div>
             </a>
             <% } %>
-            <% if(userInfo.haslicense != null){ %>
+            <% if(userInfo.haslicense){ %>
             <a href="dashboard/application">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
@@ -67,7 +48,7 @@
                 </div>
             </a>
             <% } %>
-            <a href="/">
+            <a href="/logout">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
                         <img src="/img/Logout.png" alt="Logout">

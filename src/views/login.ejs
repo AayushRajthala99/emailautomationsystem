@@ -41,7 +41,14 @@
             Don't have an account? <a href="/register">Sign up</a>
         </div>
     </div>
+    <div class="text-danger">
+        <% if (loginErr) { %>
+        <%= loginErr %>
+        <% } else { %>
+        <% } %>
+    </div>
     <script src="/js/login.js"></script>
 </body>
 <%- include('./footer.ejs') %>
+
 </html>

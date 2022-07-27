@@ -12,7 +12,12 @@ const {
 
 async function index(req, res) {
   try {
-    res.render("login");
+    if (res.locals.signedOut) {
+      res.render("login", {
+        loginErr: req.session.loginErr ? req.session.loginErr : null,
+      });
+      req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
+    }
   } catch (error) {
     logger.error(`LOGIN PAGE ERROR: ${error}`);
     res.render("error", {
@@ -36,6 +41,7 @@ async function view(req, res) {
     ) {
       const userInfo = await getUserInfo(email);
       if (userInfo.status) {
+        req.session.user = email;
         res.render('dashboard', {
           userInfo: userInfo.result[0]
         });
@@ -48,7 +54,20 @@ async function view(req, res) {
   }
 }
 
+function logout(req, res) {
+  if (res.locals.signedOut) {
+    res.render("../views/login", {
+      loginErr: "Login First",
+    });
+  } else {
+    req.session.destroy();
+    res.set("Clear-Site-Data", '"cache"');
+    res.redirect("/");
+  }
+}
+
 module.exports = {
   index,
   view,
+  logout,
 };

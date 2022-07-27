@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const ejs = require("ejs");
+const session = require("express-session");
 const config = require("../config/default.json");
 require("dotenv").config();
 
@@ -17,8 +18,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 
-//Set Route Path for Static Files
-app.use("/public", express.static("../public"));
+app.use(
+  session({
+    secret: "secret-key",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 //BodyParser Initialized
 app.use(
@@ -27,10 +33,22 @@ app.use(
   })
 );
 
+const {
+  checkSignIn,
+  checkSignedOut
+} = require("./middleware/login");
+
 //Routes...
-app.use("/", loginRouter);
-app.use("/dashboard", dashboardRouter);
-app.use("/register", registerRouter);
+app.use("/", checkSignedOut, loginRouter);
+app.use("/register", checkSignedOut, registerRouter);
+app.use("/dashboard", checkSignIn, dashboardRouter);
+
+// error handling of middleware
+app.use((err, req, res, next) => {
+  console.log("*******************", err.message, "*******************");
+  res.redirect("/");
+});
+
 
 //404 page not found error for non existing routes
 app.get("*", function (req, res) {

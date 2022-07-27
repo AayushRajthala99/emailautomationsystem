@@ -12,18 +12,17 @@
 </head>
 
 <body oncontextmenu="return false">
+    <%- include('../header.ejs') %>
     <div class="form-container">
         <div class="art-container">
-            <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal">
-            </div>
+            <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal"></div>
             <div class="art-content">
-                <p>Email</p>
-                <p class="text-primary">Automation</p>
-                <p class="text-danger">System</p>
+                <p class="text-danger">Online Driving License System</p>
+                <p class="text-primary">Email Automation</p>
             </div>
         </div>
         <div class="form-title">
-            <h4>Application application</h4>
+            <h4>Driving License Application Form</h4>
         </div>
         <form id="applicationform" action="/application" method="post">
             <div class="application-form-input">
@@ -32,7 +31,7 @@
                     <div class="form-error"></div>
                 </div>
             </div>
-            <div class="login-form-input">
+            <div class="application-form-input">
                 <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
                 <div class="label-container" id="labelcontaineremail">
                     <div class="form-error"></div>
