@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const {
   logger
 } = require("../utils/logger");
@@ -53,10 +54,11 @@ async function view(req, res) {
     } = req.body;
 
     const loginInfo = await getLoginInfo(email);
+
     if (
       loginInfo.status &&
       email.toLowerCase() == loginInfo.result[0].email &&
-      password == loginInfo.result[0].password
+      bcrypt.compare(password, loginInfo.result[0].password)
     ) {
       const userInfo = await getUserInfo(email);
       if (userInfo.status) {
