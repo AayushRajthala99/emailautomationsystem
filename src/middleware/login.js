@@ -92,15 +92,15 @@ const validateLogin = (schema) => async (req, res, next) => {
       } catch (error) {
         const errorMessage = {
           email: null,
-          hashedPassword: null,
+          password: null,
         };
 
         // Storing error message...
         error.inner.forEach((e) => {
           if (e.path.slice(5) == "email") {
             errorMessage.email = e.errors[0];
-          } else if (e.path.slice(5) == "hashedPassword") {
-            errorMessage.hashedPassword = e.errors[0];
+          } else if (e.path.slice(5) == "password") {
+            errorMessage.password = e.errors[0];
           }
         });
         res.render("login", {
