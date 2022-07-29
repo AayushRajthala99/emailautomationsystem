@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2022 at 07:11 AM
+-- Generation Time: Jul 29, 2022 at 08:49 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -27,7 +27,8 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `dob` date DEFAULT NULL,
   `gender` int(1) DEFAULT NULL COMMENT '0 = Male\r\n1 = Female\r\n2 = Others',
-  `address` varchar(255) DEFAULT NULL,
+  `paddress` varchar(255) DEFAULT NULL,
+  `taddress` varchar(255) DEFAULT NULL,
   `mobile` varchar(10) DEFAULT NULL,
   `bloodgroup` int(1) DEFAULT NULL COMMENT '0 = A positive (A+)\r\n1 = A negative (A-)\r\n2 = B positive (B+)\r\n3 = B negative (B-)\r\n4 = O positive (O+)\r\n5 = O negative (O-)\r\n6 = AB positive (AB+)\r\n7 = AB negative (AB-)',
   `citizenship` varchar(11) DEFAULT NULL,
