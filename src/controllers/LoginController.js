@@ -22,14 +22,21 @@ const errorMessage = {
 
 async function index(req, res) {
   try {
+    res.set('Cache-control', 'no-store');
     if (res.locals.signedOut) {
       res.render("login", {
         loginErr: req.session.loginErr ? req.session.loginErr : null,
         result,
         errorMessage
       });
-      req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
+    } else {
+      res.render("login", {
+        loginErr: null,
+        result,
+        errorMessage
+      });
     }
+    req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
   } catch (error) {
     logger.error(`LOGIN PAGE ERROR: ${error}`);
     res.render("error", {
@@ -46,7 +53,6 @@ async function view(req, res) {
     } = req.body;
 
     const loginInfo = await getLoginInfo(email);
-
     if (
       loginInfo.status &&
       email.toLowerCase() == loginInfo.result[0].email &&

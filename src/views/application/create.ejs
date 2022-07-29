@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="/css/application.css">
     <title>Application | EAS</title>
 </head>
@@ -17,19 +16,19 @@
         <h4>Driving License Application Form</h4>
     </div>
     <form id="applicationform" action="/application" method="post">
-        <div class="application-form-input">
-            <input type="text" name="fullname" id="fullname" placeholder="Full Name">
-            <div class="label-container" id="labelcontainerfullname">
-                <div class="form-error"></div>
+        <div class="application-input-container">
+            <div class="application-form-input">
+                <input type="text" name="fullname" id="fullname" placeholder="Full Name">
+                <div class="label-container" id="labelcontainerfullname">
+                    <div class="form-error"></div>
+                </div>
             </div>
-        </div>
-        <div class="application-form-input">
-            <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
-            <div class="label-container" id="labelcontaineremail">
-                <div class="form-error"></div>
+            <div class="application-form-input">
+                <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
+                <div class="label-container" id="labelcontaineremail">
+                    <div class="form-error"></div>
+                </div>
             </div>
-        </div>
-        <div class="label-split">
             <div class="application-form-input">
                 <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth">
                 <div class="label-container" id="labelcontainerdob">
@@ -42,6 +41,8 @@
                     <div class="form-error"></div>
                 </div>
             </div>
+        </div>
+        <div class="label-split">
         </div>
         <div class="label-split">
             <div class="application-form-input">
@@ -83,11 +84,10 @@
         <div>
             <button type="submit" class="submit-button">Sign Up</button>
         </div>
+        <div class="form-option">
+            Go Back?<a href="/dashboard"> Cancel</a>
+        </div>
     </form>
-    <div class="form-option">
-        Go Back?<a href="/dashboard"> Cancel</a>
-    </div>
-    </div>
     <script src="/js/application.js"></script>
 </body>
 <%- include('../footer.ejs') %>

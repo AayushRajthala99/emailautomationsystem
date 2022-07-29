@@ -199,3 +199,20 @@ footer {
   font-size: .813rem;
   margin-top: 1rem !important;
 }
+
+.radio-value input[type="radio"] {
+  display: none;
+}
+
+.radio-value label {
+  width: 70px;
+  display: inline-block;
+  background-color: #ced4da;
+  padding: 4px 4px;
+  cursor: pointer;
+}
+
+.radio-value input[type="radio"]:checked+label {
+  background-color: #2360B9;
+  color: #ffffff;
+}

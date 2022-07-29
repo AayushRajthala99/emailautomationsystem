@@ -18,15 +18,16 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 
+//Session Configuration...
 app.use(
   session({
-    secret: "secret-key",
+    secret: "03O{kIPl6a#`|mQ",
     resave: false,
     saveUninitialized: true,
   })
 );
 
-//BodyParser Initialized
+//BodyParser Initialized...
 app.use(
   bodyParser.urlencoded({
     extended: true,
