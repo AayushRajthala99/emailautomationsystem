@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 03:47 PM
+-- Generation Time: Jul 29, 2022 at 07:11 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -59,7 +59,7 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email_citizenship_UNIQUE` (`citizenship`,`email`) USING BTREE;
+  ADD UNIQUE KEY `email_citizenship_license_UNIQUE` (`citizenship`,`email`,`licensenumber`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
