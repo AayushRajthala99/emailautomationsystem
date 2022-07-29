@@ -1,1 +1,128 @@
-This is user info landing page.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <title>Profile | EAS</title>
+</head>
+
+<body oncontextmenu="return false">
+    <%- include('../header.ejs') %>
+    <div class="user-container">
+        <div class="view-title"></div>
+        <div class="user-form-container">
+            <form id="userform" action="/user" method="post">
+                <div class="user-input-container">
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/fullname.svg" alt="Full Name" />
+                            <input type="text" name="fullname" id="fullname" placeholder="Full Name"
+                                value="<%= userInfo.fullname %>">
+                        </div>
+                        <div class="label-container" id="labelcontainerfullname">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/email.svg" alt="Email" />
+                            <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
+                                autofocus="on" value="<%= userInfo.email %>">
+                        </div>
+                        <div class="label-container" id="labelcontaineremail">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/dob.svg" alt="Date of Birth" />
+                            <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth" value="<%= userInfo.dob %>">
+                        </div>
+                        <div class="label-container" id="labelcontainerdob">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/mobile.svg" alt="Mobile Number" />
+                            <input class="split-input" type="text" name="mobile" id="mobile"
+                                placeholder="(+977) Mobile Number" value="<%= userInfo.mobile %>">
+                        </div>
+                        <div class="label-container" id="labelcontainermobile">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-input-container">
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/citizenship.svg" alt="Citizenship Number" />
+                            <input class="split-input" type="text" name="citizenship" id="citizenship"
+                                placeholder="Citizenship Number" value="<%= userInfo.citizenship %>">
+                        </div>
+                        <div class="label-container" id="labelcontainercitizenship">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/paddress.svg" alt="Permanent Address" />
+                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address" value="<%= userInfo.paddress %>">
+                        </div>
+                        <div class="label-container" id="labelcontainerpaddress">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="user-form-input">
+                        <div class="input-label">
+                            <img src="/img/taddress.svg" alt="Temporary Address" />
+                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address" value="<%= userInfo.taddress %>">
+                        </div>
+                        <div class="label-container" id="labelcontainertaddress">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="user-form-input">
+                        <div class="radio-selection">
+                            <div>
+                                <img src="/img/gender.svg" alt="Gender" />
+                                <h3>Gender</h3>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="male" value="0" checked>
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="female" value="1">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="other" value="2">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                        <div class="label-container" id="labelcontainergender">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+            <button type="submit" class="submit-button">Update Information</button>
+        </div>
+        <div class="form-option">
+            Go Back?<a href="/dashboard">Cancel</a>
+        </div>
+    </div>
+    <script src="/js/user.js"></script>
+</body>
+<%- include('../footer.ejs') %>
+
+</html>
