@@ -12,72 +12,106 @@
 
 <body oncontextmenu="return false">
     <%- include('../header.ejs') %>
-    <div class="form-title">
-        <h4>Driving License Application Form</h4>
-    </div>
-    <form id="applicationform" action="/application" method="post">
-        <div class="application-input-container">
-            <div class="application-form-input">
-                <input type="text" name="fullname" id="fullname" placeholder="Full Name">
-                <div class="label-container" id="labelcontainerfullname">
-                    <div class="form-error"></div>
+    <div class="application-container">
+        <div class="view-title">Driving License Application Form</div>
+        <div class="application-form-container">
+            <form id="applicationform" action="/application" method="post">
+                <div class="application-input-container">
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/fullname.svg" alt="Full Name" />
+                            <input type="text" name="fullname" id="fullname" placeholder="Full Name">
+                        </div>
+                        <div class="label-container" id="labelcontainerfullname">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/email.svg" alt="Email" />
+                            <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
+                                autofocus="on">
+                        </div>
+                        <div class="label-container" id="labelcontaineremail">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/dob.svg" alt="Date of Birth" />
+                            <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth">
+                        </div>
+                        <div class="label-container" id="labelcontainerdob">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/mobile.svg" alt="Mobile Number" />
+                            <input class="split-input" type="text" name="mobile" id="mobile"
+                                placeholder="(+977) Mobile Number">
+                        </div>
+                        <div class="label-container" id="labelcontainermobile">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="application-form-input">
-                <input type="text" name="email" id="email" placeholder="Email" autocomplete="off" autofocus="on">
-                <div class="label-container" id="labelcontaineremail">
-                    <div class="form-error"></div>
-                </div>
-            </div>
-            <div class="application-form-input">
-                <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth">
-                <div class="label-container" id="labelcontainerdob">
-                    <div class="form-error"></div>
-                </div>
-            </div>
-            <div class="application-form-input">
-                <input class="split-input" type="text" name="mobile" id="mobile" placeholder="(+977) Mobile Number">
-                <div class="label-container" id="labelcontainermobile">
-                    <div class="form-error"></div>
-                </div>
-            </div>
-        </div>
-        <div class="label-split">
-            <div class="application-form-input">
-                <input class="split-input" type="text" name="citizenship" id="citizenship"
-                    placeholder="Citizenship Number">
-                <div class="label-container" id="labelcontainercitizenship">
-                    <div class="form-error"></div>
-                </div>
-            </div>
-            <div class="application-form-input">
-                <input class="split-input" type="text" name="address" id="address" placeholder="Address">
-                <div class="label-container" id="labelcontaineraddress">
-                    <div class="form-error"></div>
-                </div>
-            </div>
-        </div>
-        <div class="application-form-input">
-            <div class="radio-selection">
-                <div>
-                    <h3>Gender</h3>
-                </div>
-                <div class="radio-value">
-                    <input type="radio" name="gender" id="male" value="0" checked>
-                    <label for="male">Male</label>
-                </div>
-                <div class="radio-value">
-                    <input type="radio" name="gender" id="female" value="1">
-                    <label for="female">Female</label>
-                </div>
-                <div class="radio-value">
-                    <input type="radio" name="gender" id="other" value="2">
-                    <label for="other">Other</label>
-                </div>
-            </div>
-            <div class="label-container" id="labelcontainergender">
-                <div class="form-error"></div>
-            </div>
+                <div class="application-input-container">
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/citizenship.svg" alt="Citizenship Number" />
+                            <input class="split-input" type="text" name="citizenship" id="citizenship"
+                                placeholder="Citizenship Number">
+                        </div>
+                        <div class="label-container" id="labelcontainercitizenship">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/paddress.svg" alt="Permanent Address" />
+                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address">
+                        </div>
+                        <div class="label-container" id="labelcontainerpaddress">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="application-form-input">
+                        <div class="input-label">
+                            <img src="/img/taddress.svg" alt="Temporary Address" />
+                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address">
+                        </div>
+                        <div class="label-container" id="labelcontainertaddress">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="application-form-input">
+                        <div class="radio-selection">
+                            <div>
+                                <img src="/img/gender.svg" alt="Gender" />
+                                <h3>Gender</h3>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="male" value="0" checked>
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="female" value="1">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="other" value="2">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                        <div class="label-container" id="labelcontainergender">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                </div>  
+            </form>
         </div>
         <div>
             <button type="submit" class="submit-button">Sign Up</button>
@@ -85,7 +119,7 @@
         <div class="form-option">
             Go Back?<a href="/dashboard"> Cancel</a>
         </div>
-    </form>
+    </div>
     <script src="/js/application.js"></script>
 </body>
 <%- include('../footer.ejs') %>

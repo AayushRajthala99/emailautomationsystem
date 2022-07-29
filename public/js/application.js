@@ -4,27 +4,29 @@ let inputLength = {
     max: 60
 }
 
-const applicationForm = document.querySelector("#applicationform");
-
-applicationForm.addEventListener('submit', event => {
+document.addEventListener('click', event => {
     event.preventDefault();
-    const correctSubmissionFlag = applicationFormValidation();
+    if (event.target.className == 'submit-button') {
+        const applicationForm = document.querySelector("#applicationform");
+        const correctSubmissionFlag = applicationFormValidation(applicationForm);
 
-    if (correctSubmissionFlag) {
-        applicationForm.submit();
+        if (correctSubmissionFlag) {
+            applicationForm.submit();
+        }
     }
-})
+});
 
-function applicationFormValidation() {
+function applicationFormValidation(applicationForm) {
 
-    let nameErrorFlag, emailErrorFlag, addressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
+    let nameErrorFlag, emailErrorFlag, paddressErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
 
     //application Form Value Acquisition...
     let fullName = applicationForm.querySelector("#fullname");
     let email = applicationForm.querySelector("#email");
     let dob = applicationForm.querySelector("#dob");
     let mobile = applicationForm.querySelector("#mobile");
-    let address = applicationForm.querySelector("#address");
+    let paddress = applicationForm.querySelector("#paddress");
+    let taddress = applicationForm.querySelector("#taddress");
     let citizenship = applicationForm.querySelector("#citizenship");
     let gender = document.getElementsByName("gender");
 
@@ -32,7 +34,8 @@ function applicationFormValidation() {
     let emailValue = email.value.trim();
     let dobValue = dob.value.trim();
     let mobileValue = mobile.value.trim();
-    let addressValue = address.value.trim();
+    let paddressValue = paddress.value.trim();
+    let taddressValue = taddress.value.trim();
     let citizenshipValue = citizenship.value.trim();
     citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
     citizenship.value = citizenshipValue;
@@ -91,16 +94,28 @@ function applicationFormValidation() {
         setSuccessFor(mobile);
     }
 
-    //Validation for Address...
-    if (addressValue === '') {
-        addressErrorFlag = true;
-        setErrorFor(address, '* Address Required!');
-    } else if (valueLength(addressValue) < inputLength.min || valueLength(addressValue) > inputLength.max) {
-        addressErrorFlag = true;
-        setErrorFor(address, '* Invalid Value Length!');
+    //Validation for Permanent Address...
+    if (paddressValue === '') {
+        paddressErrorFlag = true;
+        setErrorFor(paddress, '* Address Required!');
+    } else if (valueLength(paddressValue) < inputLength.min || valueLength(paddressValue) > inputLength.max) {
+        paddressErrorFlag = true;
+        setErrorFor(paddress, '* Invalid Value Length!');
     } else {
-        addressErrorFlag = false;
-        setSuccessFor(address);
+        paddressErrorFlag = false;
+        setSuccessFor(paddress);
+    }
+
+    //Validation for Temporary Address...
+    if (taddressValue === '') {
+        taddressErrorFlag = true;
+        setErrorFor(taddress, '* Address Required!');
+    } else if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
+        taddressErrorFlag = true;
+        setErrorFor(taddress, '* Invalid Value Length!');
+    } else {
+        taddressErrorFlag = false;
+        setSuccessFor(taddress);
     }
 
     //Validation for Citizenship...
@@ -171,7 +186,7 @@ function applicationFormValidation() {
         return value.toString().length;
     }
 
-    if (nameErrorFlag == false && emailErrorFlag == false && addressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && mobileErrorFlag == false) {
+    if (nameErrorFlag == false && emailErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && mobileErrorFlag == false) {
         return true;
     } else {
         return false;

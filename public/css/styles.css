@@ -79,6 +79,7 @@ input {
   font-weight: 400;
   line-height: 1.5;
   padding: 9px 14px;
+  outline: none;
 }
 
 button,
@@ -205,11 +206,12 @@ footer {
 }
 
 .radio-value label {
-  width: 70px;
+  width: 60px;
   display: inline-block;
   background-color: #ced4da;
   padding: 4px 4px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .radio-value input[type="radio"]:checked+label {

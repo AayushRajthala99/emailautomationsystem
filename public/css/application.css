@@ -51,6 +51,22 @@ a.nav-item {
     font-size: 1.2rem;
 }
 
+.application-container {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.application-form-container {
+    min-height: 0;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 .view-title {
     padding-left: 10px;
     margin-bottom: 20px;
@@ -63,7 +79,8 @@ a.nav-item {
 }
 
 #applicationform {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
 .application-input-container {
@@ -76,20 +93,27 @@ a.nav-item {
 
 .application-form-input {
     position: relative;
-    width: 20%;
+    width: 21%;
 }
 
-.label-split {
+.input-label {
     display: flex;
-    justify-content: space-between;
 }
 
-.split-input {
-    width: 100%;
+.input-label img {
+    height: 23px;
+    width: 23px;
+    margin-right: 8px;
+    align-self: center;
 }
 
 .radio-selection h3 {
     width: 70px;
+    font-size: 18px;
     display: inline-block;
     padding: 4px 4px;
+}
+
+.form-error {
+    padding-left: 30px;
 }
