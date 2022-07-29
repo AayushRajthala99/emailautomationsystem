@@ -179,3 +179,23 @@ footer {
   height: 80px;
   margin-right: 15px;
 }
+
+.radio-selection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.radio-value {
+  text-align: center;
+}
+
+.radio-value input {
+  height: 10px;
+}
+
+.form-option {
+  font-family: 'PoppinsRegular', sans-serif;
+  display: flex !important;
+  font-size: .813rem;
+  margin-top: 1rem !important;
+}
