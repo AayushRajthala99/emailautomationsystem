@@ -1,3 +1,4 @@
+const bcrypt=require("bcrypt");
 const {
   logger
 } = require("../utils/logger");
@@ -43,13 +44,17 @@ async function index(req, res, next) {
 
 async function store(req, res, next) {
   try {
+
+    var value=req.body.confirmpassword;
+    const salt=await bcrypt.genSalt(10);
+    value=await bcrypt.hash(value,salt);
     const {
       fullname,
       email,
-      confirmpassword,
+      
     } = req.body;
 
-    const result = await userRegistration(fullname, email, confirmpassword);
+    const result = await userRegistration(fullname, email, value);
     if (result.status) {
       req.session.user = email;
       res.redirect('/dashboard');

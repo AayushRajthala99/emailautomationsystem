@@ -18,9 +18,12 @@ const getColumnInfo = async (table, column, attribute, value) => {
         const result = await promisifiedQuery(
             `SELECT ${column} FROM ${table} where ${attribute}='${value}' AND deleted_at is NULL;`
         )
+       
         return {
             status: true,
-            result: result.map((value) => value[column])
+            result: result.map((value) =>
+                value[column]),
+           
         };
     } catch (error) {
         logger.error(`Column Info Fetch Error:  ${error}`);
