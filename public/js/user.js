@@ -18,7 +18,7 @@ document.addEventListener('click', event => {
 
 function userFormValidation(userForm) {
 
-    let nameErrorFlag, emailErrorFlag, paddressErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
+    let nameErrorFlag, emailErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
 
     //application Form Value Acquisition...
     let fullName = userForm.querySelector("#fullname");
@@ -29,6 +29,7 @@ function userFormValidation(userForm) {
     let taddress = userForm.querySelector("#taddress");
     let citizenship = userForm.querySelector("#citizenship");
     let gender = document.getElementsByName("gender");
+    let bloodgroup = document.querySelector("#bloodgroup");
 
     let fullNameValue = fullName.value.trim();
     let emailValue = email.value.trim();
@@ -37,8 +38,11 @@ function userFormValidation(userForm) {
     let paddressValue = paddress.value.trim();
     let taddressValue = taddress.value.trim();
     let citizenshipValue = citizenship.value.trim();
+    let bloodgroupValue = bloodgroup.value.trim();
     citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
     citizenship.value = citizenshipValue;
+
+    console.log(bloodgroupValue);
 
     //Validation for FullName...
     if (fullNameValue === '') {
@@ -134,10 +138,18 @@ function userFormValidation(userForm) {
     if (!(gender[0].checked || gender[1].checked || gender[2].checked)) {
         genderErrorFlag = true;
         setErrorByName('gender', '* Gender Required!');
-        return false;
     } else {
         genderErrorFlag = false;
         setSuccessByName('gender');
+    }
+
+    //Validation for Blood Group...
+    if (bloodgroupValue < 0 || bloodgroupValue > 7 || bloodgroupValue == "Blood Group") {
+        bloodgroupErrorFlag = true;
+        setErrorFor(bloodgroup, '* Blood Group Required!');
+    } else {
+        bloodgroupErrorFlag = false;
+        setSuccessFor(bloodgroup);
     }
 
     function setErrorFor(input, message) {
@@ -186,7 +198,7 @@ function userFormValidation(userForm) {
         return value.toString().length;
     }
 
-    if (nameErrorFlag == false && emailErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && mobileErrorFlag == false) {
+    if (nameErrorFlag == false && emailErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false) {
         return true;
     } else {
         return false;

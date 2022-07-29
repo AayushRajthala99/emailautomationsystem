@@ -134,7 +134,6 @@ function applicationFormValidation(applicationForm) {
     if (!(gender[0].checked || gender[1].checked || gender[2].checked)) {
         genderErrorFlag = true;
         setErrorByName('gender', '* Gender Required!');
-        return false;
     } else {
         genderErrorFlag = false;
         setSuccessByName('gender');
