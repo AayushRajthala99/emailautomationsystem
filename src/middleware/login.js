@@ -85,9 +85,7 @@ const validateLogin = (schema) => async (req, res, next) => {
         }, {
           abortEarly: false,
         });
-        
-          return next();
-        
+        return next();
       } catch (error) {
         const errorMessage = {
           email: null,
