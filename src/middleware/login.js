@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const yup = require("yup");
 const {
   getColumnInfo
-} = require("../utils/utils");
+} = require("../models/Login.model");
 
 let inputLength = {
   min: 3,
@@ -80,7 +80,7 @@ const validateLogin = (schema) => async (req, res, next) => {
     );
     if (userArray.status) {
       try {
-        if (bcrypt.compare(password, userArray.password[0])) {
+        if (bcrypt.compare(password, userArray.hashedPassword[0])) {
           await schema.validate({
             body: req.body,
           }, {
@@ -92,15 +92,15 @@ const validateLogin = (schema) => async (req, res, next) => {
       } catch (error) {
         const errorMessage = {
           email: null,
-          password: null,
+          hashedPassword: null,
         };
 
         // Storing error message...
         error.inner.forEach((e) => {
           if (e.path.slice(5) == "email") {
             errorMessage.email = e.errors[0];
-          } else if (e.path.slice(5) == "password") {
-            errorMessage.password = e.errors[0];
+          } else if (e.path.slice(5) == "hashedPassword") {
+            errorMessage.hashedPassword = e.errors[0];
           }
         });
         res.render("login", {
@@ -109,8 +109,6 @@ const validateLogin = (schema) => async (req, res, next) => {
           loginErr: null,
         });
       }
-    } else {
-      console.log("outside");
     }
   } catch (error) {
     throw error;
