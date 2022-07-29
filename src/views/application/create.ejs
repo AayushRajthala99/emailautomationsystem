@@ -20,7 +20,8 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/fullname.svg" alt="Full Name" />
-                            <input type="text" name="fullname" id="fullname" placeholder="Full Name">
+                            <input type="text" name="fullname" id="fullname" placeholder="Full Name"
+                                value="<%= userInfo.fullname %>">
                         </div>
                         <div class="label-container" id="labelcontainerfullname">
                             <div class="form-error"></div>
@@ -30,7 +31,7 @@
                         <div class="input-label">
                             <img src="/img/email.svg" alt="Email" />
                             <input type="text" name="email" id="email" placeholder="Email" autocomplete="off"
-                                autofocus="on">
+                                autofocus="on" value="<%= userInfo.email %>">
                         </div>
                         <div class="label-container" id="labelcontaineremail">
                             <div class="form-error"></div>
@@ -39,7 +40,8 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/dob.svg" alt="Date of Birth" />
-                            <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth">
+                            <input class="split-input" type="date" name="dob" id="dob" placeholder="Date of Birth"
+                                value="<%= userInfo.dob %>">
                         </div>
                         <div class="label-container" id="labelcontainerdob">
                             <div class="form-error"></div>
@@ -49,7 +51,7 @@
                         <div class="input-label">
                             <img src="/img/mobile.svg" alt="Mobile Number" />
                             <input class="split-input" type="text" name="mobile" id="mobile"
-                                placeholder="(+977) Mobile Number">
+                                placeholder="(+977) Mobile Number" value="<%= userInfo.mobile %>">
                         </div>
                         <div class="label-container" id="labelcontainermobile">
                             <div class="form-error"></div>
@@ -61,7 +63,7 @@
                         <div class="input-label">
                             <img src="/img/citizenship.svg" alt="Citizenship Number" />
                             <input class="split-input" type="text" name="citizenship" id="citizenship"
-                                placeholder="Citizenship Number">
+                                placeholder="Citizenship Number" value="<%= userInfo.citizenship %>">
                         </div>
                         <div class="label-container" id="labelcontainercitizenship">
                             <div class="form-error"></div>
@@ -70,7 +72,8 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/paddress.svg" alt="Permanent Address" />
-                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address">
+                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address"
+                                value="<%= userInfo.paddress %>">
                         </div>
                         <div class="label-container" id="labelcontainerpaddress">
                             <div class="form-error"></div>
@@ -80,7 +83,8 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/taddress.svg" alt="Temporary Address" />
-                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address">
+                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address"
+                                value="<%= userInfo.taddress %>">
                         </div>
                         <div class="label-container" id="labelcontainertaddress">
                             <div class="form-error"></div>
