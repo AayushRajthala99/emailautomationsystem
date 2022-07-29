@@ -80,15 +80,14 @@ const validateLogin = (schema) => async (req, res, next) => {
     );
     if (userArray.status) {
       try {
-        if (bcrypt.compare(password, userArray.hashedPassword[0])) {
-          await schema.validate({
-            body: req.body,
-          }, {
-            abortEarly: false,
-          });
-
+        await schema.validate({
+          body: req.body,
+        }, {
+          abortEarly: false,
+        });
+        
           return next();
-        }
+        
       } catch (error) {
         const errorMessage = {
           email: null,
