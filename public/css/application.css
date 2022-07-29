@@ -117,3 +117,7 @@ a.nav-item {
 .form-error {
     padding-left: 30px;
 }
+
+.form-option {
+    align-self: center;
+}

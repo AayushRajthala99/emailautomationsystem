@@ -5,8 +5,8 @@ let inputLength = {
 }
 
 document.addEventListener('click', event => {
-    event.preventDefault();
     if (event.target.className == 'submit-button') {
+        event.preventDefault();
         const applicationForm = document.querySelector("#applicationform");
         const correctSubmissionFlag = applicationFormValidation(applicationForm);
 
