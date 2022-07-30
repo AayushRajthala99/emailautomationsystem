@@ -39,7 +39,7 @@ async function index(req, res) {
     }
     req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
   } catch (error) {
-    logger.error(`LOGIN PAGE ERROR: ${error}`);
+    logger.error(`LOGIN ERROR: ${error}`);
     res.render("error", {
       error: "ERROR LOADING LOGIN PAGE",
     });

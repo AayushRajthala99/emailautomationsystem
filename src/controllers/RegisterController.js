@@ -50,7 +50,6 @@ async function store(req, res, next) {
     const {
       fullname,
       email,
-
     } = req.body;
 
     const result = await userRegistration(fullname, email, hashedPassword);
@@ -61,6 +60,7 @@ async function store(req, res, next) {
       throw (result.error);
     }
   } catch (error) {
+    logger.error(`USER REGISTRATION ERROR: ${error}`);
     res.render('error', {
       error: "Something Went Wrong While Registering User"
     });
