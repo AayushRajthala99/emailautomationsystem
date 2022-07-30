@@ -82,6 +82,19 @@ input {
   outline: none;
 }
 
+select {
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  color: #000;
+  display: block;
+  font-size: .813rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 9px 14px;
+  outline: none;
+}
+
 button,
 input,
 optgroup,
@@ -93,11 +106,13 @@ textarea {
 }
 
 input:hover,
+select:hover,
 textarea:hover {
   border: 2px solid #656ED3;
 }
 
 input:focus,
+select:hover,
 textarea:focus {
   border: 2px solid #656ED3;
 }
@@ -113,13 +128,21 @@ footer {
   text-align: center;
 }
 
+footer a {
+  color: #FFFFFF;
+  font-weight: normal;
+  margin: 0;
+  border-color: #D01E29;
+  border-bottom: 1px solid #D01E29;
+}
+
 .submit-button {
   cursor: pointer;
   background-color: #2360B9;
   border-color: #2460b9;
   border: 1px solid transparent;
   color: #ffffff;
-  width: 100% !important;
+  width: 100%;
   font-size: .813rem;
   border-radius: 0.3rem;
   padding: 0.8rem 1.8rem;
@@ -159,8 +182,11 @@ footer {
 }
 
 .view-title {
-  display: flex;
-  font-size: 20px;
+  font-size: 22px;
+}
+
+.sub-title {
+  font-size: 18px;
 }
 
 .note {
@@ -217,4 +243,10 @@ footer {
 .radio-value input[type="radio"]:checked+label {
   background-color: #2360B9;
   color: #ffffff;
+}
+
+.separator {
+  border-top: 3px solid #bbb;
+  width: 90%;
+  align-self: center;
 }
