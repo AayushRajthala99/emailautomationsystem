@@ -33,7 +33,7 @@ CREATE TABLE `user` (
   `bloodgroup` int(1) DEFAULT NULL COMMENT '0 = A positive (A+)\r\n1 = A negative (A-)\r\n2 = B positive (B+)\r\n3 = B negative (B-)\r\n4 = O positive (O+)\r\n5 = O negative (O-)\r\n6 = AB positive (AB+)\r\n7 = AB negative (AB-)',
   `citizenship` varchar(11) DEFAULT NULL,
   `citizenshiptype` int(1) DEFAULT NULL COMMENT '0 = Descendant\r\n1 = Birth\r\n2 = Adopted\r\n3 = Complimentary',
-  `citizenshipissueddisctrict` varchar(100) DEFAULT NULL,
+  `citizenshipissueddistrict` varchar(100) DEFAULT NULL,
   `citizenshipissueddate` date DEFAULT NULL,
   `grandfathername` varchar(255) DEFAULT NULL,
   `fathername` varchar(255) DEFAULT NULL,

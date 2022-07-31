@@ -58,7 +58,7 @@ function userFormValidation(userForm) {
     if (dobValue === '') {
         dobErrorFlag = true;
         setErrorFor(dob, '* DOB Required!');
-    } else if (!isOver18(dobValue)) {
+    } else if (!isOver18(new Date(dobValue))) {
         dobErrorFlag = true;
         setErrorFor(dob, '* Age Restricted!');
     } else {
