@@ -15,7 +15,7 @@
     <div class="dashboard-container">
         <div class="view-title">Applicant Portal</div>
 
-        <% if(!userInfo.filledprofile){ %>
+        <% if(userInfo.filledprofile == null || userInfo.filledprofile == '0'){ %>
         <div class="note text-danger">[ Please Fill Your Personal Details First!!! ]</div>
         <% } %>
 
@@ -28,7 +28,7 @@
                     <div class="dashboard-item-title">Personal Details</div>
                 </div>
             </a>
-            <% if(userInfo.filledprofile){ %>
+            <% if(userInfo.filledprofile == '1' && (userInfo.haslicense == null || userInfo.haslicense == '0')){ %>
             <a href="dashboard/application/create">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
@@ -38,7 +38,7 @@
                 </div>
             </a>
             <% } %>
-            <% if(userInfo.haslicense){ %>
+            <% if(userInfo.haslicense == '1'){ %>
             <a href="dashboard/application">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
