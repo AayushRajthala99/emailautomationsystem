@@ -84,7 +84,7 @@ function userFormValidation(userForm) {
     //Validation for Permanent Address...
     if (paddressValue === '') {
         paddressErrorFlag = true;
-        setErrorFor(paddress, '* Address Required!');
+        setErrorFor(paddress, '* Permanent Address Required!');
     } else if (valueLength(paddressValue) < inputLength.min || valueLength(paddressValue) > inputLength.max) {
         paddressErrorFlag = true;
         setErrorFor(paddress, '* Invalid Value Length!');
@@ -96,7 +96,7 @@ function userFormValidation(userForm) {
     //Validation for Temporary Address...
     if (taddressValue === '') {
         taddressErrorFlag = true;
-        setErrorFor(taddress, '* Address Required!');
+        setErrorFor(taddress, '* Temporary Address Required!');
     } else if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
         taddressErrorFlag = true;
         setErrorFor(taddress, '* Invalid Value Length!');
