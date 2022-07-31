@@ -135,6 +135,28 @@ a.nav-item {
     padding: 4px 4px;
 }
 
+.haslicense {
+    display: flex;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+#haslicense {
+    height: 10px;
+    width: 10px;
+    border: 2px solid #D01E29;
+    margin-left: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+#haslicense:checked {
+    background-color: #656ED3;
+}
+
+.label-container {
+    align-self: center;
+}
+
 .form-error {
     padding-left: 30px;
 }

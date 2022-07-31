@@ -18,11 +18,10 @@ document.addEventListener('click', event => {
 
 function userFormValidation(userForm) {
 
-    let nameErrorFlag, emailErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
+    let nameErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag, mobileErrorFlag;
 
     //application Form Value Acquisition...
     let fullName = userForm.querySelector("#fullname");
-    let email = userForm.querySelector("#email");
     let dob = userForm.querySelector("#dob");
     let mobile = userForm.querySelector("#mobile");
     let paddress = userForm.querySelector("#paddress");
@@ -32,7 +31,6 @@ function userFormValidation(userForm) {
     let bloodgroup = document.querySelector("#bloodgroup");
 
     let fullNameValue = fullName.value.trim();
-    let emailValue = email.value.trim();
     let dobValue = dob.value.trim();
     let mobileValue = mobile.value.trim();
     let paddressValue = paddress.value.trim();
@@ -66,21 +64,6 @@ function userFormValidation(userForm) {
     } else {
         dobErrorFlag = false;
         setSuccessFor(dob);
-    }
-
-    //Validation for Email...
-    if (emailValue === '') {
-        emailErrorFlag = true;
-        setErrorFor(email, '* Email Required!');
-    } else if (!isEmail(emailValue)) {
-        emailErrorFlag = true;
-        setErrorFor(email, '* Invalid Format!');
-    } else if (valueLength(emailValue) < inputLength.min || valueLength(emailValue) > inputLength.max) {
-        emailErrorFlag = true;
-        setErrorFor(email, '* Invalid Value Length!');
-    } else {
-        emailErrorFlag = false;
-        setSuccessFor(email);
     }
 
     //Validation for Mobile...
@@ -176,10 +159,6 @@ function userFormValidation(userForm) {
         errordiv.innerText = "";
     }
 
-    function isEmail(email) {
-        return /[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?/.test(email);
-    }
-
     function isMobile(number) {
         return /(?:\(?\+977\)?)?[9][6-9]\d{8}|01[-]?[0-9]{7}/.test(number);
     }
@@ -198,7 +177,7 @@ function userFormValidation(userForm) {
         return value.toString().length;
     }
 
-    if (nameErrorFlag == false && emailErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false) {
+    if (nameErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false && genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false) {
         return true;
     } else {
         return false;

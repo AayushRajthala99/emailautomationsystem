@@ -112,7 +112,7 @@ textarea:hover {
 }
 
 input:focus,
-select:hover,
+select:focus,
 textarea:focus {
   border: 2px solid #656ED3;
 }

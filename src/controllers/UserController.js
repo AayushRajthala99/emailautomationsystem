@@ -8,7 +8,7 @@ const {
 
 const {
     userUpdate
-} = require("../model/User.model");
+} = require("../models/User.model");
 
 async function index(req, res) {
     try {
@@ -45,6 +45,12 @@ async function update(req, res) {
             fathername,
             mothername,
             spousename,
+            haslicense,
+            licensecategory,
+            licensenumber,
+            licenseissueddate,
+            licenseexpirydate,
+            licenseissueddistrict,
         } = req.body;
 
         const userInfo = {
@@ -64,6 +70,12 @@ async function update(req, res) {
             fathername,
             mothername,
             spousename,
+            haslicense,
+            licensecategory,
+            licensenumber,
+            licenseissueddate,
+            licenseexpirydate,
+            licenseissueddistrict,
         }
 
         const result = await userUpdate(userInfo);
