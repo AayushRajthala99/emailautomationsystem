@@ -46,6 +46,7 @@ async function index(req, res) {
   }
 }
 
+
 async function view(req, res) {
   try {
     const {
@@ -53,12 +54,12 @@ async function view(req, res) {
       password
     } = req.body;
 
+
     const loginInfo = await getLoginInfo(email);
 
     if (
       loginInfo.status &&
-      email.toLowerCase() == loginInfo.result[0].email &&
-      bcrypt.compare(password, loginInfo.result[0].password)
+      email.toLowerCase() == loginInfo.result[0].email && await bcrypt.compare(password, loginInfo.result[0].password)
     ) {
       const userInfo = await getUserInfo(email);
       if (userInfo.status) {
@@ -67,6 +68,8 @@ async function view(req, res) {
           userInfo: userInfo.result[0]
         });
       }
+    } else {
+      throw error;
     }
   } catch (error) {
     res.render("error", {
