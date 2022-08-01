@@ -120,7 +120,7 @@ function userFormValidation(userForm) {
     //Validation for Permanent Address...
     if (paddressValue === '') {
         paddressErrorFlag = true;
-        setErrorFor(paddress, '* Address Required!');
+        setErrorFor(paddress, '* Permanent Address Required!');
     } else if (valueLength(paddressValue) < inputLength.min || valueLength(paddressValue) > inputLength.max) {
         paddressErrorFlag = true;
         setErrorFor(paddress, '* Invalid Value Length!');
