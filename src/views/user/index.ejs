@@ -33,6 +33,9 @@
                             <img src="/img/email.svg" alt="Email" />
                             <input type="text" value="<%= userInfo.email %>" disabled />
                         </div>
+                        <div class="label-container" id="labelcontaineremail">
+                            <div class="form-error"></div>
+                        </div>
                     </div>
                     <div class="user-form-input">
                         <div class="input-label">
@@ -116,17 +119,17 @@
                             <div class="radio-value">
                                 <input type="radio" name="gender" id="male" value="0"
                                     <%= userInfo.gender == '0' ? 'checked' : ''%> />
-                                <label for="male">Male</label>
+                                <label for="male" class="gender-label">Male</label>
                             </div>
                             <div class="radio-value">
                                 <input type="radio" name="gender" id="female" value="1"
                                     <%= userInfo.gender == '1' ? 'checked' : ''%> />
-                                <label for="female">Female</label>
+                                <label for="female" class="gender-label">Female</label>
                             </div>
                             <div class="radio-value">
                                 <input type="radio" name="gender" id="other" value="2"
                                     <%= userInfo.gender == '2' ? 'checked' : ''%> />
-                                <label for="other">Other</label>
+                                <label for="other" class="gender-label">Other</label>
                             </div>
                         </div>
                         <div class="label-container" id="labelcontainergender">

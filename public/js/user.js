@@ -1,12 +1,27 @@
 "use strict";
 
-
 let inputLength = {
     min: 3,
     max: 60
 }
 
 document.addEventListener('click', event => {
+    if (event.target.matches('input') || event.target.matches('select')) {
+        if (event.target.id == "haslicense") {
+            const licenseView = document.getElementsByClassName('licenseinfo');
+            let hiddenAttribute = licenseView.item(0).getAttribute('style');
+            if (hiddenAttribute == 'display: none') {
+                licenseView.item(0).setAttribute('style','display: block');
+            } else {
+                licenseView.item(0).setAttribute('style','display: none');
+            }
+        } else {
+            let formControl = document.querySelector("#labelcontainer" + event.target.id);
+            const errordiv = formControl.querySelector('.form-error');
+            errordiv.innerText = '';
+        }
+    }
+
     if (event.target.className == 'submit-button') {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
