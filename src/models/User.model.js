@@ -9,7 +9,12 @@ const {
 const getUserInfo = async (email) => {
     try {
         const result = await promisifiedQuery(
-            `SELECT * FROM user where email='${email}' AND deleted_at is NULL;`
+            `SELECT *, 
+            DATE_FORMAT(dob, '%Y-%m-%d') as dob,
+            DATE_FORMAT(citizenshipissueddate, '%Y-%m-%d') as citizenshipissueddate,
+            DATE_FORMAT(licenseissueddate, '%Y-%m-%d') as licenseissueddate,
+            DATE_FORMAT(licenseexpirydate, '%Y-%m-%d') as licenseexpirydate
+            FROM user where email='${email}' AND deleted_at is NULL;`
         );
         return {
             status: true,

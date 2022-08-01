@@ -4,7 +4,7 @@ const {
 
 const {
     getUserInfo
-} = require("../utils/utils");
+} = require("../models/User.model");
 
 const {
     userUpdate

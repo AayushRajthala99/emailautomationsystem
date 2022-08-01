@@ -107,12 +107,11 @@ function applicationFormValidation(applicationForm) {
     }
 
     //Validation for Temporary Address...
-    if (taddressValue === '') {
-        taddressErrorFlag = true;
-        setErrorFor(taddress, '* Address Required!');
-    } else if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
-        taddressErrorFlag = true;
-        setErrorFor(taddress, '* Invalid Value Length!');
+    if (taddressValue) {
+        if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
+            taddressErrorFlag = true;
+            setErrorFor(taddress, '* Invalid Value Length!');
+        }
     } else {
         taddressErrorFlag = false;
         setSuccessFor(taddress);
@@ -138,6 +137,8 @@ function applicationFormValidation(applicationForm) {
         genderErrorFlag = false;
         setSuccessByName('gender');
     }
+
+    
 
     function setErrorFor(input, message) {
         const formControl = applicationForm.querySelector("#labelcontainer" + input.id);
