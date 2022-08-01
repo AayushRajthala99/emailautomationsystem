@@ -11,10 +11,14 @@ document.addEventListener('click', event => {
             const licenseView = document.getElementsByClassName('licenseinfo');
             let hiddenAttribute = licenseView.item(0).getAttribute('style');
             if (hiddenAttribute == 'display: none') {
-                licenseView.item(0).setAttribute('style','display: block');
+                licenseView.item(0).setAttribute('style', 'display: block');
             } else {
-                licenseView.item(0).setAttribute('style','display: none');
+                licenseView.item(0).setAttribute('style', 'display: none');
             }
+        } else if (event.target.id == "male" || event.target.id == "female" || event.target.id == "other") {
+            let formControl = document.querySelector("#labelcontainergender");
+            const errordiv = formControl.querySelector('.form-error');
+            errordiv.innerText = '';
         } else {
             let formControl = document.querySelector("#labelcontainer" + event.target.id);
             const errordiv = formControl.querySelector('.form-error');
