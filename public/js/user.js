@@ -30,7 +30,7 @@ document.addEventListener('click', event => {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
         const correctSubmissionFlag = userFormValidation(userForm);
-        console.log(correctSubmissionFlag);
+        
         if (correctSubmissionFlag) {
             userForm.submit();
         }
