@@ -1,12 +1,31 @@
 "use strict";
 
-
 let inputLength = {
     min: 3,
     max: 60
 }
 
 document.addEventListener('click', event => {
+    if (event.target.matches('input') || event.target.matches('select')) {
+        if (event.target.id == "haslicense") {
+            const licenseView = document.getElementsByClassName('licenseinfo');
+            let hiddenAttribute = licenseView.item(0).getAttribute('style');
+            if (hiddenAttribute == 'display: none') {
+                licenseView.item(0).setAttribute('style', 'display: block');
+            } else {
+                licenseView.item(0).setAttribute('style', 'display: none');
+            }
+        } else if (event.target.id == "male" || event.target.id == "female" || event.target.id == "other") {
+            let formControl = document.querySelector("#labelcontainergender");
+            const errordiv = formControl.querySelector('.form-error');
+            errordiv.innerText = '';
+        } else {
+            let formControl = document.querySelector("#labelcontainer" + event.target.id);
+            const errordiv = formControl.querySelector('.form-error');
+            errordiv.innerText = '';
+        }
+    }
+
     if (event.target.className == 'submit-button') {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
@@ -215,7 +234,7 @@ function userFormValidation(userForm) {
         setSuccessFor(citizenshipissueddate);
     }
 
-    //Validation for GrandFather...
+    //Validation for GrandFather's Name...
     if (grandfatherValue === '') {
         grandfatherErrorFlag = true;
         setErrorFor(grandfather, '* Name Required!');
@@ -227,7 +246,7 @@ function userFormValidation(userForm) {
         setSuccessFor(grandfather);
     }
 
-    //Validation for Father...
+    //Validation for Father's Name...
     if (fatherValue === '') {
         fatherErrorFlag = true;
         setErrorFor(father, '* Name Required!');
@@ -238,7 +257,7 @@ function userFormValidation(userForm) {
         fatherErrorFlag = false;
         setSuccessFor(father);
     }
-    //Validation for Mother...
+    //Validation for Mother's Name...
     if (motherValue === '') {
         motherErrorFlag = true;
         setErrorFor(mother, '* Name Required!');
@@ -250,7 +269,7 @@ function userFormValidation(userForm) {
         setSuccessFor(mother);
     }
 
-    //Validation for Spause...
+    //Validation for Spause's Name...
     if (spouseValue) {
         if (valueLength(spouseValue) < inputLength.min || valueLength(spouseValue) > inputLength.max) {
             spouseErrorFlag = true;
@@ -264,7 +283,7 @@ function userFormValidation(userForm) {
         setSuccessFor(spouse);
     }
 
-    //Validation for LicenseIssuedDate...
+    //Validation for License Issued Date...
     if (licenseissueddateValue === '') {
         licenseissueddateErrorFlag = true;
         setErrorFor(licenseissueddate, '* Date Required!');
@@ -276,7 +295,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseissueddate);
     }
 
-    //Validation for licenseExpiryDate...
+    //Validation for license Expiry Date...
     if (licenseexpirydateValue === '') {
         licenseexpirydateErrorFlag = true;
         setErrorFor(licenseexpirydate, '* Date Required!');
@@ -291,7 +310,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseexpirydate);
     }
 
-    //Validation for LicenseCategory...
+    //Validation for License Category...
     if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
         licensecategoryErrorFlag = true;
         setErrorFor(licensecategory, '* Category Required!');
@@ -300,7 +319,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licensecategory);
     }
 
-    //Validation for LicenseNumber...
+    //Validation for License Number...
     if (licensenumberValue === '' || licensenumberValue === 'License Number') {
         licensenumberErrorFlag = true;
         setErrorFor(licensenumber, '* License Number Required!');
@@ -309,7 +328,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licensenumber);
     }
 
-    //Validation for LicenseIssuedDistrict...
+    //Validation for License Issued District...
     if (licenseissueddistrictrValue === '') {
         licenseissueddistrictErrorFlag = true;
         setErrorFor(licenseissueddistrict, '* District Required!');
@@ -321,7 +340,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseissueddistrict);
     }
 
-
+    //Validation Error Message Handlers...
     function setErrorFor(input, message) {
         const formControl = userForm.querySelector("#labelcontainer" + input.id);
         const errordiv = formControl.querySelector('.form-error');
@@ -334,6 +353,7 @@ function userFormValidation(userForm) {
         errordiv.innerText = message;
     }
 
+    //Validation Success Message Handlers...
     function setSuccessFor(input) {
         const formControl = userForm.querySelector("#labelcontainer" + input.id);
         const errordiv = formControl.querySelector('.form-error');
@@ -346,6 +366,7 @@ function userFormValidation(userForm) {
         errordiv.innerText = "";
     }
 
+    //Input Field Format Regex Check Functions...
     function isMobile(number) {
         return /(?:\(?\+977\)?)?[9][6-9]\d{8}|01[-]?[0-9]{7}/.test(number);
     }
