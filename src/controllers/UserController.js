@@ -28,6 +28,7 @@ async function index(req, res) {
 
 async function update(req, res) {
     try {
+        console.log("HWLLO WORLD");
         const {
             fullname,
             dob,
