@@ -30,7 +30,7 @@ document.addEventListener('click', event => {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
         const correctSubmissionFlag = userFormValidation(userForm);
-
+        console.log(correctSubmissionFlag);
         if (correctSubmissionFlag) {
             userForm.submit();
         }
@@ -40,10 +40,28 @@ document.addEventListener('click', event => {
 function userFormValidation(userForm) {
 
     //Error Flags for User Form Validation...
-    let nameErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag,
-        mobileErrorFlag, citizenshipIssuedDistrictErrorFlag, citizenshiptypeErrorFlag, citizenshipissueddateErrorFlag,
-        grandfatherErrorFlag, fatherErrorFlag, motherErrorFlag, spouseErrorFlag,
-        licenseissueddateErrorFlag, licenseexpirydateErrorFlag, licensecategoryErrorFlag, licensenumberErrorFlag, licenseissueddistrictErrorFlag;
+    let {
+        nameErrorFlag,
+        paddressErrorFlag,
+        bloodgroupErrorFlag,
+        taddressErrorFlag,
+        dobErrorFlag,
+        citizenshipErrorFlag,
+        genderErrorFlag,
+        mobileErrorFlag,
+        citizenshipIssuedDistrictErrorFlag,
+        citizenshiptypeErrorFlag,
+        citizenshipissueddateErrorFlag,
+        grandfatherErrorFlag,
+        fatherErrorFlag,
+        motherErrorFlag,
+        spouseErrorFlag,
+        licenseissueddateErrorFlag,
+        licenseexpirydateErrorFlag,
+        licensecategoryErrorFlag,
+        licensenumberErrorFlag,
+        licenseissueddistrictErrorFlag
+    } = false;
 
     //User Form Value Acquisition...
     let fullName = userForm.querySelector("#fullname");
@@ -354,7 +372,7 @@ function userFormValidation(userForm) {
         licenseissueddateErrorFlag = false;
         licenseexpirydateErrorFlag = false;
         licenseissueddistrictErrorFlag = false;
-        
+
         setSuccessFor(licensecategory);
         setSuccessFor(licensenumber);
         setSuccessFor(licenseissueddistrict);
@@ -437,11 +455,16 @@ function userFormValidation(userForm) {
         return value.toString().length;
     }
 
+    console.log(nameErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag,
+        mobileErrorFlag, citizenshipIssuedDistrictErrorFlag, citizenshiptypeErrorFlag, citizenshipissueddateErrorFlag,
+        grandfatherErrorFlag, fatherErrorFlag, motherErrorFlag, spouseErrorFlag,
+        licenseissueddateErrorFlag, licenseexpirydateErrorFlag, licensecategoryErrorFlag, licensenumberErrorFlag, licenseissueddistrictErrorFlag);
+
     // User Info Error Flags Check...
     if (nameErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false &&
         genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false && citizenshipIssuedDistrictErrorFlag == false && citizenshiptypeErrorFlag == false &&
         citizenshipissueddateErrorFlag == false && grandfatherErrorFlag == false && fatherErrorFlag == false && motherErrorFlag == false && spouseErrorFlag == false && licenseissueddateErrorFlag == false &&
-        licenseexpirydateErrorFlag == false && licensecategoryErrorFlag == false && licensenumber == false && licensenumberErrorFlag && licenseissueddistrictErrorFlag == false) {
+        licenseexpirydateErrorFlag == false && licensecategoryErrorFlag == false && licensenumberErrorFlag == false && licenseissueddistrictErrorFlag == false) {
         return true;
     } else {
         return false;
