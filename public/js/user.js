@@ -351,7 +351,7 @@ function userFormValidation(userForm) {
     }
 
     function validAge(dateOfbirth, licenseissued) {
-        if ((licenseissued - dateOfbirth) >= 18) {
+        if ((licenseissued - dateOfbirth) >= 16) {
             return true;
         }
     }
