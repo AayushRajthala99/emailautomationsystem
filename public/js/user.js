@@ -30,7 +30,7 @@ document.addEventListener('click', event => {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
         const correctSubmissionFlag = userFormValidation(userForm);
-        
+
         if (correctSubmissionFlag) {
             userForm.submit();
         }
@@ -112,7 +112,10 @@ function userFormValidation(userForm) {
     let spouseValue = spouse.value.trim();
 
     // License Information...
-    let haslicenseValue = haslicense.checked;
+    let haslicenseValue;
+    if (haslicense != null) {
+        haslicenseValue = haslicense.checked;
+    }
     let licensecategoryValue = licensecategory.value.trim();
     let licensenumberValue = licensenumber.value.trim();
     let licenseissueddateValue = licenseissueddate.value.trim();

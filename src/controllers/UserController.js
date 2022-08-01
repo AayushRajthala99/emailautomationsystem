@@ -29,6 +29,7 @@ async function index(req, res) {
 async function update(req, res) {
     try {
         console.log("HWLLO WORLD");
+        console.log(req.body);
         const {
             fullname,
             dob,
@@ -53,8 +54,11 @@ async function update(req, res) {
             licenseissueddistrict,
         } = req.body;
 
+        let email = req.session.user;
+
         const userInfo = {
             fullname,
+            email,
             dob,
             mobile,
             bloodgroup,
@@ -77,12 +81,12 @@ async function update(req, res) {
             licenseissueddistrict,
         }
 
-        const result = await userUpdate(userInfo);
-        if (result.status) {
-            res.redirect('/dashboard');
-        } else {
-            throw (result.error);
-        }
+        // const result = await userUpdate(userInfo);
+        // if (result.status) {
+        //     res.redirect('/dashboard');
+        // } else {
+        //     throw (result.error);
+        // }
     } catch (error) {
         logger.error(`USER UPDATE ERROR: ${error}`);
         res.render('error', {
