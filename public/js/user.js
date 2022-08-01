@@ -455,11 +455,6 @@ function userFormValidation(userForm) {
         return value.toString().length;
     }
 
-    console.log(nameErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag,
-        mobileErrorFlag, citizenshipIssuedDistrictErrorFlag, citizenshiptypeErrorFlag, citizenshipissueddateErrorFlag,
-        grandfatherErrorFlag, fatherErrorFlag, motherErrorFlag, spouseErrorFlag,
-        licenseissueddateErrorFlag, licenseexpirydateErrorFlag, licensecategoryErrorFlag, licensenumberErrorFlag, licenseissueddistrictErrorFlag);
-
     // User Info Error Flags Check...
     if (nameErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false &&
         genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false && citizenshipIssuedDistrictErrorFlag == false && citizenshiptypeErrorFlag == false &&
