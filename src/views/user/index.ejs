@@ -21,8 +21,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/fullname.svg" alt="Full Name" />
+                            <% if(userInfo.name){ %>
+                            <input type="text" name="fullname" id="fullname" placeholder="Full Name"
+                                value="<%= userInfo.name %>" disabled />
+                            <% } else { %>
                             <input type="text" name="fullname" id="fullname" placeholder="Full Name"
                                 value="<%= userInfo.name %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainerfullname">
                             <div class="form-error"></div>
@@ -40,8 +45,14 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/dob.png" alt="Date of Birth" />
+                            <% if(userInfo.dob){ %>
+                            <input type="date" name="dob" id="dob" placeholder="Date of Birth"
+                                value="<%= userInfo.dob %>" disabled />
+                            <% } else { %>
                             <input type="date" name="dob" id="dob" placeholder="Date of Birth"
                                 value="<%= userInfo.dob %>" />
+                            <% } %>
+
                         </div>
                         <div class="label-container" id="labelcontainerdob">
                             <div class="form-error"></div>
@@ -50,8 +61,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/mobile.svg" alt="Mobile Number" />
+                            <% if(userInfo.mobile){ %>
+                            <input type="text" name="mobile" id="mobile" placeholder="(+977) Mobile Number"
+                                value="<%= userInfo.mobile %>" disabled />
+                            <% } else { %>
                             <input type="text" name="mobile" id="mobile" placeholder="(+977) Mobile Number"
                                 value="<%= userInfo.mobile %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainermobile">
                             <div class="form-error"></div>
@@ -91,8 +107,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/paddress.svg" alt="Permanent Address" />
+                            <% if(userInfo.paddress){ %>
+                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address"
+                                value="<%= userInfo.paddress %>" disabled />
+                            <% } else { %>
                             <input type="text" name="paddress" id="paddress" placeholder="Permanent Address"
                                 value="<%= userInfo.paddress %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainerpaddress">
                             <div class="form-error"></div>
@@ -102,8 +123,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/taddress.svg" alt="Temporary Address" />
+                            <% if(userInfo.taddress){ %>
+                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address"
+                                value="<%= userInfo.taddress %>" disabled />
+                            <% } else { %>
                             <input type="text" name="taddress" id="taddress" placeholder="Temporary Address"
                                 value="<%= userInfo.taddress %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainertaddress">
                             <div class="form-error"></div>
@@ -235,8 +261,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/grandfather.svg" alt="Grandfather's Name" />
+                            <% if(userInfo.grandfathername){ %>
+                            <input type="text" name="grandfather" id="grandfather" placeholder="Grandfather's Name"
+                                value="<%= userInfo.grandfathername %>" disabled />
+                            <% } else { %>
                             <input type="text" name="grandfather" id="grandfather" placeholder="Grandfather's Name"
                                 value="<%= userInfo.grandfathername %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainergrandfather">
                             <div class="form-error"></div>
@@ -246,8 +277,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/father.svg" alt="Father's Name" />
+                            <% if(userInfo.fathername){ %>
+                            <input type="text" name="father" id="father" placeholder="Father's Name"
+                                value="<%= userInfo.fathername %>" disabled />
+                            <% } else { %>
                             <input type="text" name="father" id="father" placeholder="Father's Name"
                                 value="<%= userInfo.fathername %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainerfather">
                             <div class="form-error"></div>
@@ -257,8 +293,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/mother.svg" alt="Mother's Name" />
+                            <% if(userInfo.mothername){ %>
+                            <input type="text" name="mother" id="mother" placeholder="Mother's Name"
+                                value="<%= userInfo.mothername %>" disabled />
+                            <% } else { %>
                             <input type="text" name="mother" id="mother" placeholder="Mother's Name"
                                 value="<%= userInfo.mothername %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainermother">
                             <div class="form-error"></div>
@@ -268,8 +309,13 @@
                     <div class="user-form-input">
                         <div class="input-label">
                             <img src="/img/spouse.svg" alt="Spouse's Name" />
+                            <% if(userInfo.spousename){ %>
+                            <input type="text" name="spouse" id="spouse" placeholder="Spouse's Name"
+                                value="<%= userInfo.spousename %>" disabled />
+                            <% } else { %>
                             <input type="text" name="spouse" id="spouse" placeholder="Spouse's Name"
                                 value="<%= userInfo.spousename %>" />
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainerspouse">
                             <div class="form-error"></div>
