@@ -143,11 +143,14 @@ function userFormValidation(userForm) {
         if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
             taddressErrorFlag = true;
             setErrorFor(taddress, '* Invalid Value Length!');
+        } else {
+            taddressErrorFlag = false;
+            setSuccessFor(taddress);
         }
-     else {
+    } else {
         taddressErrorFlag = false;
         setSuccessFor(taddress);
-    }}
+    }
 
     //Validation for Citizenship...
     if (citizenshipValue === '') {
@@ -252,6 +255,9 @@ function userFormValidation(userForm) {
         if (valueLength(spouseValue) < inputLength.min || valueLength(spouseValue) > inputLength.max) {
             spouseErrorFlag = true;
             setErrorFor(spouse, '* Invalid Value Length!');
+        } else {
+            spouseErrorFlag = false;
+            setSuccessFor(spouse);
         }
     } else {
         spouseErrorFlag = false;
