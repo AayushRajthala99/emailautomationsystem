@@ -32,7 +32,9 @@ document.addEventListener('click', event => {
         const correctSubmissionFlag = userFormValidation(userForm);
 
         if (correctSubmissionFlag) {
-            userForm.submit();
+            if (confirm("Are You Sure You Want To Update?")) {
+                userForm.submit();
+            }
         }
     }
 });
