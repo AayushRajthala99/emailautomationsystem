@@ -32,7 +32,31 @@ const getUserInfo = async (email) => {
 const userUpdate = async (userInfo) => {
     try {
         const result = await promisifiedQuery(
-            `UPDATE user SET dob='${userInfo.dob}',gender='${userInfo.gender}',paddress='${userInfo.paddress}',taddress='${userInfo.taddress}',mobile='${userInfo.mobile}',bloodgroup='${userInfo.bloodgroup}',citizenship='${userInfo.citizenship}',citizenshiptype='${userInfo.citizenshiptype}',citizenshipissueddistrict='${userInfo.citizenshipissueddistrict}',citizenshipissueddate='${userInfo.citizenshipissueddate}',grandfathername='${userInfo.grandfathername}',fathername='${userInfo.fathername}',mothername='${userInfo.mothername}',spousename='${userInfo.spousename}',haslicense='${userInfo.haslicense}',licensecategory='${userInfo.licensecategory}',licensenumber='${userInfo.licensenumber}',licenseissueddate='${userInfo.licenseissueddate}',licenseexpirydate='${userInfo.licenseexpirydate}',licenseissueddistrict='${userInfo.licenseissueddistrict}' where email='${email}' AND deleted_at is NULL;`
+            `UPDATE user SET 
+
+            dob='${userInfo.dob}',
+            gender='${userInfo.gender}',
+            paddress='${userInfo.paddress}',
+            taddress='${userInfo.taddress}',
+            mobile='${userInfo.mobile}',
+            bloodgroup='${userInfo.bloodgroup}',
+            citizenship='${userInfo.citizenship}',
+            citizenshiptype='${userInfo.citizenshiptype}',
+            citizenshipissueddistrict='${userInfo.citizenshipissueddistrict}',
+            citizenshipissueddate='${userInfo.citizenshipissueddate}',
+            grandfathername='${userInfo.grandfathername}',
+            fathername='${userInfo.fathername}',
+            mothername='${userInfo.mothername}',
+            spousename='${userInfo.spousename}',
+            haslicense='${userInfo.haslicense}',
+            licensecategory='${userInfo.licensecategory}',
+            licensenumber='${userInfo.licensenumber}',
+            licenseissueddate='${userInfo.licenseissueddate}',
+            licenseexpirydate='${userInfo.licenseexpirydate}',
+            licenseissueddistrict='${userInfo.licenseissueddistrict}',
+            filledprofile='1'
+            
+            where email='${userInfo.email}' AND deleted_at is NULL;`
         );
         return {
             status: true,

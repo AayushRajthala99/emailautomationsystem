@@ -116,6 +116,23 @@
                                 <img src="/img/gender.svg" alt="Gender" />
                                 <h3>Gender</h3>
                             </div>
+                            <% if(userInfo.filledprofile == '1'){ %>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="male" value="0" disabled
+                                    <%= userInfo.gender == '0' ? 'checked' : ''%> />
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="female" value="1" disabled
+                                    <%= userInfo.gender == '1' ? 'checked' : ''%> />
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-value">
+                                <input type="radio" name="gender" id="other" value="2" disabled
+                                    <%= userInfo.gender == '2' ? 'checked' : ''%> />
+                                <label for="other">Other</label>
+                            </div>
+                            <% } else { %>
                             <div class="radio-value">
                                 <input type="radio" name="gender" id="male" value="0"
                                     <%= userInfo.gender == '0' ? 'checked' : ''%> />
@@ -131,6 +148,7 @@
                                     <%= userInfo.gender == '2' ? 'checked' : ''%> />
                                 <label for="other">Other</label>
                             </div>
+                            <% } %>
                         </div>
                         <div class="label-container" id="labelcontainergender">
                             <div class="form-error"></div>
@@ -374,9 +392,11 @@
                     </div>
             </form>
         </div>
+        <% if(userInfo.filledprofile != '1'){ %>
         <div>
             <button type="submit" class="submit-button">Update Information</button>
         </div>
+        <% } %>
         <div class="form-option">
             Go Back?<a href="/dashboard">Cancel</a>
         </div>

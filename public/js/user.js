@@ -30,7 +30,7 @@ document.addEventListener('click', event => {
         event.preventDefault();
         const userForm = document.querySelector("#userform");
         const correctSubmissionFlag = userFormValidation(userForm);
-        
+
         if (correctSubmissionFlag) {
             userForm.submit();
         }
@@ -112,7 +112,10 @@ function userFormValidation(userForm) {
     let spouseValue = spouse.value.trim();
 
     // License Information...
-    let haslicenseValue = haslicense.checked;
+    let haslicenseValue;
+    if (haslicense != null) {
+        haslicenseValue = haslicense.checked;
+    }
     let licensecategoryValue = licensecategory.value.trim();
     let licensenumberValue = licensenumber.value.trim();
     let licenseissueddateValue = licenseissueddate.value.trim();
@@ -191,18 +194,6 @@ function userFormValidation(userForm) {
         setSuccessFor(taddress);
     }
 
-    //Validation for Citizenship...
-    if (citizenshipValue === '') {
-        citizenshipErrorFlag = true;
-        setErrorFor(citizenship, '* Citizenship Required!');
-    } else if (!isCitizenship(citizenshipValue)) {
-        citizenshipErrorFlag = true;
-        setErrorFor(citizenship, '* Invalid Format!');
-    } else {
-        citizenshipErrorFlag = false;
-        setSuccessFor(citizenship);
-    }
-
     //Validation for Gender...
     if (!(gender[0].checked || gender[1].checked || gender[2].checked)) {
         genderErrorFlag = true;
@@ -219,6 +210,18 @@ function userFormValidation(userForm) {
     } else {
         bloodgroupErrorFlag = false;
         setSuccessFor(bloodgroup);
+    }
+
+    //Validation for Citizenship...
+    if (citizenshipValue === '') {
+        citizenshipErrorFlag = true;
+        setErrorFor(citizenship, '* Citizenship Required!');
+    } else if (!isCitizenship(citizenshipValue)) {
+        citizenshipErrorFlag = true;
+        setErrorFor(citizenship, '* Invalid Format!');
+    } else {
+        citizenshipErrorFlag = false;
+        setSuccessFor(citizenship);
     }
 
     //Validation for CitizenshipIssuedDistrict...
@@ -304,11 +307,44 @@ function userFormValidation(userForm) {
     }
 
     if (haslicenseValue) {
-        licenseissueddateErrorFlag = true;
-        licenseexpirydateErrorFlag = true;
         licensecategoryErrorFlag = true;
         licensenumberErrorFlag = true;
         licenseissueddistrictErrorFlag = true;
+        licenseissueddateErrorFlag = true;
+        licenseexpirydateErrorFlag = true;
+
+        //Validation for License Category...
+        if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
+            licensecategoryErrorFlag = true;
+            setErrorFor(licensecategory, '* Category Required!');
+        } else {
+            licensecategoryErrorFlag = false;
+            setSuccessFor(licensecategory);
+        }
+
+        //Validation for License Number...
+        if (licensenumberValue === '' || licensenumberValue === 'License Number') {
+            licensenumberErrorFlag = true;
+            setErrorFor(licensenumber, '* License Number Required!');
+        } else if (!isLicense(licensenumberValue)) {
+            licensenumberErrorFlag = true;
+            setErrorFor(licensenumber, '* Invalid Format!');
+        } else {
+            licensenumberErrorFlag = false;
+            setSuccessFor(licensenumber);
+        }
+
+        //Validation for License Issued District...
+        if (licenseissueddistrictrValue === '') {
+            licenseissueddistrictErrorFlag = true;
+            setErrorFor(licenseissueddistrict, '* District Required!');
+        } else if (valueLength(licenseissueddistrictrValue) < inputLength.min || valueLength(licenseissueddistrictrValue) > inputLength.max) {
+            licenseissueddistrictErrorFlag = true;
+            setErrorFor(licenseissueddistrict, '* Invalid Value Length!');
+        } else {
+            licenseissueddistrictErrorFlag = false;
+            setSuccessFor(licenseissueddistrict);
+        }
 
         //Validation for License Issued Date...
         if (licenseissueddateValue === '') {
@@ -336,36 +372,6 @@ function userFormValidation(userForm) {
             licenseexpirydateErrorFlag = false;
             setSuccessFor(licenseexpirydate);
         }
-
-        //Validation for License Category...
-        if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
-            licensecategoryErrorFlag = true;
-            setErrorFor(licensecategory, '* Category Required!');
-        } else {
-            licensecategoryErrorFlag = false;
-            setSuccessFor(licensecategory);
-        }
-
-        //Validation for License Number...
-        if (licensenumberValue === '' || licensenumberValue === 'License Number') {
-            licensenumberErrorFlag = true;
-            setErrorFor(licensenumber, '* License Number Required!');
-        } else {
-            licensenumberErrorFlag = false;
-            setSuccessFor(licensenumber);
-        }
-
-        //Validation for License Issued District...
-        if (licenseissueddistrictrValue === '') {
-            licenseissueddistrictErrorFlag = true;
-            setErrorFor(licenseissueddistrict, '* District Required!');
-        } else if (valueLength(licenseissueddistrictrValue) < inputLength.min || valueLength(licenseissueddistrictrValue) > inputLength.max) {
-            licenseissueddistrictErrorFlag = true;
-            setErrorFor(licenseissueddistrict, '* Invalid Value Length!');
-        } else {
-            licenseissueddistrictErrorFlag = false;
-            setSuccessFor(licenseissueddistrict);
-        }
     } else {
         licensecategoryErrorFlag = false;
         licensenumberErrorFlag = false;
@@ -373,6 +379,7 @@ function userFormValidation(userForm) {
         licenseexpirydateErrorFlag = false;
         licenseissueddistrictErrorFlag = false;
 
+        // Clears License Information Validation Error Messages...
         setSuccessFor(licensecategory);
         setSuccessFor(licensenumber);
         setSuccessFor(licenseissueddistrict);
@@ -412,7 +419,11 @@ function userFormValidation(userForm) {
     }
 
     function isCitizenship(number) {
-        return /^[0-9]{8,11}$/.test(number);
+        return /^[0-9]{4,11}$/.test(number);
+    }
+
+    function isLicense(number) {
+        return /^[0-9]{11,12}$/.test(number);
     }
 
     function isOver18(dateOfBirth) {

@@ -28,7 +28,6 @@ async function index(req, res) {
 
 async function update(req, res) {
     try {
-        console.log("HWLLO WORLD");
         const {
             fullname,
             dob,
@@ -41,20 +40,30 @@ async function update(req, res) {
             citizenshiptype,
             citizenshipissueddistrict,
             citizenshipissueddate,
-            grandfathername,
-            fathername,
-            mothername,
-            spousename,
-            haslicense,
+            grandfather,
+            father,
+            mother,
+            spouse,
             licensecategory,
             licensenumber,
+            licenseissueddistrict,
             licenseissueddate,
             licenseexpirydate,
-            licenseissueddistrict,
         } = req.body;
+
+        let haslicense;
+
+        let email = req.session.user;
+
+        if (req.body.haslicense == 'on') {
+            haslicense = 1;
+        } else {
+            haslicense = 0;
+        }
 
         const userInfo = {
             fullname,
+            email,
             dob,
             mobile,
             bloodgroup,
@@ -65,16 +74,16 @@ async function update(req, res) {
             citizenshiptype,
             citizenshipissueddistrict,
             citizenshipissueddate,
-            grandfathername,
-            fathername,
-            mothername,
-            spousename,
+            grandfather,
+            father,
+            mother,
+            spouse,
             haslicense,
             licensecategory,
             licensenumber,
+            licenseissueddistrict,
             licenseissueddate,
             licenseexpirydate,
-            licenseissueddistrict,
         }
 
         const result = await userUpdate(userInfo);
