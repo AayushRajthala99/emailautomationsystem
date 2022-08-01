@@ -30,7 +30,6 @@ async function update(req, res) {
     try {
         const {
             fullname,
-            email,
             dob,
             mobile,
             bloodgroup,
@@ -55,7 +54,6 @@ async function update(req, res) {
 
         const userInfo = {
             fullname,
-            email,
             dob,
             mobile,
             bloodgroup,
