@@ -59,16 +59,17 @@ function userFormValidation(userForm) {
     let citizenshiptype = document.querySelector("#citizenshiptype");
     let citizenshipissueddate = document.querySelector("#citizenshipissueddate");
 
-    let grandfather = document.querySelector("#grandfather");
-    let father = document.querySelector("#father");
-    let mother = document.querySelector("#mother");
-    let spouse = document.querySelector("#spouse");
+    let grandfather = userForm.querySelector("#grandfather");
+    let father = userForm.querySelector("#father");
+    let mother = userForm.querySelector("#mother");
+    let spouse = userForm.querySelector("#spouse");
 
-    let licenseissueddate = document.querySelector("#licenseissueddate");
-    let licenseexpirydate = document.querySelector("#licenseexpirydate");
+    let haslicense = userForm.querySelector('#haslicense');
+    let licenseissueddate = userForm.querySelector("#licenseissueddate");
+    let licenseexpirydate = userForm.querySelector("#licenseexpirydate");
     let licensecategory = document.querySelector("#licensecategory");
-    let licensenumber = document.querySelector("#licensenumber");
-    let licenseissueddistrict = document.querySelector("#licenseissueddistrict");
+    let licensenumber = userForm.querySelector("#licensenumber");
+    let licenseissueddistrict = userForm.querySelector("#licenseissueddistrict");
 
     // User Information
     let fullNameValue = fullName.value.trim();
@@ -93,6 +94,7 @@ function userFormValidation(userForm) {
     let spouseValue = spouse.value.trim();
 
     // License Information...
+    let haslicenseValue = haslicense.checked;
     let licensecategoryValue = licensecategory.value.trim();
     let licensenumberValue = licensenumber.value.trim();
     let licenseissueddateValue = licenseissueddate.value.trim();
@@ -283,61 +285,81 @@ function userFormValidation(userForm) {
         setSuccessFor(spouse);
     }
 
-    //Validation for License Issued Date...
-    if (licenseissueddateValue === '') {
+    if (haslicenseValue) {
         licenseissueddateErrorFlag = true;
-        setErrorFor(licenseissueddate, '* Date Required!');
-    } else if (!validAge(new Date(dobValue).getFullYear(), new Date(licenseissueddateValue).getFullYear()) || inValidDate(new Date(licenseissueddateValue))) {
-        licenseissueddateErrorFlag = true;
-        setErrorFor(licenseissueddate, '* Date Restricted!');
-    } else {
-        licenseissueddateErrorFlag = false;
-        setSuccessFor(licenseissueddate);
-    }
-
-    //Validation for license Expiry Date...
-    if (licenseexpirydateValue === '') {
         licenseexpirydateErrorFlag = true;
-        setErrorFor(licenseexpirydate, '* Date Required!');
-    } else if (licenseissueddateValue === '') {
-        licenseexpirydateErrorFlag = true;
-        setErrorFor(licenseexpirydate, '* LicenseNotIssued!');
-    } else if (!validExpiry(new Date(dobValue).getFullYear(), new Date(licenseexpirydateValue).getFullYear()) || invalidExpiry()) {
-        licenseexpirydateErrorFlag = true;
-        setErrorFor(licenseexpirydate, '* Date Restricted!');
-    } else {
-        licenseexpirydateErrorFlag = false;
-        setSuccessFor(licenseexpirydate);
-    }
-
-    //Validation for License Category...
-    if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
         licensecategoryErrorFlag = true;
-        setErrorFor(licensecategory, '* Category Required!');
+        licensenumberErrorFlag = true;
+        licenseissueddistrictErrorFlag = true;
+
+        //Validation for License Issued Date...
+        if (licenseissueddateValue === '') {
+            licenseissueddateErrorFlag = true;
+            setErrorFor(licenseissueddate, '* Date Required!');
+        } else if (!validAge(new Date(dobValue).getFullYear(), new Date(licenseissueddateValue).getFullYear()) || inValidDate(new Date(licenseissueddateValue))) {
+            licenseissueddateErrorFlag = true;
+            setErrorFor(licenseissueddate, '* Date Restricted!');
+        } else {
+            licenseissueddateErrorFlag = false;
+            setSuccessFor(licenseissueddate);
+        }
+
+        //Validation for license Expiry Date...
+        if (licenseexpirydateValue === '') {
+            licenseexpirydateErrorFlag = true;
+            setErrorFor(licenseexpirydate, '* Date Required!');
+        } else if (licenseissueddateValue === '') {
+            licenseexpirydateErrorFlag = true;
+            setErrorFor(licenseexpirydate, '* LicenseNotIssued!');
+        } else if (!validExpiry(new Date(dobValue).getFullYear(), new Date(licenseexpirydateValue).getFullYear()) || invalidExpiry()) {
+            licenseexpirydateErrorFlag = true;
+            setErrorFor(licenseexpirydate, '* Date Restricted!');
+        } else {
+            licenseexpirydateErrorFlag = false;
+            setSuccessFor(licenseexpirydate);
+        }
+
+        //Validation for License Category...
+        if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
+            licensecategoryErrorFlag = true;
+            setErrorFor(licensecategory, '* Category Required!');
+        } else {
+            licensecategoryErrorFlag = false;
+            setSuccessFor(licensecategory);
+        }
+
+        //Validation for License Number...
+        if (licensenumberValue === '' || licensenumberValue === 'License Number') {
+            licensenumberErrorFlag = true;
+            setErrorFor(licensenumber, '* License Number Required!');
+        } else {
+            licensenumberErrorFlag = false;
+            setSuccessFor(licensenumber);
+        }
+
+        //Validation for License Issued District...
+        if (licenseissueddistrictrValue === '') {
+            licenseissueddistrictErrorFlag = true;
+            setErrorFor(licenseissueddistrict, '* District Required!');
+        } else if (valueLength(licenseissueddistrictrValue) < inputLength.min || valueLength(licenseissueddistrictrValue) > inputLength.max) {
+            licenseissueddistrictErrorFlag = true;
+            setErrorFor(licenseissueddistrict, '* Invalid Value Length!');
+        } else {
+            licenseissueddistrictErrorFlag = false;
+            setSuccessFor(licenseissueddistrict);
+        }
     } else {
         licensecategoryErrorFlag = false;
-        setSuccessFor(licensecategory);
-    }
-
-    //Validation for License Number...
-    if (licensenumberValue === '' || licensenumberValue === 'License Number') {
-        licensenumberErrorFlag = true;
-        setErrorFor(licensenumber, '* License Number Required!');
-    } else {
         licensenumberErrorFlag = false;
-        setSuccessFor(licensenumber);
-    }
-
-    //Validation for License Issued District...
-    if (licenseissueddistrictrValue === '') {
-        licenseissueddistrictErrorFlag = true;
-        setErrorFor(licenseissueddistrict, '* District Required!');
-    } else if (valueLength(licenseissueddistrictrValue) < inputLength.min || valueLength(licenseissueddistrictrValue) > inputLength.max) {
-        licenseissueddistrictErrorFlag = true;
-        setErrorFor(licenseissueddistrict, '* Invalid Value Length!');
-    } else {
+        licenseissueddateErrorFlag = false;
+        licenseexpirydateErrorFlag = false;
         licenseissueddistrictErrorFlag = false;
+        
+        setSuccessFor(licensecategory);
+        setSuccessFor(licensenumber);
         setSuccessFor(licenseissueddistrict);
+        setSuccessFor(licenseissueddate);
+        setSuccessFor(licenseexpirydate);
     }
 
     //Validation Error Message Handlers...
