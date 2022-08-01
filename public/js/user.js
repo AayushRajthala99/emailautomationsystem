@@ -144,10 +144,10 @@ function userFormValidation(userForm) {
             taddressErrorFlag = true;
             setErrorFor(taddress, '* Invalid Value Length!');
         }
-    } else {
+     else {
         taddressErrorFlag = false;
         setSuccessFor(taddress);
-    }
+    }}
 
     //Validation for Citizenship...
     if (citizenshipValue === '') {
