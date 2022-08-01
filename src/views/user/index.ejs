@@ -277,119 +277,134 @@
                     </div>
                 </div>
 
+                <% if(userInfo.filledprofile == '1' && (userInfo.haslicense == '0' || userInfo.haslicense == null)){ %>
+                <% } else { %>
                 <div class="separator"></div>
                 <div class="sub-title">License Information</div>
-                <% if(userInfo.haslicense == null ||  userInfo.haslicense == '0'){ %>
+                <% } %>
+
+                <% if((userInfo.filledprofile == '0' || userInfo.filledprofile == null) && (userInfo.haslicense == null || userInfo.haslicense == '0')){ %>
                 <div class="haslicense">
                     <label for="haslicense" class="text-danger">[ Have a driving license? ]</label>
                     <input type="checkbox" name="haslicense" id="haslicense" />
                 </div>
                 <% } %>
-                <% if(userInfo.haslicense == null || userInfo.haslicense == '0') { %>
+
+                <% if(userInfo.filledprofile == '1' && (userInfo.haslicense == null || userInfo.haslicense == '0')) { %>
                 <div class="licenseinfo" style="display: none">
-                    <% } else { %>
-                    <div class="licenseinfo" style="display: block">
-                        <% } %>
-                        <div class="user-input-container">
-                            <div class="user-form-input">
-                                <div class="input-label">
-                                    <img src="/img/licensecategory.svg" alt="License Category" />
-                                    <select name="licensecategory" id="licensecategory"
-                                        <%= userInfo.haslicense == '1' ? 'disabled' : ''%>>
-                                        <option value="License Category">Select License Category</option>
-                                        <option value="0" <%= userInfo.licensecategory == '0' ? 'selected' : ''%>>(A)
-                                            Motorcycle,
-                                            Scooter, Moped</option>
-                                        <option value="1" <%= userInfo.licensecategory == '1' ? 'selected' : ''%>>(B)
-                                            Car,
-                                            Jeep, Delivery Van</option>
-                                        <option value="2" <%= userInfo.licensecategory == '2' ? 'selected' : ''%>>(C)
-                                            Tempo,
-                                            Auto Rickshaw</option>
-                                        <option value="3" <%= userInfo.licensecategory == '3' ? 'selected' : ''%>>(C1)
-                                            E-Rickshaw</option>
-                                        <option value="4" <%= userInfo.licensecategory == '4' ? 'selected' : ''%>>(D)
-                                            Power
-                                            Tilter</option>
-                                        <option value="5" <%= userInfo.licensecategory == '5' ? 'selected' : ''%>>(E)
-                                            Tractor</option>
-                                        <option value="6" <%= userInfo.licensecategory == '6' ? 'selected' : ''%>>(K)
-                                            Scooter, Moped</option>
-                                    </select>
+                    <% } else if ((userInfo.filledprofile == '0' || userInfo.filledprofile == null) && (userInfo.haslicense == null || userInfo.haslicense == '0')) { %>
+                    <div class="licenseinfo" style="display: none">
+                        <% } else { %>
+                        <div class="licenseinfo" style="display: block">
+                            <% } %>
+                            <div class="user-input-container">
+                                <div class="user-form-input">
+                                    <div class="input-label">
+                                        <img src="/img/licensecategory.svg" alt="License Category" />
+                                        <select name="licensecategory" id="licensecategory"
+                                            <%= userInfo.haslicense == '1' ? 'disabled' : ''%>>
+                                            <option value="License Category">Select License Category</option>
+                                            <option value="0" <%= userInfo.licensecategory == '0' ? 'selected' : ''%>>
+                                                (A)
+                                                Motorcycle,
+                                                Scooter, Moped</option>
+                                            <option value="1" <%= userInfo.licensecategory == '1' ? 'selected' : ''%>>
+                                                (B)
+                                                Car,
+                                                Jeep, Delivery Van</option>
+                                            <option value="2" <%= userInfo.licensecategory == '2' ? 'selected' : ''%>>
+                                                (C)
+                                                Tempo,
+                                                Auto Rickshaw</option>
+                                            <option value="3" <%= userInfo.licensecategory == '3' ? 'selected' : ''%>>
+                                                (C1)
+                                                E-Rickshaw</option>
+                                            <option value="4" <%= userInfo.licensecategory == '4' ? 'selected' : ''%>>
+                                                (D)
+                                                Power
+                                                Tilter</option>
+                                            <option value="5" <%= userInfo.licensecategory == '5' ? 'selected' : ''%>>
+                                                (E)
+                                                Tractor</option>
+                                            <option value="6" <%= userInfo.licensecategory == '6' ? 'selected' : ''%>>
+                                                (K)
+                                                Scooter, Moped</option>
+                                        </select>
+                                    </div>
+                                    <div class="label-container" id="labelcontainerlicensecategory">
+                                        <div class="form-error"></div>
+                                    </div>
                                 </div>
-                                <div class="label-container" id="labelcontainerlicensecategory">
-                                    <div class="form-error"></div>
-                                </div>
-                            </div>
 
-                            <div class="user-form-input">
-                                <div class="input-label">
-                                    <img src="/img/licensenumber.svg" alt="License Number" />
-                                    <% if(userInfo.haslicense== '1') { %>
-                                    <input type="text" name="licensenumber" id="licensenumber"
-                                        placeholder="License Number" value="<%= userInfo.licensenumber %>" disabled />
-                                    <% } else { %>
-                                    <input type="text" name="licensenumber" id="licensenumber"
-                                        placeholder="License Number" />
-                                    <% } %>
+                                <div class="user-form-input">
+                                    <div class="input-label">
+                                        <img src="/img/licensenumber.svg" alt="License Number" />
+                                        <% if(userInfo.haslicense== '1') { %>
+                                        <input type="text" name="licensenumber" id="licensenumber"
+                                            placeholder="License Number" value="<%= userInfo.licensenumber %>"
+                                            disabled />
+                                        <% } else { %>
+                                        <input type="text" name="licensenumber" id="licensenumber"
+                                            placeholder="License Number" />
+                                        <% } %>
+                                    </div>
+                                    <div class="label-container" id="labelcontainerlicensenumber">
+                                        <div class="form-error"></div>
+                                    </div>
                                 </div>
-                                <div class="label-container" id="labelcontainerlicensenumber">
-                                    <div class="form-error"></div>
-                                </div>
-                            </div>
 
-                            <div class="user-form-input">
-                                <div class="input-label">
-                                    <img src="/img/licenseissueddistrict.png" alt="License Issued District" />
-                                    <% if(userInfo.haslicense == '1') { %>
-                                    <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
-                                        placeholder="License Issued District"
-                                        value="<%= userInfo.licenseissueddistrict %>" disabled />
-                                    <% } else { %>
-                                    <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
-                                        placeholder="License Issued District" />
-                                    <% } %>
-                                </div>
-                                <div class="label-container" id="labelcontainerlicenseissueddistrict">
-                                    <div class="form-error"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="user-input-container">
-                            <div class="user-form-input">
-                                <section>License Issued Date</section>
-                                <div class="input-label">
-                                    <img src="/img/licenseissueddate.svg" alt="License Issued Date" />
-                                    <% if(userInfo.haslicense == '1') { %>
-                                    <input type="date" name="licenseissueddate" id="licenseissueddate"
-                                        value="<%= userInfo.licenseissueddate %>" disabled />
-                                    <% } else { %>
-                                    <input type="date" name="licenseissueddate" id="licenseissueddate" />
-                                    <% } %>
-                                    <div class="label-container" id="labelcontainerlicenseissueddate">
+                                <div class="user-form-input">
+                                    <div class="input-label">
+                                        <img src="/img/licenseissueddistrict.png" alt="License Issued District" />
+                                        <% if(userInfo.haslicense == '1') { %>
+                                        <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
+                                            placeholder="License Issued District"
+                                            value="<%= userInfo.licenseissueddistrict %>" disabled />
+                                        <% } else { %>
+                                        <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
+                                            placeholder="License Issued District" />
+                                        <% } %>
+                                    </div>
+                                    <div class="label-container" id="labelcontainerlicenseissueddistrict">
                                         <div class="form-error"></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="user-form-input">
-                                <section>License Expiry Date</section>
-                                <div class="input-label">
-                                    <img src="/img/licenseexpirydate.svg" alt="License Expiry Date" />
-                                    <% if(userInfo.haslicense == '1') { %>
-                                    <input type="date" name="licenseexpirydate" id="licenseexpirydate"
-                                        value="<%= userInfo.licenseexpirydate %>" disabled />
-                                    <% } else { %>
-                                    <input type="date" name="licenseexpirydate" id="licenseexpirydate" />
-                                    <% } %>
-                                    <div class="label-container" id="labelcontainerlicenseexpirydate">
-                                        <div class="form-error"></div>
+                            <div class="user-input-container">
+                                <div class="user-form-input">
+                                    <section>License Issued Date</section>
+                                    <div class="input-label">
+                                        <img src="/img/licenseissueddate.svg" alt="License Issued Date" />
+                                        <% if(userInfo.haslicense == '1') { %>
+                                        <input type="date" name="licenseissueddate" id="licenseissueddate"
+                                            value="<%= userInfo.licenseissueddate %>" disabled />
+                                        <% } else { %>
+                                        <input type="date" name="licenseissueddate" id="licenseissueddate" />
+                                        <% } %>
+                                        <div class="label-container" id="labelcontainerlicenseissueddate">
+                                            <div class="form-error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="user-form-input">
+                                    <section>License Expiry Date</section>
+                                    <div class="input-label">
+                                        <img src="/img/licenseexpirydate.svg" alt="License Expiry Date" />
+                                        <% if(userInfo.haslicense == '1') { %>
+                                        <input type="date" name="licenseexpirydate" id="licenseexpirydate"
+                                            value="<%= userInfo.licenseexpirydate %>" disabled />
+                                        <% } else { %>
+                                        <input type="date" name="licenseexpirydate" id="licenseexpirydate" />
+                                        <% } %>
+                                        <div class="label-container" id="labelcontainerlicenseexpirydate">
+                                            <div class="form-error"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
             </form>
         </div>
         <% if(userInfo.filledprofile != '1'){ %>

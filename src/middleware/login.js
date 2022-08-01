@@ -52,8 +52,6 @@ const linkSchemaLogin = yup.object({
 
     password: yup
       .string()
-      .min(inputLength.min, "* Invalid Value Length!")
-      .max(inputLength.max, "* Invalid Value Length!")
       .required("* Password Required!"),
   }),
 });

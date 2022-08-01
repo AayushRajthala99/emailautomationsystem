@@ -44,9 +44,6 @@ function loginFormValidation() {
     if (passwordValue === "") {
         passwordErrorFlag = true;
         setErrorFor(password, "* Password Required!");
-    } else if (valueLength(passwordValue) < inputLength.low || valueLength(passwordValue) > inputLength.high) {
-        passwordErrorFlag = true;
-        setErrorFor(password, '* Invalid Value Length!');
     } else {
         passwordErrorFlag = false;
         setSuccessFor(password);
