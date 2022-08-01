@@ -162,6 +162,9 @@ function userFormValidation(userForm) {
         if (valueLength(taddressValue) < inputLength.min || valueLength(taddressValue) > inputLength.max) {
             taddressErrorFlag = true;
             setErrorFor(taddress, '* Invalid Value Length!');
+        } else {
+            taddressErrorFlag = false;
+            setSuccessFor(taddress);
         }
     } else {
         taddressErrorFlag = false;
@@ -231,7 +234,7 @@ function userFormValidation(userForm) {
         setSuccessFor(citizenshipissueddate);
     }
 
-    //Validation for GrandFather...
+    //Validation for GrandFather's Name...
     if (grandfatherValue === '') {
         grandfatherErrorFlag = true;
         setErrorFor(grandfather, '* Name Required!');
@@ -243,7 +246,7 @@ function userFormValidation(userForm) {
         setSuccessFor(grandfather);
     }
 
-    //Validation for Father...
+    //Validation for Father's Name...
     if (fatherValue === '') {
         fatherErrorFlag = true;
         setErrorFor(father, '* Name Required!');
@@ -254,7 +257,7 @@ function userFormValidation(userForm) {
         fatherErrorFlag = false;
         setSuccessFor(father);
     }
-    //Validation for Mother...
+    //Validation for Mother's Name...
     if (motherValue === '') {
         motherErrorFlag = true;
         setErrorFor(mother, '* Name Required!');
@@ -266,18 +269,21 @@ function userFormValidation(userForm) {
         setSuccessFor(mother);
     }
 
-    //Validation for Spause...
+    //Validation for Spause's Name...
     if (spouseValue) {
         if (valueLength(spouseValue) < inputLength.min || valueLength(spouseValue) > inputLength.max) {
             spouseErrorFlag = true;
             setErrorFor(spouse, '* Invalid Value Length!');
+        } else {
+            spouseErrorFlag = false;
+            setSuccessFor(spouse);
         }
     } else {
         spouseErrorFlag = false;
         setSuccessFor(spouse);
     }
 
-    //Validation for LicenseIssuedDate...
+    //Validation for License Issued Date...
     if (licenseissueddateValue === '') {
         licenseissueddateErrorFlag = true;
         setErrorFor(licenseissueddate, '* Date Required!');
@@ -289,7 +295,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseissueddate);
     }
 
-    //Validation for licenseExpiryDate...
+    //Validation for license Expiry Date...
     if (licenseexpirydateValue === '') {
         licenseexpirydateErrorFlag = true;
         setErrorFor(licenseexpirydate, '* Date Required!');
@@ -304,7 +310,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseexpirydate);
     }
 
-    //Validation for LicenseCategory...
+    //Validation for License Category...
     if (licensecategoryValue < 0 || licensecategoryValue > 6 || licensecategoryValue == "License Category") {
         licensecategoryErrorFlag = true;
         setErrorFor(licensecategory, '* Category Required!');
@@ -313,7 +319,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licensecategory);
     }
 
-    //Validation for LicenseNumber...
+    //Validation for License Number...
     if (licensenumberValue === '' || licensenumberValue === 'License Number') {
         licensenumberErrorFlag = true;
         setErrorFor(licensenumber, '* License Number Required!');
@@ -322,7 +328,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licensenumber);
     }
 
-    //Validation for LicenseIssuedDistrict...
+    //Validation for License Issued District...
     if (licenseissueddistrictrValue === '') {
         licenseissueddistrictErrorFlag = true;
         setErrorFor(licenseissueddistrict, '* District Required!');
@@ -334,7 +340,7 @@ function userFormValidation(userForm) {
         setSuccessFor(licenseissueddistrict);
     }
 
-
+    //Validation Error Message Handlers...
     function setErrorFor(input, message) {
         const formControl = userForm.querySelector("#labelcontainer" + input.id);
         const errordiv = formControl.querySelector('.form-error');
@@ -347,6 +353,7 @@ function userFormValidation(userForm) {
         errordiv.innerText = message;
     }
 
+    //Validation Success Message Handlers...
     function setSuccessFor(input) {
         const formControl = userForm.querySelector("#labelcontainer" + input.id);
         const errordiv = formControl.querySelector('.form-error');
@@ -359,6 +366,7 @@ function userFormValidation(userForm) {
         errordiv.innerText = "";
     }
 
+    //Input Field Format Regex Check Functions...
     function isMobile(number) {
         return /(?:\(?\+977\)?)?[9][6-9]\d{8}|01[-]?[0-9]{7}/.test(number);
     }
