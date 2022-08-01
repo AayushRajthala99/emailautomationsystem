@@ -20,12 +20,13 @@ document.addEventListener('click', event => {
 
 function userFormValidation(userForm) {
 
+    //Error Flags for User Form Validation...
     let nameErrorFlag, paddressErrorFlag, bloodgroupErrorFlag, taddressErrorFlag, dobErrorFlag, citizenshipErrorFlag, genderErrorFlag,
         mobileErrorFlag, citizenshipIssuedDistrictErrorFlag, citizenshiptypeErrorFlag, citizenshipissueddateErrorFlag,
         grandfatherErrorFlag, fatherErrorFlag, motherErrorFlag, spouseErrorFlag,
         licenseissueddateErrorFlag, licenseexpirydateErrorFlag, licensecategoryErrorFlag, licensenumberErrorFlag, licenseissueddistrictErrorFlag;
 
-    //application Form Value Acquisition...
+    //User Form Value Acquisition...
     let fullName = userForm.querySelector("#fullname");
     let dob = userForm.querySelector("#dob");
     let mobile = userForm.querySelector("#mobile");
@@ -50,6 +51,7 @@ function userFormValidation(userForm) {
     let licensenumber = document.querySelector("#licensenumber");
     let licenseissueddistrict = document.querySelector("#licenseissueddistrict");
 
+    // User Information
     let fullNameValue = fullName.value.trim();
     let dobValue = dob.value.trim();
     let mobileValue = mobile.value.trim();
@@ -57,26 +59,33 @@ function userFormValidation(userForm) {
     let taddressValue = taddress.value.trim();
     let bloodgroupValue = bloodgroup.value.trim();
 
+    // Citizenship Information
     let citizenshipValue = citizenship.value.trim();
     let citizenshipIssuedDistrictValue = citizenshipIssuedDistrict.value.trim();
     let citizenshiptypeValue = citizenshiptype.value.trim();
     let citizenshipissueddateValue = citizenshipissueddate.value.trim();
+    citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
+    citizenship.value = citizenshipValue;
 
+    // Family Information...
     let grandfatherValue = grandfather.value.trim();
     let fatherValue = father.value.trim();
     let motherValue = mother.value.trim();
     let spouseValue = spouse.value.trim();
 
-    let licenseissueddateValue = licenseissueddate.value.trim();
-    let licenseexpirydateValue = licenseexpirydate.value.trim();
+    // License Information...
     let licensecategoryValue = licensecategory.value.trim();
     let licensenumberValue = licensenumber.value.trim();
+    let licenseissueddateValue = licenseissueddate.value.trim();
+    let licenseexpirydateValue = licenseexpirydate.value.trim();
     let licenseissueddistrictrValue = licenseissueddistrict.value.trim();
+    licensenumberValue = licensenumberValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
+    licensenumber.value = licensenumberValue;
 
-    citizenshipValue = citizenshipValue.replace(/[^\w ]/g, ''); // Removing Special Character '-'
-    citizenship.value = citizenshipValue;
+    /*.................................... 
+            Validation Operations 
+    ......................................*/
 
-    console.log(bloodgroupValue);
 
     //Validation for FullName...
     if (fullNameValue === '') {
@@ -379,8 +388,7 @@ function userFormValidation(userForm) {
         return value.toString().length;
     }
 
-
-
+    // User Info Error Flags Check...
     if (nameErrorFlag == false && paddressErrorFlag == false && taddressErrorFlag == false && dobErrorFlag == false && citizenshipErrorFlag == false &&
         genderErrorFlag == false && bloodgroupErrorFlag == false && mobileErrorFlag == false && citizenshipIssuedDistrictErrorFlag == false && citizenshiptypeErrorFlag == false &&
         citizenshipissueddateErrorFlag == false && grandfatherErrorFlag == false && fatherErrorFlag == false && motherErrorFlag == false && spouseErrorFlag == false && licenseissueddateErrorFlag == false &&
