@@ -49,8 +49,8 @@
                             <input type="date" name="dob" id="dob" placeholder="Date of Birth"
                                 value="<%= userInfo.dob %>" disabled />
                             <% } else { %>
-                            <input type="date" name="dob" id="dob" placeholder="Date of Birth"
-                                value="<%= userInfo.dob %>" />
+                            <input type="text" name="dob" id="dob" placeholder="Date of Birth"
+                                value="<%= userInfo.dob %>" onfocus="this.type='Date'" onblur="this.type='text'" />
                             <% } %>
 
                         </div>
@@ -244,8 +244,9 @@
                                 placeholder="Citizenship Issued Date" value="<%= userInfo.citizenshipissueddate %>"
                                 disabled />
                             <% } else { %>
-                            <input type="date" name="citizenshipissueddate" id="citizenshipissueddate"
-                                placeholder="Citizenship Issued Date" />
+                            <input type="text" name="citizenshipissueddate" id="citizenshipissueddate"
+                                placeholder="Citizenship Issued Date" onfocus="this.type='Date'"
+                                onblur="this.type='text'" />
                             <% } %>
 
                         </div>
@@ -419,14 +420,15 @@
 
                             <div class="user-input-container">
                                 <div class="user-form-input">
-                                    <section>License Issued Date</section>
                                     <div class="input-label">
                                         <img src="/img/licenseissueddate.svg" alt="License Issued Date" />
                                         <% if(userInfo.haslicense == '1') { %>
                                         <input type="date" name="licenseissueddate" id="licenseissueddate"
                                             value="<%= userInfo.licenseissueddate %>" disabled />
                                         <% } else { %>
-                                        <input type="date" name="licenseissueddate" id="licenseissueddate" />
+                                        <input type="text" name="licenseissueddate" id="licenseissueddate"
+                                            placeholder="License Issued Date" onfocus="this.type='Date'"
+                                            onblur="this.type='text'" />
                                         <% } %>
                                         <div class="label-container" id="labelcontainerlicenseissueddate">
                                             <div class="form-error"></div>
@@ -435,14 +437,15 @@
                                 </div>
 
                                 <div class="user-form-input">
-                                    <section>License Expiry Date</section>
                                     <div class="input-label">
                                         <img src="/img/licenseexpirydate.svg" alt="License Expiry Date" />
                                         <% if(userInfo.haslicense == '1') { %>
                                         <input type="date" name="licenseexpirydate" id="licenseexpirydate"
                                             value="<%= userInfo.licenseexpirydate %>" disabled />
                                         <% } else { %>
-                                        <input type="date" name="licenseexpirydate" id="licenseexpirydate" />
+                                        <input type="text" name="licenseexpirydate" id="licenseexpirydate"
+                                            placeholder="License Expiry Date" onfocus="this.type='Date'"
+                                            onblur="this.type='text'" />
                                         <% } %>
                                         <div class="label-container" id="labelcontainerlicenseexpirydate">
                                             <div class="form-error"></div>
@@ -451,18 +454,18 @@
                                 </div>
                             </div>
                         </div>
-            </form>
-        </div>
-        <% if(userInfo.filledprofile != '1'){ %>
-        <div>
-            <button type="submit" class="submit-button">Update Information</button>
-        </div>
-        <% } %>
-        <div class="form-option">
-            Go Back?<a href="/dashboard">Cancel</a>
-        </div>
-    </div>
-    <script src="/js/user.js"></script>
+
+                    </div>
+                    <% if(userInfo.filledprofile != '1'){ %>
+                    <div>
+                        <button type="submit" class="submit-button">Update Information</button>
+                    </div>
+                    <% } %>
+                    <div class="form-option">
+                        Go Back?<a href="/dashboard">Cancel</a>
+                    </div>
+                </div>
+                <script src="/js/user.js"></script>
 </body>
 <%- include('../footer.ejs') %>
 
