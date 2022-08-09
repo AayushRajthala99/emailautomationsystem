@@ -4,11 +4,7 @@ const {
 
 const {
     getUserInfo
-} = require("../utils/utils");
-
-const {
-    getLoginInfo
-} = require("../models/Login.model");
+} = require("../models/User.model");
 
 async function index(req, res) {
     try {
