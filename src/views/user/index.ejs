@@ -456,18 +456,18 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <% if(userInfo.filledprofile != '1'){ %>
-                    <div>
-                        <button type="submit" class="submit-button">Update Information</button>
-                    </div>
-                    <% } %>
-                    <div class="form-option">
-                        Go Back?<a href="/dashboard">Cancel</a>
-                    </div>
-                </div>
-                <script src="/js/user.js"></script>
+            </form>
+        </div>
+        <% if(userInfo.filledprofile != '1'){ %>
+        <div>
+            <button type="submit" class="submit-button">Update Information</button>
+        </div>
+        <% } %>
+        <div class="form-option">
+            Go Back?<a href="/dashboard">Cancel</a>
+        </div>
+    </div>
+    <script src="/js/user.js"></script>
 </body>
 <%- include('../footer.ejs') %>
 
