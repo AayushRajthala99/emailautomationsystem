@@ -366,7 +366,7 @@ function userFormValidation(userForm) {
             setErrorFor(licenseexpirydate, '* Date Required!');
         } else if (licenseissueddateValue === '') {
             licenseexpirydateErrorFlag = true;
-            setErrorFor(licenseexpirydate, '* LicenseNotIssued!');
+            setErrorFor(licenseexpirydate, '* License Not Issued!');
         } else if (!validExpiry(new Date(dobValue).getFullYear(), new Date(licenseexpirydateValue).getFullYear()) || invalidExpiry()) {
             licenseexpirydateErrorFlag = true;
             setErrorFor(licenseexpirydate, '* Date Restricted!');
@@ -459,7 +459,7 @@ function userFormValidation(userForm) {
         const expirymonth = new Date(licenseexpirydateValue).getMonth();
         const expiryday = new Date(licenseexpirydateValue).getDate();
 
-        if (expiryear != issueyear + 5 || expirymonth != issuemonth || expiryday != issueday) {
+        if (expiryear != issueyear + 5 && expirymonth != issuemonth && expiryday != issueday) {
             return true;
         }
     }

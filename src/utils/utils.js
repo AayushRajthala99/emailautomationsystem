@@ -57,8 +57,32 @@ const getUserInfo = async (email) => {
     }
 };
 
+const getApplicationInfo = async (email) => {
+    try {
+        const result = await promisifiedQuery(
+            `SELECT
+            *,
+            DATE_FORMAT(officevisitdate, '%Y-%m-%d') AS officevisitdate
+            FROM application
+            WHERE email = '${email}' AND deleted_at IS NULL
+            ORDER BY created_at DESC;`
+        );
+        return {
+            status: true,
+            result: result,
+        };
+    } catch (error) {
+        logger.error(`Application Info Fetch Error:  ${error}`);
+        return {
+            status: false,
+            error: error,
+        };
+    }
+};
+
 module.exports = {
     promisifiedQuery,
     getColumnInfo,
     getUserInfo,
+    getApplicationInfo,
 }

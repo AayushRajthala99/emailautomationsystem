@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const {
-  logger
+  logger,
+  getApplicationInfo,
 } = require("../utils/logger");
 
 const {

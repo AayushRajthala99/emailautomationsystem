@@ -9,25 +9,19 @@ const {
 const storeApplication = async (userInfo) => {
     try {
         const result = await promisifiedQuery(
-            `UPDATE user SET 
-            name='${userInfo.fullname}',
-            email='${userInfo.email}',
-            dob='${userInfo.dob}',
-            gender='${userInfo.gender}',
-            paddress='${userInfo.paddress}',
-            taddress='${userInfo.taddress}',
-            mobile='${userInfo.mobile}',
-            bloodgroup='${userInfo.bloodgroup}',
-            citizenship='${userInfo.citizenship}',
-            citizenshiptype='${userInfo.citizenshiptype}',
-            citizenshipissueddistrict='${userInfo.citizenshipissueddistrict}',
-            citizenshipissueddate='${userInfo.citizenshipissueddate}',
-            grandfathername='${userInfo.grandfather}',
-            fathername='${userInfo.father}',
-            mothername='${userInfo.mother}',
-            spousename='${userInfo.spouse}',
-            
-            where email='${userInfo.email}' AND deleted_at is NULL;`
+            `INSERT INTO application (
+                user_id,
+                email,
+                licensecategory,
+                officevisitdate
+                ) 
+                VALUES
+                (
+                ${userInfo.id},
+                '${userInfo.email}',
+                '${userInfo.licensecategory}',
+                '${userInfo.officeVisitDate}'
+                );`
         );
         return {
             status: true,

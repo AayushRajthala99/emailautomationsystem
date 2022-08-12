@@ -5,7 +5,8 @@ const {
 } = require('../utils/logger');
 
 const {
-    promisifiedQuery
+    promisifiedQuery,
+    getUserInfo,
 } = require('../utils/utils');
 
 const userRegistration = async (fullname, email, password) => {

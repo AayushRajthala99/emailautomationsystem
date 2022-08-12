@@ -4,7 +4,8 @@ const {
 } = require("../utils/logger");
 
 const {
-  getUserInfo
+  getUserInfo,
+  getApplicationInfo,
 } = require("../utils/utils");
 
 const {
@@ -64,8 +65,9 @@ async function view(req, res) {
       const userInfo = await getUserInfo(email);
       if (userInfo.status) {
         req.session.user = email;
+
         res.render('dashboard', {
-          userInfo: userInfo.result[0]
+          userInfo: userInfo.result[0],
         });
       }
     } else {

@@ -45,41 +45,24 @@ async function store(req, res) {
     try {
         const {
             fullname,
-            dob,
-            mobile,
-            bloodgroup,
-            paddress,
-            taddress,
-            gender,
-            citizenship,
-            citizenshiptype,
-            citizenshipissueddistrict,
-            citizenshipissueddate,
-            grandfather,
-            father,
-            mother,
-            spouse,
+            licensecategory,
         } = req.body;
 
         let email = req.session.user;
 
+        let tempInfo = await getUserInfo(email);
+        let id = tempInfo.result[0].id;
+
+        let officeVisitDate = new Date();
+        officeVisitDate.setMonth(officeVisitDate.getMonth() + 1);
+        officeVisitDate = officeVisitDate.toISOString().slice(0,10);
+
         const userInfo = {
+            id,
             fullname,
             email,
-            dob,
-            mobile,
-            bloodgroup,
-            paddress,
-            taddress,
-            gender,
-            citizenship,
-            citizenshiptype,
-            citizenshipissueddistrict,
-            citizenshipissueddate,
-            grandfather,
-            father,
-            mother,
-            spouse,
+            licensecategory,
+            officeVisitDate,
         }
 
         const result = await storeApplication(userInfo);
