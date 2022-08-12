@@ -4,7 +4,11 @@ const {
 
 const {
     getUserInfo
-} = require("../models/User.model");
+} = require("../utils/utils");
+
+const {
+    storeApplication,
+} = require("../models/Application.model");
 
 async function index(req, res) {
     try {
@@ -39,11 +43,55 @@ async function create(req, res) {
 
 async function store(req, res) {
     try {
-        res.render('application/create');
+        const {
+            fullname,
+            dob,
+            mobile,
+            bloodgroup,
+            paddress,
+            taddress,
+            gender,
+            citizenship,
+            citizenshiptype,
+            citizenshipissueddistrict,
+            citizenshipissueddate,
+            grandfather,
+            father,
+            mother,
+            spouse,
+        } = req.body;
+
+        let email = req.session.user;
+
+        const userInfo = {
+            fullname,
+            email,
+            dob,
+            mobile,
+            bloodgroup,
+            paddress,
+            taddress,
+            gender,
+            citizenship,
+            citizenshiptype,
+            citizenshipissueddistrict,
+            citizenshipissueddate,
+            grandfather,
+            father,
+            mother,
+            spouse,
+        }
+
+        const result = await storeApplication(userInfo);
+        if (result.status) {
+            res.redirect('/dashboard');
+        } else {
+            throw (result.error);
+        }
     } catch (error) {
         logger.error(`APPLICATION STORE ERROR: ${error}`);
-        res.render("error", {
-            error: "ERROR STORING APPLICATION INFORMATION",
+        res.render('error', {
+            error: "Something Went Wrong While Storing Application"
         });
     }
 }

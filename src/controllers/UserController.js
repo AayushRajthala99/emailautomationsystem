@@ -4,6 +4,9 @@ const {
 
 const {
     getUserInfo,
+} = require("../utils/utils");
+
+const {
     userUpdate,
 } = require("../models/User.model");
 

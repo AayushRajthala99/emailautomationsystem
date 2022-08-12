@@ -7,10 +7,6 @@ const {
   userRegistration,
 } = require('../models/Register.model');
 
-const {
-  getUserInfo
-} = require("../utils/utils");
-
 const result = {
   fullname: null,
   email: null,

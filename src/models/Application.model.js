@@ -6,11 +6,12 @@ const {
     promisifiedQuery
 } = require("../utils/utils");
 
-const userUpdate = async (userInfo) => {
+const storeApplication = async (userInfo) => {
     try {
         const result = await promisifiedQuery(
             `UPDATE user SET 
-
+            name='${userInfo.fullname}',
+            email='${userInfo.email}',
             dob='${userInfo.dob}',
             gender='${userInfo.gender}',
             paddress='${userInfo.paddress}',
@@ -25,13 +26,6 @@ const userUpdate = async (userInfo) => {
             fathername='${userInfo.father}',
             mothername='${userInfo.mother}',
             spousename='${userInfo.spouse}',
-            haslicense='${userInfo.haslicense}',
-            licensecategory='${userInfo.licensecategory}',
-            licensenumber='${userInfo.licensenumber}',
-            licenseissueddate='${userInfo.licenseissueddate}',
-            licenseexpirydate='${userInfo.licenseexpirydate}',
-            licenseissueddistrict='${userInfo.licenseissueddistrict}',
-            filledprofile='1'
             
             where email='${userInfo.email}' AND deleted_at is NULL;`
         );
@@ -40,7 +34,7 @@ const userUpdate = async (userInfo) => {
             result: result,
         };
     } catch (error) {
-        logger.error(`User Update Error:  ${error}`);
+        logger.error(`Application Store Error:  ${error}`);
         return {
             status: false,
             error: error,
@@ -49,5 +43,5 @@ const userUpdate = async (userInfo) => {
 };
 
 module.exports = {
-    userUpdate,
+    storeApplication,
 };
