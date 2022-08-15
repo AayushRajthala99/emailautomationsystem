@@ -33,7 +33,7 @@
     <div class="pdf-container">
         <div class="pdf-field">
             <div class="field-name text-danger">Reference Number</div>
-            <div class="field-value">[ <%= applicationInfo.id %> ]</div>
+            <div class="field-value"><b>[ <%= applicationInfo.id %> ]</b></div>
         </div>
         <div class="pdf-field">
             <div class="field-name">Application Type</div>
@@ -50,7 +50,7 @@
             <img src="/img/pp.png" alt="PP Size Photo">
         </div>
         <div class=" pdf-field">
-            <div class="field-name">Applied Category</div>
+            <div class="field-name text-danger">Applied Category</div>
             <div class="field-value">
                 <% if(applicationInfo.licensecategory == '0') { %>
                 (A) Motorcycle, Scooter, Moped
@@ -82,7 +82,7 @@
 
         <div class="pdf-field-container">
             <div class="pdf-field">
-                <div class="field-name">Applicant Name</div>
+                <div class="field-name text-danger">Applicant Name</div>
                 <div class="field-value"><%= applicationInfo.name %></div>
             </div>
             <div class="pdf-field">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="pdf-field">
-                <div class="field-name">Blood Group</div>
+                <div class="field-name text-danger">Blood Group</div>
                 <div class="field-value">
                     <% if(userInfo.bloodgroup == '0') { %>
                     A positive (A+)
@@ -155,11 +155,11 @@
 
         <div class="pdf-field-container">
             <div class="pdf-field">
-                <div class="field-name">Email</div>
+                <div class="field-name text-danger">Email</div>
                 <div class="field-value"><%= userInfo.email %></div>
             </div>
             <div class="pdf-field">
-                <div class="field-name">Mobile Number</div>
+                <div class="field-name text-danger">Mobile Number</div>
                 <div class="field-value">(+977) <%= userInfo.mobile %></div>
             </div>
         </div>
@@ -192,7 +192,7 @@
 
         <div class="pdf-field-container">
             <div class="pdf-field">
-                <div class="field-name">Citizenship Number</div>
+                <div class="field-name text-danger">Citizenship Number</div>
                 <div class="field-value"><%= userInfo.citizenship %>
                 </div>
             </div>
@@ -204,19 +204,21 @@
         </div>
         <div class="pdf-field-container">
             <div class="pdf-field">
-                <div class="field-name">Visit Office</div>
+                <div class="field-name text-danger">Visit Office</div>
                 <div class="field-value">TMO, Lalitpur</div>
             </div>
             <div class="pdf-field">
-                <div class="field-name">Office Visit Date</div>
+                <div class="field-name text-danger">Office Visit Date</div>
                 <div class="field-value"><%= applicationInfo.officevisitdate %> A.D.</div>
             </div>
         </div>
         <br>
+        <div class="separator"></div>
+        <br>
         <div>
             <b>Note: </b>Applicant must attend the Visit Office for biometric on Office Visit Date mentioned above. If
-            in case, applicant fails to attend the visit office, he/she will have to apply for new process of
-            application online again and the amount paid will not be refunded.
+            in case, applicant fails to attend the visit office, he/she will have to re-apply for the online application
+            again and the paid amount will not be refunded.
         </div>
         <br>
         <div>
@@ -225,7 +227,6 @@
             1. Original and Photocopy of Citizenship
             <br>
             2. Medical Report provided by Doctor
-
         </div>
     </div>
 
