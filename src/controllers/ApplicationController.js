@@ -66,14 +66,18 @@ async function store(req, res) {
             licensecategory,
         } = req.body;
 
-        let id;
+        let id, type;
         let email = req.session.user;
 
         let tempInfo = await getUserInfo(email);
         if (tempInfo.status) {
             id = tempInfo.result[0].id;
+            if (tempInfo.result[0].haslicense == '1') {
+                type = 1;
+            } else {
+                type = 0;
+            }
         }
-
 
         let officeVisitDate = new Date();
         officeVisitDate.setMonth(officeVisitDate.getMonth() + 1);
@@ -83,6 +87,7 @@ async function store(req, res) {
             id,
             fullname,
             email,
+            type,
             licensecategory,
             officeVisitDate,
         }

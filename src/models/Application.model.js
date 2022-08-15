@@ -13,6 +13,7 @@ const storeApplication = async (userInfo) => {
                 user_id,
                 name,
                 email,
+                type,
                 licensecategory,
                 officevisitdate,
                 hasapplied
@@ -22,6 +23,7 @@ const storeApplication = async (userInfo) => {
                 ${userInfo.id},
                 ${userInfo.fullname},
                 '${userInfo.email}',
+                '${userInfo.type}',
                 '${userInfo.licensecategory}',
                 '${userInfo.officeVisitDate}',
                 '1'

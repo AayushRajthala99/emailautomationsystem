@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/application.css">
-    <title>Application | EAS</title>
+    <title>Apply | EAS</title>
 </head>
 
 <body oncontextmenu="return false">
@@ -16,6 +16,13 @@
         <div class="view-title">Apply For Driving License</div>
         <div class="application-form-container">
             <form id="applicationform" action="/dashboard/application/create" method="post">
+                <% if(userInfo.haslicense == '1') { %>
+                <div class="text-danger" style="font-size: 24px;text-align: center;padding-top: 10px;">ADD LICENSE
+                    CATEGORY
+                </div>
+                <% } else { %>
+                <div class="text-danger" style="font-size: 24px;text-align: center;padding-top: 10px;">NEW LICENSE</div>
+                <% } %>
                 <div class="sub-title">Applicant Information</div>
                 <div class="application-input-container">
                     <div class="application-form-input">
