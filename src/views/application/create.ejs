@@ -31,38 +31,29 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/email.svg" alt="Email" />
-                            <input type="text" id="email" name="email" value="<%= userInfo.email %>" />
-                        </div>
-                        <div class="label-container" id="labelcontaineremail">
-                            <div class="form-error"></div>
+                            <input type="text" value="<%= userInfo.email %>" readonly />
                         </div>
                     </div>
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/dob.png" alt="Date of Birth" />
-                            <input type="date" name="dob" id="dob" placeholder="Date of Birth"
-                                value="<%= userInfo.dob %>" />
-                        </div>
-                        <div class=" label-container" id="labelcontainerdob">
-                            <div class="form-error"></div>
+                            <input type="date" placeholder="Date of Birth" value="<%= userInfo.dob %>" readonly />
                         </div>
                     </div>
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/mobile.svg" alt="Mobile Number" />
-                            <input type="text" name="mobile" id="mobile" placeholder="(+977) Mobile Number"
-                                value="<%= userInfo.mobile %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainermobile">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="(+977) Mobile Number" value="<%= userInfo.mobile %>"
+                                readonly />
                         </div>
                     </div>
                 </div>
+
                 <div class="application-input-container">
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/bloodgroup.svg" alt="Blood Group" />
-                            <select name="bloodgroup" id="bloodgroup" <%= (userInfo.bloodgroup != null) ? '' : ''%>>
+                            <select name="bloodgroup" id="bloodgroup" disabled>
                                 <option value="Blood Group">Select Your Blood Group</option>
                                 <option value="0" <%= userInfo.bloodgroup == '0' ? 'selected' : ''%>>(A+) A Positive
                                 </option>
@@ -82,30 +73,21 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="label-container" id="labelcontainerbloodgroup">
-                            <div class="form-error"></div>
-                        </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/paddress.svg" alt="Permanent Address" />
-                            <input type="text" name="paddress" id="paddress" placeholder="Permanent Address"
-                                value="<%= userInfo.paddress %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainerpaddress">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Permanent Address" value="<%= userInfo.paddress %>"
+                                readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/taddress.svg" alt="Temporary Address" />
-                            <input type="text" name="taddress" id="taddress" placeholder="Temporary Address"
-                                value="<%= userInfo.taddress %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainertaddress">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Temporary Address" value="<%= userInfo.taddress %>"
+                                readonly />
                         </div>
                     </div>
 
@@ -115,24 +97,19 @@
                                 <img src="/img/gender.svg" alt="Gender" />
                                 <h3>Gender</h3>
                             </div>
+
                             <div class="radio-value">
-                                <input type="radio" name="gender" id="male" value="0"
-                                    <%= userInfo.gender == '0' ? 'checked' : ''%> />
+                                <% if(userInfo.gender == '0') { %>
+                                <input type="radio" name="gender" value="0" checked readonly />
                                 <label for="male">Male</label>
-                            </div>
-                            <div class="radio-value">
-                                <input type="radio" name="gender" id="female" value="1"
-                                    <%= userInfo.gender == '1' ? 'checked' : ''%> />
+                                <% } else if (userInfo.gender == '1'){ %>
+                                <input type="radio" name="gender" value="1" checked readonly />
                                 <label for="female">Female</label>
-                            </div>
-                            <div class="radio-value">
-                                <input type="radio" name="gender" id="other" value="2"
-                                    <%= userInfo.gender == '2' ? 'checked' : ''%> />
+                                <% } else if (userInfo.gender == '2'){ %>
+                                <input type="radio" name="gender" value="2" checked readonly />
                                 <label for="other">Other</label>
+                                <% } %>
                             </div>
-                        </div>
-                        <div class="label-container" id="labelcontainergender">
-                            <div class="form-error"></div>
                         </div>
                     </div>
                 </div>
@@ -142,18 +119,15 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/citizenship.svg" alt="Citizenship Number" />
-                            <input type="text" name="citizenship" id="citizenship" placeholder="Citizenship Number"
-                                value="<%= userInfo.citizenship %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainercitizenship">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Citizenship Number" value="<%= userInfo.citizenship %>"
+                                readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/citizenshiptype.svg" alt="Citizenship Type" />
-                            <select name="citizenshiptype" id="citizenshiptype">
+                            <select name="citizenshiptype" id="citizenshiptype" disabled>
                                 <option value="Citizenship Type">Select Citizenship Type</option>
                                 <option value="0" <%= userInfo.citizenshiptype == '0' ? 'selected' : ''%>>Descendant
                                 </option>
@@ -164,31 +138,21 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="label-container" id="labelcontainercitizenshiptype">
-                            <div class="form-error"></div>
-                        </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/citizenshipissueddistrict.png" alt="Citizenship Issued District" />
-                            <input type="text" name="citizenshipissueddistrict" id="citizenshipissueddistrict"
-                                placeholder="Citizenship Issued District"
-                                value="<%= userInfo.citizenshipissueddistrict %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainercitizenshipissueddistrict">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Citizenship Issued District"
+                                value="<%= userInfo.citizenshipissueddistrict %>" readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/citizenshipissueddate.svg" alt="Citizenship Issued Date" />
-                            <input type="date" name="citizenshipissueddate" id="citizenshipissueddate"
-                                placeholder="Citizenship Issued Date" value="<%= userInfo.citizenshipissueddate %>" />
-                        </div>
-                        <div class=" label-container" id="labelcontainercitizenshipissueddate">
-                            <div class="form-error"></div>
+                            <input type="date" placeholder="Citizenship Issued Date"
+                                value="<%= userInfo.citizenshipissueddate %>" readonly />
                         </div>
                     </div>
                 </div>
@@ -199,44 +163,32 @@
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/grandfather.svg" alt="Grandfather's Name" />
-                            <input type="text" name="grandfather" id="grandfather" placeholder="Grandfather's Name"
-                                value="<%= userInfo.grandfathername %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainergrandfather">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Grandfather's Name" value="<%= userInfo.grandfathername %>"
+                                readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/father.svg" alt="Father's Name" />
-                            <input type="text" name="father" id="father" placeholder="Father's Name"
-                                value="<%= userInfo.fathername %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainerfather">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Father's Name" value="<%= userInfo.fathername %>"
+                                readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/mother.svg" alt="Mother's Name" />
-                            <input type="text" name="mother" id="mother" placeholder="Mother's Name"
-                                value="<%= userInfo.mothername %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainermother">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Mother's Name" value="<%= userInfo.mothername %>"
+                                readonly />
                         </div>
                     </div>
 
                     <div class="application-form-input">
                         <div class="input-label">
                             <img src="/img/spouse.svg" alt="Spouse's Name" />
-                            <input type="text" name="spouse" id="spouse" placeholder="Spouse's Name"
-                                value="<%= userInfo.spousename %>" />
-                        </div>
-                        <div class="label-container" id="labelcontainerspouse">
-                            <div class="form-error"></div>
+                            <input type="text" placeholder="Spouse's Name" value="<%= userInfo.spousename %>"
+                                readonly />
                         </div>
                     </div>
                 </div>
@@ -267,6 +219,7 @@
                 </div>
             </form>
         </div>
+
         <div>
             <button type="submit" class="submit-button">Submit Application</button>
         </div>

@@ -3,7 +3,8 @@ const {
 } = require("../utils/logger");
 
 const {
-    getUserInfo
+    getUserInfo,
+    getApplicationInfo,
 } = require("../utils/utils");
 
 const {
@@ -13,11 +14,18 @@ const {
 async function index(req, res) {
     try {
         let email = req.session.user;
-        const userInfo = await getUserInfo(email);
-        if (userInfo.status) {
-            res.render('application/index', {
-                userInfo: userInfo.result[0]
-            });
+        const applicationInfo = await getApplicationInfo(email);
+
+        if (applicationInfo.status) {
+            if (applicationInfo.result.length != 0) {
+                const userInfo = await getUserInfo(email);
+                res.render('application/index', {
+                    userInfo: userInfo.result[0],
+                    applicationInfo: applicationInfo.result[0],
+                });
+            } else {
+                res.redirect('/dashboard/application/create');
+            }
         }
     } catch (error) {
         res.render("error", {
@@ -29,10 +37,19 @@ async function index(req, res) {
 async function create(req, res) {
     try {
         let email = req.session.user;
-        const userInfo = await getUserInfo(email);
-        res.render('application/create', {
-            userInfo: userInfo.result[0]
-        });
+        const applicationInfo = await getApplicationInfo(email);
+
+        if (applicationInfo.status) {
+            if (applicationInfo.result.length != 0) {
+                res.redirect('/dashboard/application/');
+            } else {
+                const userInfo = await getUserInfo(email);
+
+                res.render('application/create', {
+                    userInfo: userInfo.result[0]
+                });
+            }
+        }
     } catch (error) {
         logger.error(`APPLICATION VIEW ERROR: ${error}`);
         res.render("error", {
@@ -48,14 +65,18 @@ async function store(req, res) {
             licensecategory,
         } = req.body;
 
+        let id;
         let email = req.session.user;
 
         let tempInfo = await getUserInfo(email);
-        let id = tempInfo.result[0].id;
+        if (tempInfo.status) {
+            id = tempInfo.result[0].id;
+        }
+
 
         let officeVisitDate = new Date();
         officeVisitDate.setMonth(officeVisitDate.getMonth() + 1);
-        officeVisitDate = officeVisitDate.toISOString().slice(0,10);
+        officeVisitDate = officeVisitDate.toISOString().slice(0, 10);
 
         const userInfo = {
             id,
@@ -67,7 +88,8 @@ async function store(req, res) {
 
         const result = await storeApplication(userInfo);
         if (result.status) {
-            res.redirect('/dashboard');
+            //Here will be function call for email handler {WIP}...
+            res.redirect('/dashboard/application/');
         } else {
             throw (result.error);
         }

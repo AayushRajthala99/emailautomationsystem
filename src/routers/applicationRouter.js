@@ -11,5 +11,4 @@ router.get('/', index);
 router.get('/create', create);
 router.post('/create', store);
 
-
 module.exports = router;

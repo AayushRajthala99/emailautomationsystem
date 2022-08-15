@@ -11,16 +11,20 @@ const storeApplication = async (userInfo) => {
         const result = await promisifiedQuery(
             `INSERT INTO application (
                 user_id,
+                name,
                 email,
                 licensecategory,
-                officevisitdate
+                officevisitdate,
+                hasapplied
                 ) 
                 VALUES
                 (
                 ${userInfo.id},
+                ${userInfo.fullname},
                 '${userInfo.email}',
                 '${userInfo.licensecategory}',
-                '${userInfo.officeVisitDate}'
+                '${userInfo.officeVisitDate}',
+                '1'
                 );`
         );
         return {
