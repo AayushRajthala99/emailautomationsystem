@@ -11,17 +11,18 @@
 </head>
 
 <body>
-    <main class='collapsedMain'>
-        <span class="head">🤨️</span>
-        <span class="oops">OOPS! SOMETHING WENT WRONG</span>
-        <% if (error) { %>
+    <span class="head">🤨️</span>
+    <span class="oops">OOPS! SOMETHING WENT WRONG</span>
+    <% if (error) { %>
+    <i>
         <p><%= error %></p>
-        <% } else { %>
+    </i>
+    <% } else { %>
+    <i>
         <p>Sorry, the page you're looking for does not exist.</p>
-        <% } %>
-        <a href="/dashboard">Return Home</a>
-    </main>
+    </i>
+    <% } %>
+    <div><a href="/dashboard">Return Home</a></div>
 </body>
-<%- include('./footer.ejs') %>
 
 </html>

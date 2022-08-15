@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'PoppinsRegular';
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'PoppinsLight';
+    src: url(../fonts/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: 'PoppinsMedium';
+    src: url(../fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'PoppinsSemiBold';
+    src: url(../fonts/Poppins-SemiBold.ttf);
+}
+
 body {
     height: 100vh;
     width: 100vw;
@@ -7,60 +27,56 @@ body {
     align-items: center;
 }
 
-main {
-    display: flex;
-    background-color: #f6f7fd;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 80vw;
-}
-
-.collapsedMain {
-    background-color: #656793;
-    border: 100px;
-    border-radius: 5%;
-}
-
-main>* {
-    margin-bottom: 20px;
-}
-
 .head {
     font-size: 25vh;
-    font-family: 'UniSansHeavy', sans-serif;
-    color: #1e213e;
+    font-family: 'PoppinsSemiBold', sans-serif;
+    color: #DC133C;
+}
+
+.error {
+    display: flex;
+    gap: 1rem;
 }
 
 .oops {
-    font-size: 7vh;
+    font-size: 6.5vh;
     text-align: center;
-    font-family: 'UniSansRegular', sans-serif;
-    color: #EBEFFF;
+    font-family: 'PoppinsLight', sans-serif;
+    color: #2360B9;
+    display: flex;
+}
+
+.notfound {
+    font-size: 6.5vh;
+    text-align: center;
+    font-family: 'PoppinsLight', sans-serif;
+    color: #DC133C;
+
 }
 
 p {
-    font-size: 3vh;
+    font-size: 2.5vh;
     text-align: center;
-    color: #1e213e;
-    font-family: 'UniSansSemiBoldItalic', sans-serif;
+    color: #555;
+    font-family: 'PoppinsRegular', sans-serif;
     letter-spacing: 1px;
 }
 
 a {
-    background-color: #1e213e;
-    padding: 12px 20px;
-    font-size: 22px;
-    font-family: 'UniSansHeavy', sans-serif;
-    letter-spacing: 1px;
-    color: #EBEFFF;
+    cursor: pointer;
+    background-color: #2360B9;
+    border-color: #2460b9;
+    border: 1px solid transparent;
+    color: #ffffff;
+    width: 100%;
+    font-size: .813rem;
+    border-radius: 0.3rem;
+    padding: 0.8rem 1.8rem;
+    letter-spacing: .5px;
+    line-height: 6.6;
     height: 50px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: inherit;
 }
 
 @media only screen and (max-width: 1200px) {

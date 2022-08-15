@@ -6,29 +6,6 @@ const {
     promisifiedQuery
 } = require("../utils/utils");
 
-const getUserInfo = async (email) => {
-    try {
-        const result = await promisifiedQuery(
-            `SELECT *, 
-            DATE_FORMAT(dob, '%Y-%m-%d') as dob,
-            DATE_FORMAT(citizenshipissueddate, '%Y-%m-%d') as citizenshipissueddate,
-            DATE_FORMAT(licenseissueddate, '%Y-%m-%d') as licenseissueddate,
-            DATE_FORMAT(licenseexpirydate, '%Y-%m-%d') as licenseexpirydate
-            FROM user where email='${email}' AND deleted_at is NULL;`
-        );
-        return {
-            status: true,
-            result: result,
-        };
-    } catch (error) {
-        logger.error(`Login Info Error:  ${error}`);
-        return {
-            status: false,
-            error: error,
-        };
-    }
-};
-
 const userUpdate = async (userInfo) => {
     try {
         const result = await promisifiedQuery(
@@ -72,6 +49,5 @@ const userUpdate = async (userInfo) => {
 };
 
 module.exports = {
-    getUserInfo,
     userUpdate,
 };

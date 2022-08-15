@@ -28,26 +28,29 @@
                     <div class="dashboard-item-title">Personal Details</div>
                 </div>
             </a>
-            <% if(userInfo.filledprofile == '1' && (userInfo.haslicense == null || userInfo.haslicense == '0')){ %>
-            <a href="dashboard/application/create">
-                <div class="dashboard-item">
-                    <div class="dashboard-item-icon">
-                        <img src="/img/Apply.png" alt="Apply For Driving License">
-                    </div>
-                    <div class="dashboard-item-title">Apply for Driving License</div>
-                </div>
-            </a>
-            <% } %>
+
             <% if(userInfo.filledprofile == '1' && userInfo.haslicense == '1'){ %>
-            <a href="dashboard/application">
+            <a href="dashboard/license">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">
-                        <img src="/img/View.png" alt="View Driving License Application">
+                        <img src="/img/View.png" alt="View Driving License">
                     </div>
                     <div class="dashboard-item-title">View Driving License</div>
                 </div>
             </a>
             <% } %>
+
+            <% if(userInfo.filledprofile == '1'){ %>
+            <a href="dashboard/application/">
+                <div class="dashboard-item">
+                    <div class="dashboard-item-icon">
+                        <img src="/img/Apply.png" alt="License Application">
+                    </div>
+                    <div class="dashboard-item-title">License Application</div>
+                </div>
+            </a>
+            <% } %>
+
             <a href="/logout">
                 <div class="dashboard-item">
                     <div class="dashboard-item-icon">

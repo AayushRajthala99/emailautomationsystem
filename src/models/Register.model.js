@@ -5,26 +5,9 @@ const {
 } = require('../utils/logger');
 
 const {
-    promisifiedQuery
+    promisifiedQuery,
+    getUserInfo,
 } = require('../utils/utils');
-
-const getUserInfo = async (email) => {
-    try {
-        const result = await promisifiedQuery(
-            `SELECT * FROM user where email='${email}' AND deleted_at is NULL;`
-        )
-        return {
-            status: true,
-            result: result
-        };
-    } catch (error) {
-        logger.error(`User Info Fetch Error:  ${error}`);
-        return {
-            status: false,
-            error: error
-        };
-    }
-}
 
 const userRegistration = async (fullname, email, password) => {
     db.beginTransaction();
@@ -66,6 +49,5 @@ const userRegistration = async (fullname, email, password) => {
 }
 
 module.exports = {
-    getUserInfo,
     userRegistration,
 }

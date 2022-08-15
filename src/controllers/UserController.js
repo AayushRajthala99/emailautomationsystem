@@ -3,11 +3,11 @@ const {
 } = require("../utils/logger");
 
 const {
-    getUserInfo
-} = require("../models/User.model");
+    getUserInfo,
+} = require("../utils/utils");
 
 const {
-    userUpdate
+    userUpdate,
 } = require("../models/User.model");
 
 async function index(req, res) {

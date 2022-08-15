@@ -3,12 +3,8 @@ const router = express.Router()
 
 const {
     index,
-    create,
-    store,
-} = require('../controllers/ApplicationController')
+} = require('../controllers/LicenseController')
 
 router.get('/', index);
-router.get('/create', create);
-router.post('/create', store);
 
 module.exports = router;
