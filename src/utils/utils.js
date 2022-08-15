@@ -81,9 +81,43 @@ const getApplicationInfo = async (email) => {
     }
 };
 
+const generatePDF = async (email) => {
+    try {
+        //PDF GENERATION CODE...
+        return {
+            status: true,
+            result: result,
+        };
+    } catch (error) {
+        logger.error(`PDF GENERATION ERROR:  ${error}`);
+        return {
+            status: false,
+            error: error,
+        };
+    }
+};
+
+const sendEmail = async (email) => {
+    try {
+        //SEND EMAIL CODE...
+        return {
+            status: true,
+            result: result,
+        };
+    } catch (error) {
+        logger.error(`SEND EMAIL ERROR:  ${error}`);
+        return {
+            status: false,
+            error: error,
+        };
+    }
+};
+
 module.exports = {
     promisifiedQuery,
     getColumnInfo,
     getUserInfo,
     getApplicationInfo,
+    generatePDF,
+    sendEmail,
 }
