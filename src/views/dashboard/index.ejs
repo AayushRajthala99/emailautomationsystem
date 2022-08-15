@@ -28,6 +28,18 @@
                     <div class="dashboard-item-title">Personal Details</div>
                 </div>
             </a>
+
+            <% if(userInfo.filledprofile == '1' && userInfo.haslicense == '1'){ %>
+            <a href="dashboard/license">
+                <div class="dashboard-item">
+                    <div class="dashboard-item-icon">
+                        <img src="/img/View.png" alt="View Driving License">
+                    </div>
+                    <div class="dashboard-item-title">View Driving License</div>
+                </div>
+            </a>
+            <% } %>
+
             <% if(userInfo.filledprofile == '1'){ %>
             <a href="dashboard/application/">
                 <div class="dashboard-item">
@@ -35,17 +47,6 @@
                         <img src="/img/Apply.png" alt="License Application">
                     </div>
                     <div class="dashboard-item-title">License Application</div>
-                </div>
-            </a>
-            <% } %>
-
-            <% if(userInfo.filledprofile == '1' && userInfo.haslicense == '1'){ %>
-            <a href="dashboard/application">
-                <div class="dashboard-item">
-                    <div class="dashboard-item-icon">
-                        <img src="/img/View.png" alt="View Driving License">
-                    </div>
-                    <div class="dashboard-item-title">View Driving License</div>
                 </div>
             </a>
             <% } %>

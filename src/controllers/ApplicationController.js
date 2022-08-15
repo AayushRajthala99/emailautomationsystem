@@ -28,8 +28,9 @@ async function index(req, res) {
             }
         }
     } catch (error) {
+        logger.error(`APPLICATION VIEW ERROR: ${error}`);
         res.render("error", {
-            error: "Application Doesn't Exist",
+            error: "ERROR LOADING APPLICATION VIEW PAGE",
         });
     }
 }
@@ -51,9 +52,9 @@ async function create(req, res) {
             }
         }
     } catch (error) {
-        logger.error(`APPLICATION VIEW ERROR: ${error}`);
+        logger.error(`APPLICATION CREATE VIEW ERROR: ${error}`);
         res.render("error", {
-            error: "ERROR LOADING APPLICATION VIEW PAGE",
+            error: "ERROR LOADING APPLICATION CREATE PAGE",
         });
     }
 }
