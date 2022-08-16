@@ -1,3 +1,12 @@
+const ejs = require('ejs');
+const {
+    application
+} = require('express');
+const pdf = require('html-pdf');
+const {
+    logger
+} = require("../utils/logger");
+
 //Promisified Query...
 const promisifiedQuery = (options) => {
     const db = require('../../config/mysql');
@@ -81,13 +90,31 @@ const getApplicationInfo = async (email) => {
     }
 };
 
-const generatePDF = async (email) => {
+const generatePDF = async (filePath, pdfPath, userInfo, applicationInfo) => {
     try {
         //PDF GENERATION CODE...
-        return {
-            status: true,
-            result: result,
-        };
+        return new Promise(function (resolve, reject) {
+            ejs.renderFile((filePath), {
+                userInfo: userInfo,
+                applicationInfo: applicationInfo
+            }, (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    let options = {
+                        "height": "10.5in",
+                        "width": "7in",
+                    };
+                    pdf.create(data, options).toFile(pdfPath, function (error) {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(true);
+                        }
+                    })
+                }
+            })
+        })
     } catch (error) {
         logger.error(`PDF GENERATION ERROR:  ${error}`);
         return {

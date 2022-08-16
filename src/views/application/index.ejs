@@ -41,9 +41,6 @@
                 <% } %>
             </div>
         </div>
-        <div class="pp-img">
-            <img src="/img/pp.png" alt="PP Size Photo">
-        </div>
         <div class=" pdf-field">
             <div class="field-name">Applied Category</div>
             <div class="field-value">
@@ -228,9 +225,25 @@
             <br>
             2. Medical Report provided by Doctor
         </div>
+        <br>
+        <br>
+        <br>
+        <%- include('../footer.ejs') %>
+        <div class="application-options">
+            <form method="GET" action="/dashboard/application/download">
+                <button class="button">
+                    <img src="/img/download.svg" alt="Download">
+                    <span>Download</span>
+                </button>
+            </form>
+            <form method="GET" action="/dashboard/application/email">
+                <button class="button">
+                    <img src="/img/mail.png" alt="Send Mail" class="email">
+                    <span>Send Email</span>
+                </button>
+            </form>
+        </div>
     </div>
-
-
 </body>
 
 </html>

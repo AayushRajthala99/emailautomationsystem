@@ -55,12 +55,22 @@ header {
     margin-left: 20px;
 }
 
-.pp-img img {
+.application-options {
     position: absolute;
     height: 170px;
     width: 140px;
-    top: 20px;
+    top: 40px;
     right: 230px;
+}
+
+.application-options button {
+    height: 60px;
+    margin: 5px 0;
+}
+
+.application-options span {
+    display: flex;
+    flex-direction: column;
 }
 
 .separator {

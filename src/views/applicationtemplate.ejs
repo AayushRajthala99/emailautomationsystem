@@ -5,231 +5,325 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/pdftemplate.css">
     <title>PDF | EAS</title>
 </head>
 
+<style>
+    /* FONTS */
+    @font-face {
+        font-family: 'PoppinsRegular';
+        src: url(/public/fonts/Poppins-Regular.ttf);
+    }
+
+    /* Global */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'PoppinsRegular', sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    body {
+        align-items: center;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    header {
+        height: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        background-color: #D01E29;
+        color: #FFFFFF;
+        width: 97%;
+        height: 45px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    footer a {
+        color: #FFFFFF;
+        font-weight: normal;
+        margin: 0;
+        border-color: #D01E29;
+        border-bottom: 1px solid #D01E29;
+    }
+
+    .text-primary {
+        color: #2460BC;
+    }
+
+    .text-danger {
+        color: #D01E29;
+    }
+
+    .separator {
+        border-top: 3px solid #bbb;
+        width: 100%;
+        align-self: center;
+        margin: 10px 0;
+    }
+
+    .pdf-container {
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .pdf-field {
+        width: 60%;
+        margin: 10px 0;
+    }
+
+    .field-name {
+        font-size: 18px;
+        width: 170px;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+
+    .pp-img {
+        position: absolute;
+        height: 170px;
+        width: 140px;
+        top: 20px;
+        right: 230px;
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .notes {
+        text-align: justify;
+        text-justify: inter-word;
+        font-size: 16px;
+        margin: 3px 0;
+        width: 100%;
+    }
+</style>
+
 <body oncontextmenu="return false">
-    <div class="header-container">
-        <header>
-            <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal"></div>
-            <div class="art-container">
-                <div class="art-content">
-                    <p class="text-primary">Driving License Application</p>
-                </div>
-            </div>
-            <div class="logo"><img src="/img/Nepal.png" alt="Flag of Nepal"></div>
-        </header>
-        <div class="separator"></div>
-    </div>
+    <header>
+        <p class="text-primary">Driving License Application</p>
+    </header>
+    <div class="separator"></div>
     <div class="pdf-container">
         <div class="pdf-field">
-            <div class="pdf-field">
-                <div class="field-name text-danger">Reference Number</div>
-                <div class="field-value"><b>[ <%= applicationInfo.id %> ]</b></div>
-            </div>
-            <div class="pdf-field">
-                <div class="field-name">Application Type</div>
-                <div class="field-value">
-                    <% if(applicationInfo.type == '0') { %>
-                    New License
-                    <% } %>
-                    <% if(applicationInfo.type == '1') { %>
-                    Add Category
-                    <% } %>
-                </div>
-            </div>
-            <div class="pp-img">
-                <img src="/img/pp.png" alt="PP Size Photo">
-            </div>
-            <div class=" pdf-field">
-                <div class="field-name">Applied Category</div>
-                <div class="field-value">
-                    <% if(applicationInfo.licensecategory == '0') { %>
-                    (A) Motorcycle, Scooter, Moped
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '1') { %>
-                    (B) Car, Jeep, Delivery Van
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '2') { %>
-                    (C) Tempo, Auto Rickshaw
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '3') { %>
-                    (C1) E-Rickshaw
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '4') { %>
-                    (D) Power Tilter
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '5') { %>
-                    (E) Tractor
-                    <% } %>
-                    <% if(applicationInfo.licensecategory == '6') { %>
-                    (K) Scooter, Moped
-                    <% } %>
-                </div>
-            </div>
-            <div class="pdf-field">
-                <div class="field-name">Registration Date</div>
-                <div class="field-value"><%= applicationInfo.registrationdate %> A.D.</div>
-            </div>
+            <div class="field-name text-danger">Reference Number</div>
+            <b>[ <%= applicationInfo.id %> ]</b>
+        </div>
 
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Applicant Name</div>
-                    <div class="field-value"><%= applicationInfo.name %></div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Date of Birth</div>
-                    <div class="field-value"><%= userInfo.dob %> A.D.</div>
-                </div>
-            </div>
+        <div class="pdf-field">
+            <div class="field-name">Application Type</div>
+            <% if(applicationInfo.type == '0') { %>
+            New License
+            <% } %>
+            <% if(applicationInfo.type == '1') { %>
+            Add Category
+            <% } %>
+        </div>
 
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Gender</div>
-                    <div class="field-value">
-                        <% if(userInfo.gender == '0') { %>
-                        Male
-                        <% } %>
-                        <% if(userInfo.gender == '1') { %>
-                        Female
-                        <% } %>
-                        <% if(userInfo.gender == '2') { %>
-                        Others
-                        <% } %>
-                    </div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Blood Group</div>
-                    <div class="field-value">
-                        <% if(userInfo.bloodgroup == '0') { %>
-                        A positive (A+)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '1') { %>
-                        A negative (A-)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '2') { %>
-                        B positive (B+)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '3') { %>
-                        B negative (B-)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '4') { %>
-                        O positive (O+)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '5') { %>
-                        O negative (O-)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '6') { %>
-                        AB positive (AB+)
-                        <% } %>
-                        <% if(userInfo.bloodgroup == '7') { %>
-                        AB negative (AB-)
-                        <% } %>
-                    </div>
-                </div>
-            </div>
+        <div class="pp-img">PP Size Photo</div>
 
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Permanent Address</div>
-                    <div class="field-value"><%= userInfo.paddress %></div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Temporary Address</div>
-                    <% if(userInfo.taddress) {%>
-                    <div class="field-value"><%= userInfo.taddress %></div>
-                    <% } else { %>
-                    <div class="field-value">---</div>
-                    <% }%>
-                </div>
-
-            </div>
-
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Email</div>
-                    <div class="field-value"><%= userInfo.email %></div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Mobile Number</div>
-                    <div class="field-value">(+977) <%= userInfo.mobile %></div>
-                </div>
-            </div>
-
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Guardian's Name</div>
-                    <div class="field-value">
-                        <% if(userInfo.fathername) { %>
-                        <%= userInfo.fathername %>
-                        <% }else if(userInfo.mothername){ %>
-                        <%= userInfo.mothername %>
-                        <% }else{ %>
-                        ---
-                        <% } %>
-                    </div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Citizenship Number</div>
-                    <div class="field-value"><%= userInfo.citizenship %>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Citizenship Type</div>
-                    <div class="field-value">
-                        <% if(userInfo.citizenshiptype == '0') { %>
-                        Descendant
-                        <% } %>
-                        <% if(userInfo.citizenshiptype == '1') { %>
-                        Birth
-                        <% } %>
-                        <% if(userInfo.citizenshiptype == '2') { %>
-                        Adopted
-                        <% } %>
-                        <% if(userInfo.citizenshiptype == '3') { %>
-                        Complimentary
-                        <% } %>
-                    </div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Issued Date</div>
-                    <div class="field-value"><%= userInfo.citizenshipissueddate %> A.D.
-                    </div>
-                </div>
-            </div>
-            <div class="pdf-field-container">
-                <div class="pdf-field">
-                    <div class="field-name">Visit Office</div>
-                    <div class="field-value">TMO, Lalitpur</div>
-                </div>
-                <div class="pdf-field">
-                    <div class="field-name">Office Visit Date</div>
-                    <div class="field-value"><%= applicationInfo.officevisitdate %> A.D.</div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="notes">
-                <b>Note: </b>Applicant must attend the Visit Office for biometric on Office Visit Date mentioned above.
-                If
-                in case, applicant fails to attend the visit office, he/she will have to re-apply for the online
-                application
-                again and the paid amount will not be refunded.
-            </div>
-            <div class="notes">
-                <b>Please carry below mentioned documents along with this application</b>
-                <br>
-                1. Original and Photocopy of Citizenship
-                <br>
-                2. Medical Report provided by Doctor
+        <div class=" pdf-field">
+            <div class="field-name">Applied Category</div>
+            <div class="field-value">
+                <% if(applicationInfo.licensecategory == '0') { %>
+                (A) Motorcycle, Scooter, Moped
+                <% } %>
+                <% if(applicationInfo.licensecategory == '1') { %>
+                (B) Car, Jeep, Delivery Van
+                <% } %>
+                <% if(applicationInfo.licensecategory == '2') { %>
+                (C) Tempo, Auto Rickshaw
+                <% } %>
+                <% if(applicationInfo.licensecategory == '3') { %>
+                (C1) E-Rickshaw
+                <% } %>
+                <% if(applicationInfo.licensecategory == '4') { %>
+                (D) Power Tilter
+                <% } %>
+                <% if(applicationInfo.licensecategory == '5') { %>
+                (E) Tractor
+                <% } %>
+                <% if(applicationInfo.licensecategory == '6') { %>
+                (K) Scooter, Moped
+                <% } %>
             </div>
         </div>
 
+        <div class="pdf-field">
+            <div class="field-name">Registration Date</div>
+            <div class="field-value"><%= applicationInfo.registrationdate %> A.D.</div>
+        </div>
 
+        <div class="pdf-field">
+            <div class="field-name">Applicant Name</div>
+            <div class="field-value"><%= applicationInfo.name %></div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Date of Birth</div>
+            <div class="field-value"><%= userInfo.dob %> A.D.</div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Gender</div>
+            <div class="field-value">
+                <% if(userInfo.gender == '0') { %>
+                Male
+                <% } %>
+                <% if(userInfo.gender == '1') { %>
+                Female
+                <% } %>
+                <% if(userInfo.gender == '2') { %>
+                Others
+                <% } %>
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Blood Group</div>
+            <div class="field-value">
+                <% if(userInfo.bloodgroup == '0') { %>
+                A positive (A+)
+                <% } %>
+                <% if(userInfo.bloodgroup == '1') { %>
+                A negative (A-)
+                <% } %>
+                <% if(userInfo.bloodgroup == '2') { %>
+                B positive (B+)
+                <% } %>
+                <% if(userInfo.bloodgroup == '3') { %>
+                B negative (B-)
+                <% } %>
+                <% if(userInfo.bloodgroup == '4') { %>
+                O positive (O+)
+                <% } %>
+                <% if(userInfo.bloodgroup == '5') { %>
+                O negative (O-)
+                <% } %>
+                <% if(userInfo.bloodgroup == '6') { %>
+                AB positive (AB+)
+                <% } %>
+                <% if(userInfo.bloodgroup == '7') { %>
+                AB negative (AB-)
+                <% } %>
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Permanent Address</div>
+            <div class="field-value"><%= userInfo.paddress %></div>
+        </div>
+        <div class="pdf-field">
+            <div class="field-name">Temporary Address</div>
+            <% if(userInfo.taddress) {%>
+            <div class="field-value"><%= userInfo.taddress %></div>
+            <% } else { %>
+            <div class="field-value">---</div>
+            <% }%>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Email</div>
+            <div class="field-value"><%= userInfo.email %></div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Mobile Number</div>
+            <div class="field-value">(+977) <%= userInfo.mobile %></div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Guardian's Name</div>
+            <div class="field-value">
+                <% if(userInfo.fathername) { %>
+                <%= userInfo.fathername %>
+                <% }else if(userInfo.mothername){ %>
+                <%= userInfo.mothername %>
+                <% }else{ %>
+                ---
+                <% } %>
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Citizenship Number</div>
+            <div class="field-value"><%= userInfo.citizenship %>
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Citizenship Type</div>
+            <div class="field-value">
+                <% if(userInfo.citizenshiptype == '0') { %>
+                Descendant
+                <% } %>
+                <% if(userInfo.citizenshiptype == '1') { %>
+                Birth
+                <% } %>
+                <% if(userInfo.citizenshiptype == '2') { %>
+                Adopted
+                <% } %>
+                <% if(userInfo.citizenshiptype == '3') { %>
+                Complimentary
+                <% } %>
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Issued Date</div>
+            <div class="field-value"><%= userInfo.citizenshipissueddate %> A.D.
+            </div>
+        </div>
+
+        <div class="pdf-field">
+            <div class="field-name">Visit Office</div>
+            <div class="field-value">TMO, Lalitpur</div>
+        </div>
+        <div class="pdf-field">
+            <div class="field-name">Office Visit Date</div>
+            <div class="field-value"><%= applicationInfo.officevisitdate %> A.D.</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="notes">
+            <b>Note: </b>Applicant must attend the Visit Office for biometric on Office Visit Date mentioned above.
+            If
+            in case, applicant fails to attend the visit office, he/she will have to re-apply for the online
+            application
+            again and the paid amount will not be refunded.
+        </div>
+
+        <div class="notes">
+            <b>Please carry below mentioned documents along with this application</b>
+            <br>
+            1. Original and Photocopy of Citizenship
+            <br>
+            2. Medical Report provided by Doctor
+        </div>
+        <br>
+        <br>
+        <br>
+        <%- include('footer.ejs') %>
+    </div>
 </body>
 
 </html>

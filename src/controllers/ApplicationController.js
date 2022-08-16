@@ -1,10 +1,14 @@
 const {
     logger
 } = require("../utils/logger");
+const path = require('path');
+const fs = require('fs');
 
 const {
     getUserInfo,
     getApplicationInfo,
+    generatePDF,
+    sendEmail,
 } = require("../utils/utils");
 
 const {
@@ -107,8 +111,52 @@ async function store(req, res) {
     }
 }
 
+async function download(req, res) {
+    try {
+        let email = req.session.user;
+        const filePath = path.join(__dirname, '../views/', "applicationtemplate.ejs");
+
+        let date = new Date().toISOString().replace(/:/g, '-');
+        date = date.substring(0, 10);
+
+        // PDF Value Acquisition...
+        const userInfo = await getUserInfo(email);
+        const applicationInfo = await getApplicationInfo(email);
+
+        const pdfPath = path.join(__dirname, '../../report_files/', `${userInfo.result[0].name}-license-${date}.pdf`);
+
+        await generatePDF(filePath, pdfPath, userInfo.result[0], applicationInfo.result[0]);
+        res.download(pdfPath, function (err) {
+            if (err) {
+                throw err;
+            }
+            fs.unlink(pdfPath, function () {
+                // console.log("File was deleted");
+            })
+        })
+    } catch (error) {
+        logger.error(`DOWNLOAD ERROR: ${error}`);
+        res.render('error', {
+            error: "Something Went Wrong While Downloading Application"
+        });
+    }
+}
+
+async function email(req, res) {
+    try {
+        //Email Handler Code
+    } catch (error) {
+        logger.error(`APPLICATION STORE ERROR: ${error}`);
+        res.render('error', {
+            error: "Something Went Wrong While Storing Application"
+        });
+    }
+}
+
 module.exports = {
     index,
     create,
     store,
+    download,
+    email,
 };
