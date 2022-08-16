@@ -2,11 +2,6 @@ body {
     background: #FFFFFF;
 }
 
-div {
-    text-align: justify;
-    text-justify: inter-word;
-}
-
 .header-container {
     display: flex;
     flex-direction: column;
@@ -64,6 +59,17 @@ header {
     position: absolute;
     height: 170px;
     width: 140px;
-    top: 0px;
+    top: 20px;
     right: 230px;
+}
+
+.separator {
+    margin: 10px 0;
+}
+
+.notes {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 14px;
+    margin: 3px 0;
 }
