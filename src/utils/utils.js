@@ -142,10 +142,10 @@ const sendEmail = async (mailOptions) => {
             });
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
-                    console.log("Email Send Error: ", error);
+                    // console.log("Email Send Error: ", error);
                     reject(error);
                 } else {
-                    console.log('Email sent: ' + info.response);
+                    // console.log('Email sent: ' + info.response);
                     resolve(true);
                 }
             });
