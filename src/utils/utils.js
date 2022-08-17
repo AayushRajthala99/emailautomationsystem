@@ -71,7 +71,7 @@ const getApplicationInfo = async (email) => {
             `SELECT
             *,
             DATE_FORMAT(officevisitdate, '%Y-%m-%d') AS officevisitdate,
-            DATE_FORMAT(created_at, '%Y-%m-%d') AS registrationdate
+            DATE_FORMAT(created_at, '%Y-%m-%d') AS applieddate
             FROM application
             WHERE email = '${email}' AND deleted_at IS NULL
             ORDER BY created_at DESC;`
