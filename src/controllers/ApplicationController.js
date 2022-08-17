@@ -166,7 +166,7 @@ async function email(req, res) {
             from: `"Online Driving License System - EAS 👻" <developers_eas@outlook.com>`, // sender address
             to: `${email}`, // list of receivers
             subject: "Online Driving License Application", // Subject line
-            text: `Hello ${userInfo.result[0].name},\n\nPlease find the attached document of your Online Driving License Application [ Reference Number - ${applicationInfo.result[0].id} ].\nWith regards,\nOnline Driving License System`,
+            text: `Hello ${userInfo.result[0].name},\n\nPlease find the attached document of your Online Driving License Application.\n[ Reference Number - ${applicationInfo.result[0].id} ]\nWith regards,\nOnline Driving License System`,
             attachments: [{
                 filename: `${userInfo.result[0].name}-report-${date}.pdf`,
                 path: `${pdfPath}`,
