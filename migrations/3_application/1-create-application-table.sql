@@ -26,6 +26,7 @@ CREATE TABLE `application` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `type` tinyint(1) DEFAULT NULL COMMENT '0 = ''New License''\r\n1 = ''Add Category''',
   `licensecategory` varchar(10) NOT NULL COMMENT '0 - (A) Motorcycle, Scooter, Moped\r\n1 - (B) Car, Jeep, Delivery Van\r\n2 - (C) Tempo, Auto Rickshaw\r\n3- (C1) E-Rickshaw\r\n4 - (D) Power Tilter\r\n5 - (E) Tractor\r\n6 - (K) Scooter, Moped',
   `officevisitdate` date NOT NULL,
   `hasapplied` tinyint(1) DEFAULT NULL COMMENT '1 = ''Applied''\r\n0 = ''Not Applied''',
