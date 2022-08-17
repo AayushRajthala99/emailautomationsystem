@@ -11,8 +11,8 @@ const {
 
 router.get('/', index);
 router.get('/create', create);
+router.post('/create', store);
 router.get('/download', download);
 router.get('/email', email);
-router.post('/create', store);
 
 module.exports = router;
