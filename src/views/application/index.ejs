@@ -16,19 +16,19 @@
             <div class="logo"><img src="/img/Logo.png" alt="Government of Nepal"></div>
             <div class="art-container">
                 <div class="art-content">
-                    <p class="text-primary">Driving License Application</p>
+                    <p class="text-danger">Driving License Application</p>
                 </div>
-            </div>
-            <div class="logo"><img src="/img/Nepal.png" alt="Flag of Nepal"></div>
+                <div class="art-content">
+                    <a href="/dashboard" class="text-primary" style="font-size: 20px;">
+                        << Dashboard</a> </div> </div> <div class="logo"><img src="/img/Nepal.png" alt="Flag of Nepal">
+                </div>
         </header>
         <div class="separator"></div>
     </div>
     <div class="pdf-container">
         <div class="pdf-field">
-            <a href="/dashboard" class="text-primary" style="font-size: 20px;">
-                << Dashboard</a> </div> <div class="pdf-field">
-                    <div class="field-name text-danger">Reference Number</div>
-                    <div class="field-value"><b>[ <%= applicationInfo.id %> ]</b></div>
+            <div class="field-name text-danger">Reference Number</div>
+            <div class="field-value"><b>[ <%= applicationInfo.id %> ]</b></div>
         </div>
         <div class="pdf-field">
             <div class="field-name">Application Type</div>
@@ -228,7 +228,6 @@
         <br>
         <br>
         <br>
-        <%- include('../footer.ejs') %>
         <div class="application-options">
             <form method="GET" action="/dashboard/application/download">
                 <button class="button">
@@ -245,5 +244,6 @@
         </div>
     </div>
 </body>
+<%- include('../footer.ejs') %>
 
 </html>

@@ -38,6 +38,7 @@
 
     header {
         height: auto;
+        padding-top: 10px;
         width: 100%;
         text-align: center;
         font-size: 1.5rem;
@@ -88,14 +89,9 @@
 
     .pdf-field {
         width: 60%;
-        margin: 10px 0;
-    }
-
-    .field-name {
+        margin: 20px 0;
+        margin-left: 70px;
         font-size: 18px;
-        width: 170px;
-        font-weight: bold;
-        margin-right: 40px;
     }
 
     .pp-img {
@@ -103,9 +99,14 @@
         height: 170px;
         width: 140px;
         top: 20px;
-        right: 230px;
-        text-align: center;
-        vertical-align: center;
+        right: 150px;
+        padding-top: 70px;
+        padding-left: 20px;
+        background-color: #f8faff;
+        border-radius: 15px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: grey;
     }
 
     .notes {
@@ -123,14 +124,12 @@
     </header>
     <div class="separator"></div>
     <div class="pdf-container">
-        <div class="pdf-field">
-            <div class="field-name text-danger">Reference Number</div>
-            <b>[ <%= applicationInfo.id %> ]</b>
+        <div class="pdf-field text-danger">
+            Reference Number: <b>[ <%= applicationInfo.id %> ]</b>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Application Type</div>
-            <% if(applicationInfo.type == '0') { %>
+            Application Type: <% if(applicationInfo.type == '0') { %>
             New License
             <% } %>
             <% if(applicationInfo.type == '1') { %>
@@ -141,165 +140,139 @@
         <div class="pp-img">PP Size Photo</div>
 
         <div class=" pdf-field">
-            <div class="field-name">Applied Category</div>
-            <div class="field-value">
-                <% if(applicationInfo.licensecategory == '0') { %>
-                (A) Motorcycle, Scooter, Moped
-                <% } %>
-                <% if(applicationInfo.licensecategory == '1') { %>
-                (B) Car, Jeep, Delivery Van
-                <% } %>
-                <% if(applicationInfo.licensecategory == '2') { %>
-                (C) Tempo, Auto Rickshaw
-                <% } %>
-                <% if(applicationInfo.licensecategory == '3') { %>
-                (C1) E-Rickshaw
-                <% } %>
-                <% if(applicationInfo.licensecategory == '4') { %>
-                (D) Power Tilter
-                <% } %>
-                <% if(applicationInfo.licensecategory == '5') { %>
-                (E) Tractor
-                <% } %>
-                <% if(applicationInfo.licensecategory == '6') { %>
-                (K) Scooter, Moped
-                <% } %>
-            </div>
+            Applied Category: <% if(applicationInfo.licensecategory == '0') { %>
+            (A) Motorcycle, Scooter, Moped
+            <% } %>
+            <% if(applicationInfo.licensecategory == '1') { %>
+            (B) Car, Jeep, Delivery Van
+            <% } %>
+            <% if(applicationInfo.licensecategory == '2') { %>
+            (C) Tempo, Auto Rickshaw
+            <% } %>
+            <% if(applicationInfo.licensecategory == '3') { %>
+            (C1) E-Rickshaw
+            <% } %>
+            <% if(applicationInfo.licensecategory == '4') { %>
+            (D) Power Tilter
+            <% } %>
+            <% if(applicationInfo.licensecategory == '5') { %>
+            (E) Tractor
+            <% } %>
+            <% if(applicationInfo.licensecategory == '6') { %>
+            (K) Scooter, Moped
+            <% } %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Registration Date</div>
-            <div class="field-value"><%= applicationInfo.registrationdate %> A.D.</div>
+            Registration Date: <%= applicationInfo.registrationdate %> A.D.
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Applicant Name</div>
-            <div class="field-value"><%= applicationInfo.name %></div>
+            Applicant Name: <%= applicationInfo.name %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Date of Birth</div>
-            <div class="field-value"><%= userInfo.dob %> A.D.</div>
+            Date of Birth: <%= userInfo.dob %> A.D.
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Gender</div>
-            <div class="field-value">
-                <% if(userInfo.gender == '0') { %>
-                Male
-                <% } %>
-                <% if(userInfo.gender == '1') { %>
-                Female
-                <% } %>
-                <% if(userInfo.gender == '2') { %>
-                Others
-                <% } %>
-            </div>
+            Gender: <% if(userInfo.gender == '0') { %>
+            Male
+            <% } %>
+            <% if(userInfo.gender == '1') { %>
+            Female
+            <% } %>
+            <% if(userInfo.gender == '2') { %>
+            Others
+            <% } %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Blood Group</div>
-            <div class="field-value">
-                <% if(userInfo.bloodgroup == '0') { %>
-                A positive (A+)
-                <% } %>
-                <% if(userInfo.bloodgroup == '1') { %>
-                A negative (A-)
-                <% } %>
-                <% if(userInfo.bloodgroup == '2') { %>
-                B positive (B+)
-                <% } %>
-                <% if(userInfo.bloodgroup == '3') { %>
-                B negative (B-)
-                <% } %>
-                <% if(userInfo.bloodgroup == '4') { %>
-                O positive (O+)
-                <% } %>
-                <% if(userInfo.bloodgroup == '5') { %>
-                O negative (O-)
-                <% } %>
-                <% if(userInfo.bloodgroup == '6') { %>
-                AB positive (AB+)
-                <% } %>
-                <% if(userInfo.bloodgroup == '7') { %>
-                AB negative (AB-)
-                <% } %>
-            </div>
+            Blood Group: <% if(userInfo.bloodgroup == '0') { %>
+            A positive (A+)
+            <% } %>
+            <% if(userInfo.bloodgroup == '1') { %>
+            A negative (A-)
+            <% } %>
+            <% if(userInfo.bloodgroup == '2') { %>
+            B positive (B+)
+            <% } %>
+            <% if(userInfo.bloodgroup == '3') { %>
+            B negative (B-)
+            <% } %>
+            <% if(userInfo.bloodgroup == '4') { %>
+            O positive (O+)
+            <% } %>
+            <% if(userInfo.bloodgroup == '5') { %>
+            O negative (O-)
+            <% } %>
+            <% if(userInfo.bloodgroup == '6') { %>
+            AB positive (AB+)
+            <% } %>
+            <% if(userInfo.bloodgroup == '7') { %>
+            AB negative (AB-)
+            <% } %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Permanent Address</div>
-            <div class="field-value"><%= userInfo.paddress %></div>
+            Permanent Address: <%= userInfo.paddress %>
         </div>
+
         <div class="pdf-field">
-            <div class="field-name">Temporary Address</div>
-            <% if(userInfo.taddress) {%>
-            <div class="field-value"><%= userInfo.taddress %></div>
+            Temporary Address: <% if(userInfo.taddress) {%>
+            <%= userInfo.taddress %>
             <% } else { %>
-            <div class="field-value">---</div>
+            ---
             <% }%>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Email</div>
-            <div class="field-value"><%= userInfo.email %></div>
+            Email: <%= userInfo.email %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Mobile Number</div>
-            <div class="field-value">(+977) <%= userInfo.mobile %></div>
+            Mobile Number: (+977) <%= userInfo.mobile %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Guardian's Name</div>
-            <div class="field-value">
-                <% if(userInfo.fathername) { %>
-                <%= userInfo.fathername %>
-                <% }else if(userInfo.mothername){ %>
-                <%= userInfo.mothername %>
-                <% }else{ %>
-                ---
-                <% } %>
-            </div>
+            Guardian's Name: <% if(userInfo.fathername) { %>
+            <%= userInfo.fathername %>
+            <% }else if(userInfo.mothername){ %>
+            <%= userInfo.mothername %>
+            <% }else{ %>
+            ---
+            <% } %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Citizenship Number</div>
-            <div class="field-value"><%= userInfo.citizenship %>
-            </div>
+            Citizenship Number: <%= userInfo.citizenship %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Citizenship Type</div>
-            <div class="field-value">
-                <% if(userInfo.citizenshiptype == '0') { %>
-                Descendant
-                <% } %>
-                <% if(userInfo.citizenshiptype == '1') { %>
-                Birth
-                <% } %>
-                <% if(userInfo.citizenshiptype == '2') { %>
-                Adopted
-                <% } %>
-                <% if(userInfo.citizenshiptype == '3') { %>
-                Complimentary
-                <% } %>
-            </div>
+            Citizenship Type: <% if(userInfo.citizenshiptype == '0') { %>
+            Descendant
+            <% } %>
+            <% if(userInfo.citizenshiptype == '1') { %>
+            Birth
+            <% } %>
+            <% if(userInfo.citizenshiptype == '2') { %>
+            Adopted
+            <% } %>
+            <% if(userInfo.citizenshiptype == '3') { %>
+            Complimentary
+            <% } %>
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Issued Date</div>
-            <div class="field-value"><%= userInfo.citizenshipissueddate %> A.D.
-            </div>
+            Issued Date: <%= userInfo.citizenshipissueddate %> A.D.
         </div>
 
         <div class="pdf-field">
-            <div class="field-name">Visit Office</div>
-            <div class="field-value">TMO, Lalitpur</div>
+            Visit Office: Transport Management Office, Lalitpur
         </div>
+
         <div class="pdf-field">
-            <div class="field-name">Office Visit Date</div>
-            <div class="field-value"><%= applicationInfo.officevisitdate %> A.D.</div>
+            Office Visit Date: <%= applicationInfo.officevisitdate %> A.D.
         </div>
 
         <div class="separator"></div>

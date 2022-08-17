@@ -102,7 +102,7 @@ const generatePDF = async (filePath, pdfPath, userInfo, applicationInfo) => {
                     reject(err);
                 } else {
                     let options = {
-                        "height": "10.5in",
+                        "height": "8.65in",
                         "width": "7in",
                     };
                     pdf.create(data, options).toFile(pdfPath, function (error) {
