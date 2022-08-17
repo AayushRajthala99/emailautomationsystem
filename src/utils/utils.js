@@ -1,11 +1,10 @@
 const ejs = require('ejs');
-const {
-    application
-} = require('express');
 const pdf = require('html-pdf');
+const nodemailer = require('nodemailer');
 const {
     logger
 } = require("../utils/logger");
+require('dotenv').config();
 
 //Promisified Query...
 const promisifiedQuery = (options) => {
@@ -124,13 +123,33 @@ const generatePDF = async (filePath, pdfPath, userInfo, applicationInfo) => {
     }
 };
 
-const sendEmail = async (email) => {
+const sendEmail = async (mailOptions) => {
     try {
         //SEND EMAIL CODE...
-        return {
-            status: true,
-            result: result,
-        };
+        return new Promise((resolve, reject) => {
+            let transporter = nodemailer.createTransport({
+                host: process.env.MAIL_HOST,
+                port: process.env.MAIL_PORT,
+                secure: false, // use TLS
+                auth: {
+                    user: process.env.MAIL_USERNAME,
+                    pass: process.env.MAIL_PASSWORD,
+                },
+                tls: {
+                    // do not fail on invalid certs
+                    rejectUnauthorized: false,
+                },
+            });
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log("Email Send Error: ", error);
+                    reject(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                    resolve(true);
+                }
+            });
+        });
     } catch (error) {
         logger.error(`SEND EMAIL ERROR:  ${error}`);
         return {

@@ -14,6 +14,9 @@ const {
 const {
     storeApplication,
 } = require("../models/Application.model");
+const {
+    send
+} = require("process");
 
 async function index(req, res) {
     try {
@@ -144,11 +147,44 @@ async function download(req, res) {
 
 async function email(req, res) {
     try {
-        //Email Handler Code
+        let email = req.session.user;
+        const filePath = path.join(__dirname, '../views/', "applicationtemplate.ejs");
+
+        let date = new Date().toISOString().replace(/:/g, '-');
+        date = date.substring(0, 10);
+
+        // PDF Value Acquisition...
+        const userInfo = await getUserInfo(email);
+        const applicationInfo = await getApplicationInfo(email);
+
+        const pdfPath = path.join(__dirname, '../../report_files/', `${userInfo.result[0].name}-license-${date}.pdf`);
+
+        await generatePDF(filePath, pdfPath, userInfo.result[0], applicationInfo.result[0]);
+
+        // send mail with defined transport object
+        let mailOptions = {
+            from: `"Online Driving License System - EAS 👻" <developers_eas@outlook.com>`, // sender address
+            to: `${email}`, // list of receivers
+            subject: "Online Driving License Application", // Subject line
+            text: `Hello ${userInfo.result[0].name},\n\nPlease find the attached document of your Online Driving License Application [ Reference Number - ${applicationInfo.result[0].id} ].\nWith regards,\nOnline Driving License System`,
+            attachments: [{
+                filename: `${userInfo.result[0].name}-report-${date}.pdf`,
+                path: `${pdfPath}`,
+                contentType: 'application/pdf',
+            }],
+        }
+        await sendEmail(mailOptions);
+        fs.unlink(pdfPath, function (err) {
+            if (err) {
+                // console.log("fs error:", err);
+                throw err
+            }
+        })
+        res.redirect('back');
     } catch (error) {
-        logger.error(`APPLICATION STORE ERROR: ${error}`);
+        logger.error(`EMAIL SEND ERROR: ${error}`);
         res.render('error', {
-            error: "Something Went Wrong While Storing Application"
+            error: "Something Went Wrong While Sending Email"
         });
     }
 }
