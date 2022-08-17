@@ -46,7 +46,7 @@ app.use("/dashboard", checkSignIn, dashboardRouter);
 
 // error handling of middleware
 app.use((err, req, res, next) => {
-  console.log("*******************", err.message, "*******************");
+  // console.log("*******************", err.message, "*******************");
   res.redirect("/");
 });
 

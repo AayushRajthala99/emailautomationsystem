@@ -5,7 +5,6 @@ const {
 
 const {
   getUserInfo,
-  getApplicationInfo,
 } = require("../utils/utils");
 
 const {

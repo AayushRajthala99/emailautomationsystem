@@ -4,7 +4,6 @@ const {
 
 const {
   getUserInfo,
-  getApplicationInfo,
 } = require("../utils/utils");
 
 async function index(req, res, next) {
@@ -16,18 +15,7 @@ async function index(req, res, next) {
       req.session.destroy(); // for loginErr session, otherwise error will be shown when loading / url page as well
     } else {
       let email = req.session.user;
-
       const userInfo = await getUserInfo(email);
-      // let applicationInfo = await getApplicationInfo(email);
-      // let applicationstatus = null;
-
-      // if (applicationInfo.status) {
-      //   if (applicationInfo.result || applicationInfo.result[0].length != 0) {
-      //     applicationstatus = applicationInfo.result[0].status;
-      //   }
-      // } else {
-      //   throw error;
-      // }
 
       res.render('dashboard/index', {
         userInfo: userInfo.result[0],
