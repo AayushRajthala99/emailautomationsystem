@@ -14,9 +14,6 @@ const {
 const {
     storeApplication,
 } = require("../models/Application.model");
-const {
-    send
-} = require("process");
 
 async function index(req, res) {
     try {
