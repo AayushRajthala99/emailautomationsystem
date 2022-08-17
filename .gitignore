@@ -6,3 +6,5 @@
 /logs
 \src\logs\*
 \logs
+/report_files
+\report_files

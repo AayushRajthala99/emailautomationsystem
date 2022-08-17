@@ -9,8 +9,6 @@ const {
     email,
 } = require('../controllers/ApplicationController')
 
-
-
 router.get('/', index);
 router.get('/create', create);
 router.get('/download', download);
