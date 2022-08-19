@@ -21,7 +21,7 @@ const storeApplication = async (userInfo) => {
                 VALUES
                 (
                 ${userInfo.id},
-                ${userInfo.fullname},
+                '${userInfo.fullname}',
                 '${userInfo.email}',
                 '${userInfo.type}',
                 '${userInfo.licensecategory}',
