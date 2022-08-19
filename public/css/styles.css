@@ -250,3 +250,7 @@ footer a {
   width: 90%;
   align-self: center;
 }
+
+section {
+  text-align: center;
+}

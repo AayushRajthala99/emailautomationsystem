@@ -12,15 +12,78 @@
 
 <body oncontextmenu="return false">
     <%- include('../header.ejs') %>
-    <div class="user-container">
-        <div class="view-title">License Details</div>
-        <div class="user-form-container">
-            <div class="user-input-container">
-                <div class="user-form-input">
+    <div class="license-container">
+        <div class="view-title">License Information</div>
+        <div class="license-form-container">
+            <div class="license-input-container">
+                <div class="license-form-input">
+                    <section>Full Name</section>
+                    <div class="input-label">
+                        <img src="/img/fullname.svg" alt="Full Name" />
+                        <input type="text" name="fullname" id="fullname" placeholder="Full Name"
+                            value="<%= userInfo.name %>" disabled />
+                    </div>
+                </div>
+                <div class="license-form-input">
+                    <section>Date of Birth</section>
+                    <div class="input-label">
+                        <img src="/img/dob.png" alt="Date of Birth" />
+                        <input type="date" name="dob" id="dob" placeholder="Date of Birth" value="<%= userInfo.dob %>"
+                            disabled />
+                    </div>
+                </div>
+                <div class="license-form-input">
+                    <section>Blood Group</section>
+                    <div class="input-label">
+                        <img src="/img/bloodgroup.svg" alt="Blood Group" />
+                        <select name="bloodgroup" id="bloodgroup" disabled>
+                            <option value="Blood Group">Select Your Blood Group</option>
+                            <option value="0" <%= userInfo.bloodgroup == '0' ? 'selected' : ''%>>(A+) A Positive
+                            </option>
+                            <option value="1" <%= userInfo.bloodgroup == '1' ? 'selected' : ''%>>(A-) A Negative
+                            </option>
+                            <option value="2" <%= userInfo.bloodgroup == '2' ? 'selected' : ''%>>(B+) B Positive
+                            </option>
+                            <option value="3" <%= userInfo.bloodgroup == '3' ? 'selected' : ''%>>(B-) B Negative
+                            </option>
+                            <option value="4" <%= userInfo.bloodgroup == '4' ? 'selected' : ''%>>(O+) O Positive
+                            </option>
+                            <option value="5" <%= userInfo.bloodgroup == '5' ? 'selected' : ''%>>(O-) O Negative
+                            </option>
+                            <option value="6" <%= userInfo.bloodgroup == '6' ? 'selected' : ''%>>(AB+) AB Positive
+                            </option>
+                            <option value="7" <%= userInfo.bloodgroup == '7' ? 'selected' : ''%>>(AB-) AB Negative
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="license-form-input">
+                    <div class="radio-selection">
+                        <div>
+                            <img src="/img/gender.svg" alt="Gender" />
+                            <h3>Gender</h3>
+                        </div>
+                        <div class="radio-value">
+                            <% if(userInfo.gender == '0') { %>
+                            <input type="radio" name="gender" value="0" checked readonly />
+                            <label for="male">Male</label>
+                            <% } else if (userInfo.gender == '1'){ %>
+                            <input type="radio" name="gender" value="1" checked readonly />
+                            <label for="female">Female</label>
+                            <% } else if (userInfo.gender == '2'){ %>
+                            <input type="radio" name="gender" value="2" checked readonly />
+                            <label for="other">Other</label>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="license-input-container">
+                <div class="license-form-input">
+                    <section>License Category</section>
                     <div class="input-label">
                         <img src="/img/licensecategory.svg" alt="License Category" />
-                        <select name="licensecategory" id="licensecategory"
-                            <%= userInfo.haslicense == '1' ? 'disabled' : ''%>>
+                        <select name="licensecategory" id="licensecategory" disabled>
                             <option value="License Category">Select License Category</option>
                             <option value="0" <%= userInfo.licensecategory == '0' ? 'selected' : ''%>>
                                 (A)
@@ -49,74 +112,42 @@
                                 Scooter, Moped</option>
                         </select>
                     </div>
-                    <div class="label-container" id="labelcontainerlicensecategory">
-                        <div class="form-error"></div>
-                    </div>
                 </div>
 
-                <div class="user-form-input">
+                <div class="license-form-input">
+                    <section>License Number</section>
                     <div class="input-label">
                         <img src="/img/licensenumber.svg" alt="License Number" />
-                        <% if(userInfo.haslicense== '1') { %>
                         <input type="text" name="licensenumber" id="licensenumber" placeholder="License Number"
                             value="<%= userInfo.licensenumber %>" disabled />
-                        <% } else { %>
-                        <input type="text" name="licensenumber" id="licensenumber" placeholder="License Number" />
-                        <% } %>
-                    </div>
-                    <div class="label-container" id="labelcontainerlicensenumber">
-                        <div class="form-error"></div>
                     </div>
                 </div>
 
-                <div class="user-form-input">
+                <div class="license-form-input">
+                    <section>License Issued District</section>
                     <div class="input-label">
                         <img src="/img/licenseissueddistrict.png" alt="License Issued District" />
-                        <% if(userInfo.haslicense == '1') { %>
                         <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
                             placeholder="License Issued District" value="<%= userInfo.licenseissueddistrict %>"
                             disabled />
-                        <% } else { %>
-                        <input type="text" name="licenseissueddistrict" id="licenseissueddistrict"
-                            placeholder="License Issued District" />
-                        <% } %>
-                    </div>
-                    <div class="label-container" id="labelcontainerlicenseissueddistrict">
-                        <div class="form-error"></div>
                     </div>
                 </div>
             </div>
-            <div class="user-input-container">
-                <div class="user-form-input">
+            <div class="license-input-container">
+                <div class="license-form-input">
                     <section>License Issued Date</section>
                     <div class="input-label">
                         <img src="/img/licenseissueddate.svg" alt="License Issued Date" />
-                        <% if(userInfo.haslicense == '1') { %>
                         <input type="date" name="licenseissueddate" id="licenseissueddate"
                             value="<%= userInfo.licenseissueddate %>" disabled />
-                        <% } else { %>
-                        <input type="text" name="licenseissueddate" id="licenseissueddate"
-                            placeholder="License Issued Date" onfocus="this.type='Date'" onblur="this.type='text'" />
-                        <% } %>
-                        <div class="label-container" id="labelcontainerlicenseissueddate">
-                            <div class="form-error"></div>
-                        </div>
                     </div>
                 </div>
-                <div class="user-form-input">
+                <div class="license-form-input">
                     <section>License Expiry Date</section>
                     <div class="input-label">
                         <img src="/img/licenseexpirydate.svg" alt="License Expiry Date" />
-                        <% if(userInfo.haslicense == '1') { %>
                         <input type="date" name="licenseexpirydate" id="licenseexpirydate"
                             value="<%= userInfo.licenseexpirydate %>" disabled />
-                        <% } else { %>
-                        <input type="text" name="licenseexpirydate" id="licenseexpirydate"
-                            placeholder="License Expiry Date" onfocus="this.type='Date'" onblur="this.type='text'" />
-                        <% } %>
-                        <div class="label-container" id="labelcontainerlicenseexpirydate">
-                            <div class="form-error"></div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -12,9 +12,8 @@
         <div class="logo"><img src="/img/Nepal.png" alt="Flag of Nepal"></div>
     </header>
     <nav>
-        <a class="nav-item" href="/dashboard">Home</a>
-        <% if(userInfo){ %>
-        <p class="userInfo"><%= userInfo.name %> [ <%= userInfo.id %> ]</p>
-        <% } %>
+        <a class="nav-item" href="/dashboard">
+            << Dashboard</a> <% if(userInfo){ %> <p class="userInfo"><%= userInfo.name %> [ <%= userInfo.id %> ]</p>
+                <% } %>
     </nav>
 </div>
