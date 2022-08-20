@@ -229,20 +229,21 @@
         <br>
         <br>
         <div class="application-options">
-            <form method="GET" action="/dashboard/application/download">
-                <button class="button">
-                    <img src="/img/download.svg" alt="Download">
-                    <span>Download</span>
+            <form method="GET" action="/dashboard/application/download" id="downloadform">
+                <button class="button download" id="download">
+                    <img src="/img/download.svg" alt="Download" class="download">
+                    <span class="download">Download</span>
                 </button>
             </form>
-            <form method="GET" action="/dashboard/application/email">
-                <button class="button">
+            <form method="GET" action="/dashboard/application/email" id="emailform">
+                <button class="button email" id="email">
                     <img src="/img/mail.png" alt="Send Mail" class="email">
-                    <span>Send Email</span>
+                    <span class="email">Send Email</span>
                 </button>
             </form>
         </div>
     </div>
+    <script src="/js/buttonhandling.js"></script>
 </body>
 <%- include('../footer.ejs') %>
 
