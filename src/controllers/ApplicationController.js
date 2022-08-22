@@ -98,8 +98,36 @@ async function store(req, res) {
 
         const result = await storeApplication(userInfo);
         if (result.status) {
-            //Here will be function call for email handler {WIP}...
+            const filePath = path.join(__dirname, '../views/', "applicationtemplate.ejs");
+
+            let date = new Date().toISOString().replace(/:/g, '-');
+            date = date.substring(0, 10);
+
+            // PDF Value Acquisition...
+            const userInfo = await getUserInfo(email);
+            const applicationInfo = await getApplicationInfo(email);
+
+            const pdfPath = path.join(__dirname, '../../report_files/', `${userInfo.result[0].name}-license-${date}.pdf`);
+
+            await generatePDF(filePath, pdfPath, userInfo.result[0], applicationInfo.result[0]);
+
+            // send mail with defined transport object
+            let mailOptions = {
+                from: `"Online Driving License System - EAS 👻" <developers_eas@outlook.com>`, // sender address
+                to: `${email}`, // list of receivers
+                subject: "Online Driving License Application", // Subject line
+                text: `Hello ${userInfo.result[0].name},\n\nPlease find the attached document of your Online Driving License Application.\n[ Reference Number - ${applicationInfo.result[0].id} ]\nWith regards,\nOnline Driving License System`,
+                attachments: [{
+                    filename: `${userInfo.result[0].name}-report-${date}.pdf`,
+                    path: `${pdfPath}`,
+                    contentType: 'application/pdf',
+                }],
+            }
             res.redirect('/dashboard/application/');
+            await sendEmail(mailOptions);
+            fs.unlink(pdfPath, function () {
+                // console.log("File was deleted");
+            })
         } else {
             throw (result.error);
         }
